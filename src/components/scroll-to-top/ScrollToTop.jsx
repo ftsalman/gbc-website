@@ -36,13 +36,13 @@ export const ScrollToTop = () => {
 
   return (
     <div
-      className={`fixed bottom-8 right-8 z-50 transition-all duration-500 ${
+      className={`fixed bottom-8 left-8 z-50 transition-all duration-500 ${
         isVisible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-8 pointer-events-none'
       }`}
     >
       <button
         onClick={scrollToTop}
-        className="p-3 bg-bordeaux text-white shadow-lg hover:bg-bordeaux/90 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bordeaux/50 border border-white/20 rounded-sm flex items-center justify-center"
+        className="p-3 bg-bordeaux cursor-pointer text-white shadow-lg hover:bg-bordeaux/90 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bordeaux/50 border border-white/20 rounded-sm flex items-center justify-center"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" strokeWidth={2.5} />

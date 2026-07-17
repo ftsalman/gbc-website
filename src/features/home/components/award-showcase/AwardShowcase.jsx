@@ -1,146 +1,256 @@
-import React, { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
-import { FaTrophy, FaMedal, FaAward, FaCertificate, FaCrown, FaStar, FaGlobe, FaChartLine } from 'react-icons/fa';
-import Antigravity from '../../../../components/ui/Antigravity';
+import React, { memo, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Image as ThreeImage, OrbitControls } from "@react-three/drei";
+import { useNavigate } from "react-router-dom";
+import * as THREE from "three";
+import "./AwardShowcase.css";
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-const awards = [
-  { id: 1, icon: FaTrophy, label: "Top Agency", color: "bg-[#ff6700]", top: "20%", left: "20%", transform: "perspective(800px) rotateY(15deg) rotateZ(-10deg) rotateX(10deg)", size: "w-48 h-32" },
-  { id: 2, icon: FaCertificate, label: "100%", color: "bg-gray-100", textDark: true, top: "28%", left: "35%", transform: "perspective(800px) rotateY(10deg) rotateZ(-5deg) scale(0.7)", size: "w-24 h-28" },
-  { id: 3, icon: FaCrown, label: "Premium", color: "bg-yellow-500", top: "15%", left: "48%", transform: "perspective(800px) rotateX(15deg) rotateY(-5deg)", size: "w-32 h-40" },
-  { id: 4, icon: FaChartLine, label: "Growth", color: "bg-[#1a1a1a]", top: "20%", left: "80%", transform: "perspective(800px) rotateY(-20deg) rotateZ(10deg) rotateX(10deg)", size: "w-64 h-40" },
-  
-  { id: 5, icon: FaMedal, label: "Leader", color: "bg-[#333]", top: "50%", left: "12%", transform: "perspective(800px) rotateY(5deg) rotateX(5deg)", size: "w-32 h-32" },
-  { id: 6, icon: FaAward, label: "Support", color: "bg-[#1ee3b5]", textDark: true, top: "50%", left: "88%", transform: "perspective(800px) rotateY(-15deg)", size: "w-32 h-44" },
-
-  { id: 7, icon: FaStar, label: "5-Star", color: "bg-[#f3e3c3]", textDark: true, top: "80%", left: "20%", transform: "perspective(800px) rotateY(20deg) rotateZ(-12deg) rotateX(-5deg)", size: "w-48 h-40" },
-  { id: 8, icon: FaTrophy, label: "Trust", color: "bg-gray-200", textDark: true, top: "85%", left: "50%", transform: "perspective(800px) rotateX(-10deg)", size: "w-36 h-40" },
-  { id: 9, icon: FaCertificate, label: "", color: "bg-orange-700", top: "75%", left: "65%", transform: "perspective(800px) rotateY(-15deg) scale(0.6)", size: "w-20 h-20" },
-  { id: 10, icon: FaGlobe, label: "Reach", color: "bg-[#ff7b00]", top: "82%", left: "80%", transform: "perspective(800px) rotateY(-25deg) rotateZ(8deg) rotateX(-5deg)", size: "w-40 h-48" },
+const PROJECT_DATA = [
+ 
+  {
+    title: "Business Excellence Award",
+    image: "/images/awards/showcase-business.jpg",
+    href: "/services",
+  },
+  {
+    title: "Leadership Award",
+    image: "/images/awards/showcase-leadership.jpg",
+    href: "/services",
+  },
+  {
+    title: "Innovation Award",
+    image: "/images/awards/showcase-innovation.jpg",
+    href: "/services",
+  },
+  {
+    title: "Customer Service Award",
+    image: "/images/awards/showcase-customer-service.jpg",
+    href: "/services",
+  },
+  {
+    title: "Growth Achievement Award",
+    image: "/images/awards/showcase-growth.jpg",
+    href: "/services",
+  },
+  {
+    title: "Entrepreneurship Award",
+    image: "/images/awards/showcase-entrepreneurship.jpg",
+    href: "/services",
+  },
+  {
+    title: "Community Impact Award",
+    image: "/images/awards/showcase-community.jpg",
+    href: "/services",
+  },
+  {
+    title: "Sustainability Award",
+    image: "/images/awards/showcase-sustainability.jpg",
+    href: "/services",
+  },
+  {
+    title: "Digital Transformation Award",
+    image: "/images/awards/showcase-digital.jpg",
+    href: "/services",
+  },
+  {
+    title: "Emerging Business Award",
+    image: "/images/awards/showcase-emerging.jpg",
+    href: "/services",
+  },
+  {
+    title: "Industry Excellence Award",
+    image: "/images/awards/showcase-industry.jpg",
+    href: "/services",
+  },
+  {
+    title: "Lifetime Achievement Award",
+    image: "/images/awards/showcase-lifetime.jpg",
+    href: "/services",
+  },
 ];
 
-export const AwardShowcase = () => {
-  const containerRef = useRef(null);
+const CARDS_PER_RING = 8;
+const RING_RADIUS = 3;
+const RING_HEIGHTS = [-4, -2, 0, 2, 4];
 
-  useGSAP(
-    () => {
-      // Float animation for all inner cards (desktop only)
-      gsap.to('.award-card', {
-        y: 'random(-10, 10)',
-        x: 'random(-5, 5)',
-        rotationZ: 'random(-1, 1)',
-        duration: 'random(4, 6)',
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        stagger: 0.1
-      });
+const ProjectCard = memo(function ProjectCard({ id, item, position, rotation, mobile, active, setActive, onNavigate }) {
+  const imageRef = useRef(null);
 
-      // Entrance animation on scroll for cards
-      gsap.fromTo('.award-card, .mobile-card', 
-        { opacity: 0, scale: 0 }, 
-        { 
-          opacity: 1, 
-          scale: 1, 
-          duration: 1.2, 
-          stagger: 0.1, 
-          ease: 'back.out(1.5)',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 70%'
-          }
-        }
-      );
-
-      // Typing animation for the headline
-      gsap.to('.typewriter-text', {
-        text: "award-winning services.",
-        duration: 2,
-        ease: "none",
-        delay: 0.5,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 70%'
-        }
-      });
-    },
-    { scope: containerRef }
-  );
+  useFrame((_, delta) => {
+    if (!imageRef.current) return;
+    const scale = active ? 1.2 : 1;
+    const opacity = active ? 1 : mobile ? 0.8 : 0.5;
+    const scaleEase = 1 - Math.exp(-delta * 10);
+    imageRef.current.scale.lerp(new THREE.Vector3(scale, scale, scale), scaleEase);
+    imageRef.current.material.opacity = THREE.MathUtils.lerp(
+      imageRef.current.material.opacity,
+      opacity,
+      1 - Math.exp(-delta * 6),
+    );
+  });
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-[600px] md:h-[900px] bg-white overflow-hidden flex flex-col items-center justify-center font-sans border-y border-gray-100 py-16 md:py-0">
-      
-      {/* Background Interactive Antigravity Animation */}
-      <div className="absolute inset-0 w-full h-full z-0 opacity-40">
-        <Antigravity
-          count={250}
-          magnetRadius={8}
-          ringRadius={12}
-          waveSpeed={0.5}
-          waveAmplitude={1.5}
-          particleSize={1.5}
-          lerpSpeed={0.05}
-          color={'rainbow'} // Enable animated rainbow mode
-          autoAnimate={true}
-          particleVariance={1}
+    <ThreeImage
+      ref={imageRef}
+      url={item.image}
+      position={position}
+      rotation={rotation}
+      transparent
+      opacity={mobile ? 0.8 : 0.5}
+      onPointerOver={(event) => {
+        event.stopPropagation();
+        setActive({ id, title: item.title });
+      }}
+      onPointerOut={() => setActive(null)}
+      onClick={(event) => {
+        event.stopPropagation();
+        onNavigate(item.href);
+      }}
+    >
+      <planeGeometry args={[1.5, 0.9345, 20, 20]} />
+    </ThreeImage>
+  );
+});
+
+function AwardRings({ mobile, activeCard, setActiveCard, onNavigate }) {
+  return RING_HEIGHTS.flatMap((height, ringIndex) =>
+    Array.from({ length: CARDS_PER_RING }, (_, cardIndex) => {
+      const angle = (cardIndex / CARDS_PER_RING) * Math.PI * 2;
+      const item = PROJECT_DATA[
+        (ringIndex * CARDS_PER_RING + cardIndex) % PROJECT_DATA.length
+      ];
+
+      const id = `${ringIndex}-${cardIndex}`;
+
+      return (
+        <ProjectCard
+          key={id}
+          id={id}
+          item={item}
+          mobile={mobile}
+          active={activeCard?.id === id}
+          setActive={setActiveCard}
+          onNavigate={onNavigate}
+          position={[Math.sin(angle) * RING_RADIUS, height, Math.cos(angle) * RING_RADIUS]}
+          rotation={[0, Math.PI + angle, 0]}
         />
+      );
+    }),
+  );
+}
+
+function CameraRig({ mobile, setDragging }) {
+  const hasDragged = useRef(false);
+
+  useFrame(({ camera, pointer }, delta) => {
+    if (hasDragged.current) return;
+    camera.position.lerp(
+      new THREE.Vector3(pointer.x, -pointer.y, -3),
+      1 - Math.exp(-delta / 0.3),
+    );
+  });
+
+  const polarOffset = mobile ? 0 : 0.25;
+
+  return (
+    <OrbitControls
+      enableZoom={false}
+      enablePan={false}
+      enableDamping
+      dampingFactor={0.05}
+      minPolarAngle={Math.PI / 2 - polarOffset}
+      maxPolarAngle={Math.PI / 2 + polarOffset}
+      onStart={() => {
+        hasDragged.current = true;
+        setDragging(true);
+      }}
+      onEnd={() => setDragging(false)}
+    />
+  );
+}
+
+export function AwardShowcase() {
+  const navigate = useNavigate();
+  const titleRef = useRef(null);
+  const [mobile, setMobile] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
+  const [dragging, setDragging] = useState(false);
+  const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const update = () =>
+      setMobile(
+        window.innerWidth < 1280 ||
+          window.matchMedia("(pointer: coarse)").matches,
+      );
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const movePointer = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+    setHoverPosition({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+    titleRef.current?.style.setProperty("--title-rotate-y", `${px * 60}deg`);
+    titleRef.current?.style.setProperty("--title-rotate-x", `${py * -60}deg`);
+  };
+
+  return (
+    <section
+      className={`award-showcase${dragging ? " is-dragging" : ""}${activeCard ? " has-active-card" : ""}`}
+      aria-label="Websites made with GBC"
+      onPointerMove={movePointer}
+      onPointerLeave={() => {
+        titleRef.current?.style.setProperty("--title-rotate-y", "0deg");
+        titleRef.current?.style.setProperty("--title-rotate-x", "0deg");
+      }}
+    >
+      <div className="award-showcase__scene" aria-hidden="true">
+        <div className="award-showcase__gradient award-showcase__gradient--top" />
+        <div className="award-showcase__gradient award-showcase__gradient--bottom" />
+        <Canvas
+          camera={{ position: [0, 0, -3], fov: mobile ? 80 : 65 }}
+          dpr={[1, 2]}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+            stencil: false,
+            depth: false,
+          }}
+        >
+          <AwardRings
+            mobile={mobile}
+            activeCard={activeCard}
+            setActiveCard={setActiveCard}
+            onNavigate={navigate}
+          />
+          <CameraRig mobile={mobile} setDragging={setDragging} />
+        </Canvas>
       </div>
 
-      {/* Central Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-xl mx-auto pointer-events-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-4 md:mb-6 min-h-[120px]">
-          Get exclusive access to our <span className="typewriter-text text-bordeaux border-r-4 border-bordeaux pr-1 animate-pulse"></span>
+      <div ref={titleRef} className="award-showcase__title">
+        <h2>
+          <em>Made with</em>
+          <span className="">GBC BUSINESS CONNECT.</span>
         </h2>
-        <p className="text-gray-500 text-sm md:text-lg max-w-sm mx-auto leading-relaxed">
-          Unlimited tools to transform your business and change your life. Join the industry leaders.
-        </p>
       </div>
-
-      {/* Mobile Layout: Responsive Grid */}
-      <div className="md:hidden grid grid-cols-2 gap-4 mt-10 px-4 w-full max-w-sm mx-auto relative z-20 pointer-events-auto">
-        {awards.map((award) => (
-          <div 
-            key={`mobile-${award.id}`} 
-            className={`mobile-card rounded-[14px] ${award.color} shadow-lg flex flex-col items-center justify-center p-5`}
-          >
-            <div className="relative z-10 flex flex-col items-center">
-              <award.icon className={`w-8 h-8 mb-2 ${award.textDark ? 'text-gray-800' : 'text-white'}`} />
-              <span className={`font-bold text-center text-xs tracking-wide ${award.textDark ? 'text-gray-900' : 'text-white'}`}>
-                {award.label}
-              </span>
-            </div>
-          </div>
-        ))}
+      <div
+        className={`award-showcase__hover-link${activeCard ? " is-visible" : ""}`}
+        style={{
+          "--hover-x": `${hoverPosition.x}px`,
+          "--hover-y": `${hoverPosition.y}px`,
+        }}
+        aria-hidden="true"
+      >
+        {activeCard?.title} <span>↗</span>
       </div>
-
-      {/* Desktop Layout: Scattered 3D Cards */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
-        {awards.map((award) => (
-          <div
-            key={`desktop-${award.id}`}
-            className="absolute transform pt-4"
-            style={{
-              top: award.top,
-              left: award.left,
-              transform: `translate(-50%, -50%) ${award.transform}`,
-              transformStyle: "preserve-3d"
-            }}
-          >
-            <div className={`award-card ${award.size} rounded-[16px] ${award.color} shadow-[0_20px_40px_rgba(0,0,0,0.15)] flex flex-col items-center justify-center p-6 transition-all`}>
-              <award.icon className={`w-10 h-10 mb-3 ${award.textDark ? 'text-gray-800' : 'text-white/95'}`} />
-              {award.label && (
-                <span className={`font-bold text-center text-sm tracking-wide ${award.textDark ? 'text-gray-900' : 'text-white'}`}>
-                  {award.label}
-                </span>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+      <div className="award-showcase__shade" />
     </section>
   );
-};
+}

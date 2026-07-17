@@ -11,7 +11,6 @@ import { WhyChoose } from "../components/why-choose/WhyChoose";
 import { AwardShowcase } from "../components/award-showcase/AwardShowcase";
 import { Counter } from "../components/couter/Counter";
 import { Testimonial } from "../components/testimonial/Testimonial";
-import { ServicesGallary } from "../components/Gallery/ServicesGallary";
 import { Blogs } from "../components/blogs/Blogs";
 import { Connect } from "../components/connect/Connect";
 import { Teams } from "../components/teams/Teams";
@@ -28,9 +27,9 @@ export const HomePage = () => {
       <Teams />
       <Counter />
       <WhyChoose />
-      {/* <AwardShowcase /> */}
       <Testimonial />
-      <ServicesGallary />
+            <AwardShowcase />
+
       {/* <Package /> */}
       <Blogs />
       <Connect />
