@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@reference "../lib/turtle-ui/style.css";
+
+@theme {
+  --color-bordeaux: #6C141E;
+  --color-ivory: #fffbf0;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color:#ffff;
+  color: var(--color-bordeaux);
+}
+
+
+/* Scrollbar CSS ============================================= */
+
+.panel-scrollbar::-webkit-scrollbar {
+  scrollbar-gutter: stable;
+  @apply size-1 bg-white transition-all duration-300;
+}
+
+.panel-scrollbar:hover::-webkit-scrollbar-thumb {
+  @apply bg-gray-300;
+}
+
+.panel-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-[20px] bg-transparent;
+}
+
+.panel-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Hide scrollbar for smoother mobile look */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* Scrollbar CSS ============================================= */
+
+/* --------------------------------------------------------------- */
+
+/* Table CSS ===================================================================================================== */
+
+.table-Scrollbar::-webkit-scrollbar {
+  width: 100px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.table-Scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 9999px;
+  scrollbar-gutter: stable;
+}
+
+.table-Scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.table-Scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Firefox Support */
+.table-Scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}

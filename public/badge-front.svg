@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1500" width="1000" height="1500" style="background-color: #fcfcfc;">
+  <!-- Lanyard hole punch area -->
+  <circle cx="500" cy="150" r="30" fill="#e5e5e5" />
+  
+  <g transform="translate(500, 700) scale(1.5)">
+    <!-- Atom / Network Logo -->
+    <path d="M 0 -80 A 50 120 60 1 0 0 80 A 50 120 60 1 0 0 -80" fill="none" stroke="#111" stroke-width="25" stroke-linecap="round"/>
+    <path d="M 0 -80 A 50 120 -60 1 0 0 80 A 50 120 -60 1 0 0 -80" fill="none" stroke="#111" stroke-width="25" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="25" fill="#111"/>
+  </g>
+  
+  <text x="500" y="1150" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="140" letter-spacing="-2" text-anchor="middle" fill="#111">GBC</text>
+  <text x="500" y="1250" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="45" letter-spacing="8" text-anchor="middle" fill="#666">BUSINESS SETUP</text>
+  <text x="500" y="1380" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="30" text-anchor="middle" fill="#999">VIP MEMBER</text>
+</svg>

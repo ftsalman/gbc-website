@@ -1,0 +1,95 @@
+@reference "tailwindcss";
+@reference "../../style.css";
+
+
+@layer components {
+
+    /* Select - input */
+
+    .tui-select {
+        @apply cursor-pointer w-full px-4 py-2 min-h-fit h-11 flex items-center gap-3 bg-white;
+    }
+
+    .tui-select-disabled {
+        @apply pointer-events-none bg-gray-100;
+    }
+
+    .tui-select-dropdown-icon-container {
+        @apply flex-shrink-0;
+    }
+
+    .tui-select-clear-btn {
+        @apply flex-shrink-0 p-1 size-6 rounded-md;
+    }
+
+    /* selected option */
+
+    .tui-select-selected-option {
+        @apply flex flex-grow gap-2 text-base w-full;
+    }
+
+     .tui-select-selected-option-multi {
+        @apply flex flex-wrap flex-grow gap-2 text-xs w-full;
+    }
+
+    /* Options */
+
+    .tui-select-options-container {
+        @apply flex-grow;
+    }
+
+    .tui-select-options {
+        @apply overflow-auto z-50 max-h-[200px] flex flex-col shadow-md rounded-lg border-2 border-gray-200 bg-white;
+    }
+
+    .tui-select-option {
+        @apply cursor-pointer outline-none px-4 py-2 flex items-center border-b h-10 text-base;
+    }
+
+    .tui-select-option-active {
+        @apply bg-gray-50 border-b-gray-100;
+    }
+
+    .tui-select-option-default {
+        @apply border-gray-100 hover:bg-gray-50 focus:bg-gray-50 duration-300 transition-all;
+    }
+
+    /* Loader */
+
+    .tui-select-loader {
+        @apply grid-cols-1 gap-0 divide-y divide-gray-50;
+    }
+
+    .tui-select-loader-item {
+        @apply h-10 bg-gray-200 animate-pulse;
+    }
+
+
+    /* Empty */
+
+    .tui-placeholder-container {
+        @apply flex flex-grow gap-2 text-sm text-gray-400;
+    }
+
+    .tui-select-empty {
+        @apply px-4 py-2 text-sm text-gray-500;
+    }
+
+    /* Search */
+
+    .tui-select-search-container {
+        @apply sticky top-0 z-30 bg-white;
+    }
+
+    .tui-select-search-icon-container {
+        @apply pointer-events-none absolute top-0 z-30 left-0 inset-y-0 px-2 flex items-center justify-center text-inherit;
+    }
+
+    .tui-select-search-input {
+        @apply sticky top-0 pl-8 px-4 h-10 w-full py-2 flex-shrink-0 text-sm outline-none border-b border-gray-200 focus:text-gray-800 text-gray-400;
+    }
+
+    .tui-select-search-input-container {
+        @apply relative;
+    }
+}

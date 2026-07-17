@@ -1,0 +1,59 @@
+@reference "tailwindcss";
+@reference "../../../../src/App.css";
+
+@layer components {
+  /* Style Variants */
+
+  .tui-btn {
+    @apply outline-0 flex items-center justify-center gap-2 rounded-lg border border-transparent text-sm font-medium transition-colors duration-300 cursor-pointer disabled:cursor-not-allowed;
+  }
+
+  .tui-btn-primary {
+    @apply text-white bg-bordeaux hover:bg-bordeaux/90 border border-bordeaux relative !rounded-none font-semibold tracking-wide shadow-lg transition-all duration-500 disabled:bg-gray-200 disabled:text-gray-400;
+  }
+
+  .tui-btn-secondary {
+    @apply text-white bg-transparent border border-white/20 hover:border-white/50 relative !rounded-none font-semibold tracking-wide shadow-sm transition-all duration-500 disabled:bg-gray-200 disabled:text-gray-400;
+  }
+
+  .tui-btn-tertiary {
+    @apply bg-transparent text-bordeaux focus:ring-[3px] focus:ring-bordeaux/30 focus:border-bordeaux hover:bg-bordeaux/10;
+  }
+
+  .tui-btn-accent-gradient {
+    @apply text-black bg-gradient-to-r from-[#FFC931] to-[#C39207]/80 hover:opacity-90 focus:ring-[3px] focus:ring-brand-primary-200 focus:border-brand-primary-600 disabled:bg-gray-200 disabled:text-gray-400;
+  }
+
+  .tui-btn-success {
+    @apply text-white bg-green-500 hover:opacity-90 focus:ring-[3px] focus:ring-green-200 focus:border-green-600 disabled:bg-gray-200 disabled:text-gray-400;
+  }
+
+  .tui-btn-danger {
+    @apply text-white bg-red-500 hover:opacity-90 focus:ring-[3px] focus:ring-red-200 focus:border-red-600 disabled:bg-gray-200 disabled:text-gray-400;
+  }
+
+  .tui-btn-corner {
+    @apply text-white bg-black/40 hover:bg-black/80 border border-white/15 hover:border-white/40 relative !rounded-none font-semibold tracking-wide shadow-lg backdrop-blur-md transition-all duration-500;
+  }
+
+  /* Size Variants */
+  .tui-btn-xs {
+    @apply h-[28px] px-6 py-2.5 text-xs;
+  }
+
+  .tui-btn-sm {
+    @apply h-[36px] px-8 py-2 text-xs;
+  }
+
+  .tui-btn-md {
+    @apply h-[44px] px-10 py-2.5 text-sm;
+  }
+
+  .tui-btn-lg {
+    @apply h-[52px] px-12 py-3.5 text-sm sm:text-base;
+  }
+
+  .tui-btn-xl {
+    @apply h-[58px] px-14 py-4 text-base;
+  }
+}

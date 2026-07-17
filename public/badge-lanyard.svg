@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 150" width="2000" height="150" style="background-color: #991b1b;">
+  <g fill="#ffffff">
+    <!-- Repeat pattern 1 -->
+    <text x="250" y="95" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">GBC</text>
+    <g transform="translate(450, 75) scale(0.35)">
+      <path d="M 0 -80 A 50 120 60 1 0 0 80 A 50 120 60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <path d="M 0 -80 A 50 120 -60 1 0 0 80 A 50 120 -60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="25" fill="#ffffff"/>
+    </g>
+    
+    <!-- Repeat pattern 2 -->
+    <text x="750" y="95" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">GBC</text>
+    <g transform="translate(950, 75) scale(0.35)">
+      <path d="M 0 -80 A 50 120 60 1 0 0 80 A 50 120 60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <path d="M 0 -80 A 50 120 -60 1 0 0 80 A 50 120 -60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="25" fill="#ffffff"/>
+    </g>
+    
+    <!-- Repeat pattern 3 -->
+    <text x="1250" y="95" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">GBC</text>
+    <g transform="translate(1450, 75) scale(0.35)">
+      <path d="M 0 -80 A 50 120 60 1 0 0 80 A 50 120 60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <path d="M 0 -80 A 50 120 -60 1 0 0 80 A 50 120 -60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="25" fill="#ffffff"/>
+    </g>
+    
+    <!-- Repeat pattern 4 -->
+    <text x="1750" y="95" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">GBC</text>
+    <g transform="translate(1950, 75) scale(0.35)">
+      <path d="M 0 -80 A 50 120 60 1 0 0 80 A 50 120 60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <path d="M 0 -80 A 50 120 -60 1 0 0 80 A 50 120 -60 1 0 0 -80" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="25" fill="#ffffff"/>
+    </g>
+  </g>
+</svg>
