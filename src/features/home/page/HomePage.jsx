@@ -30,8 +30,7 @@ export const HomePage = () => {
       <Counter />
       <WhyChoose />
       <Testimonial />
-            <AwardShowcase />
-
+      <AwardShowcase />
       {/* <Package /> */}
       <Blogs />
       <Connect />

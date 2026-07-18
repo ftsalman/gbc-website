@@ -8,7 +8,7 @@ import Lanyard from "../components/ui/Lanyard";
 
 export const Layout = () => {
   return (
-    <div className="flex flex-col min-h-screen relative overflow-x-clip">
+    <div className="flex flex-col min-h-screen relative h-full w-full">
       <Navbar />
       <div className="flex-grow flex flex-col z-10 relative">
         <Outlet />

@@ -1,0 +1,48 @@
+.license-card-wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.license-card {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              border-color 0.4s ease, 
+              box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform, border-color, box-shadow;
+}
+
+@keyframes floatAnimation {
+  0% { transform: rotateX(8deg) rotateY(-5deg) translateY(-12px); }
+  50% { transform: rotateX(8deg) rotateY(-5deg) translateY(-20px); }
+  100% { transform: rotateX(8deg) rotateY(-5deg) translateY(-12px); }
+}
+
+.license-card-wrapper:hover .license-card {
+  border-color: #fbbf24; /* Gold border (tailwind yellow-400) */
+  box-shadow: 0 25px 35px -10px rgba(251, 191, 36, 0.25),
+              0 0 15px rgba(251, 191, 36, 0.15); /* Gold glow */
+  animation: floatAnimation 3s ease-in-out infinite; /* Floating animation + 3D tilt */
+}
+
+/* Ensure the image container also participates in 3D to create depth */
+.license-image-container {
+  transform: translateZ(0); /* Base depth */
+  overflow: hidden;
+}
+
+.license-image {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.license-card-wrapper:hover .license-image {
+  transform: scale(1.15) translateZ(10px); /* Image zoom and slight pop */
+}
+
+.license-title {
+  transform: translateZ(30px); /* Text pops out more than background */
+  transition: all 0.3s ease;
+}
+
+.license-card-wrapper:hover .license-title {
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}

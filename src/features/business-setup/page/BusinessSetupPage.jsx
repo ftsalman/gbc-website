@@ -1,23 +1,39 @@
 import React from "react";
 import { PageToolbar } from "../../../components/PageToolbar/PageToolbar";
 import { BusinessSetup } from "../../home/components/business-setup/BusinessSetup";
-import { Package } from "../../home/components/package/Package";
 import { Connect } from "../../home/components/connect/Connect";
+import { JourneySequence } from "../componnets/JourneySequence";
+import { BusinessStructureSection } from "../componnets/BusinessStructureSection";
+import { BusinessSetupProcess } from "../componnets/BusinessSetupProcess";
+import { WhyChoose } from "../../home/components/why-choose/WhyChoose";
+import { BusinessLicenses } from "../componnets/BusinessLicenses";
+import { PremiumServices } from "../componnets/PremiumServices";
 
 export const BusinessSetupPage = () => {
   return (
-    <div className="business-setup-page bg-black text-white font-sans overflow-hidden">
+    <div className="business-setup-page bg-black text-white font-sans">
       <PageToolbar
-        title={"Business Setup\n& Packages"}
+        title={"Launch Your Business in Dubai with Confidence"}
         description={
-          "Tailored corporate structuring, instant freezone and mainland trade licenses, golden visas, and turnkey advisory for companies scaling across the UAE."
+          "Start your UAE company with complete support for licensing, visas, banking, and government approvals. GBC Business Connect makes business setup fast, transparent, and stress-free."
         }
         bgImage="/images/TOOLSBAR_BG.png"
         imagePosition="right"
       />
-
       <BusinessSetup />
-    
+      <BusinessStructureSection />
+      <JourneySequence />
+      <WhyChoose 
+        bgColor="bg-white" 
+        textColor="text-black"
+        lineColor="#e5e7eb"
+        gradient1="bg-red-50/50"
+        gradient2="bg-rose-50/50"
+        gradient3="bg-red-100/50"
+      />
+      <BusinessLicenses />
+      {/* <PremiumServices /> */}
+
       <Connect />
     </div>
   );

@@ -20,7 +20,14 @@ const floatingCards = [
   { id: 8, top: "82%", left: "80%", icon: FaPassport, color: "text-sky-600", bgClass: "bg-sky-50", badge: "APPROVED", badgeType: "stamp", label: "PASSPORT" },
 ];
 
-export const WhyChoose = () => {
+export const WhyChoose = ({ 
+  bgColor = "", 
+  textColor = "text-white",
+  lineColor = "#ffffff",
+  gradient1 = "bg-red-900/30",
+  gradient2 = "bg-red-800/20",
+  gradient3 = "bg-red-950/20"
+}) => {
   const sectionRef = useRef(null);
 
   useGSAP(
@@ -71,23 +78,23 @@ export const WhyChoose = () => {
   );
 
   return (
-    <div ref={sectionRef} className="relative w-full h-[700px] bg-[#0a0a0a] overflow-hidden font-sans">
+    <div ref={sectionRef} className={`relative w-full h-[700px] overflow-hidden font-sans ${bgColor || 'bg-[#0a0a0a]'}`}>
       
       {/* Glowing Aurora Background Effects */}
-      <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-red-900/30 rounded-full blur-[120px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[-10%] right-[-20%] w-[60%] h-[80%] bg-red-800/20 rounded-full blur-[140px] pointer-events-none z-0"></div>
-      <div className="absolute top-[30%] left-[20%] w-[50%] h-[50%] bg-red-950/20 rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className={`absolute top-[-20%] left-[-10%] w-[70%] h-[70%] ${gradient1} rounded-full blur-[120px] pointer-events-none z-0`}></div>
+      <div className={`absolute bottom-[-10%] right-[-20%] w-[60%] h-[80%] ${gradient2} rounded-full blur-[140px] pointer-events-none z-0`}></div>
+      <div className={`absolute top-[30%] left-[20%] w-[50%] h-[50%] ${gradient3} rounded-full blur-[100px] pointer-events-none z-0`}></div>
 
       {/* Curved connecting lines (SVG) */}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none z-0">
         {/* Line from Burj Al Arab (Card 4) to Trade License (Card 1) */}
-        <path className="wc-path" d="M 10 35 Q 25 33 28 15" fill="none" stroke="#ffffff" strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
+        <path className="wc-path" d="M 10 35 Q 25 33 28 15" fill="none" stroke={lineColor} strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
         
         {/* Line from Burj Khalifa (Card 5) to Clients (Card 3) */}
-        <path className="wc-path" d="M 90 50 Q 82 40 80 20" fill="none" stroke="#ffffff" strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
+        <path className="wc-path" d="M 90 50 Q 82 40 80 20" fill="none" stroke={lineColor} strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
         
         {/* Line from Doc Check (Card 7) to Passport (Card 8) */}
-        <path className="wc-path" d="M 55 72 Q 68 68 80 82" fill="none" stroke="#ffffff" strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
+        <path className="wc-path" d="M 55 72 Q 68 68 80 82" fill="none" stroke={lineColor} strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
       </svg>
 
       {/* Floating Cards */}
@@ -125,7 +132,7 @@ export const WhyChoose = () => {
               <card.icon className={`w-5 h-5 ${card.color}`} />
             </div>
             {card.label && (
-              <div className="text-[8px] font-bold text-white/90 text-center leading-tight whitespace-pre-line uppercase">
+              <div className={`text-[8px] font-bold ${textColor} opacity-90 text-center leading-tight whitespace-pre-line uppercase`}>
                 {card.label}
               </div>
             )}
@@ -142,23 +149,23 @@ export const WhyChoose = () => {
       />
       {/* Central Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0 px-4 mt-[-50px]">
-        <h2 className="wc-text text-5xl md:text-6xl font-medium text-white text-center leading-[1.1] tracking-tight mb-20 max-w-2xl font-sans drop-shadow-lg">
+        <h2 className={`wc-text text-5xl md:text-6xl font-medium ${textColor} text-center leading-[1.1] tracking-tight mb-20 max-w-2xl font-sans drop-shadow-lg`}>
           Why Choose GBC?<br />Here's Why.
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center max-w-4xl mx-auto">
           <div className="wc-text flex flex-col items-center">
-            <p className="text-white/80 font-mono text-sm leading-relaxed max-w-[200px]">
+            <p className={`${textColor} opacity-80 font-mono text-sm leading-relaxed max-w-[200px]`}>
               Expert in Dubai business setup and licensing.
             </p>
           </div>
           <div className="wc-text flex flex-col items-center">
-            <p className="text-white/80 font-mono text-sm leading-relaxed max-w-[200px]">
+            <p className={`${textColor} opacity-80 font-mono text-sm leading-relaxed max-w-[200px]`}>
               Fast, transparent &<br />hassle-free process.
             </p>
           </div>
           <div className="wc-text flex flex-col items-center">
-            <p className="text-white/80 font-mono text-sm leading-relaxed max-w-[200px]">
+            <p className={`${textColor} opacity-80 font-mono text-sm leading-relaxed max-w-[200px]`}>
               100% compliant with UAE laws and regulations.
             </p>
           </div>
