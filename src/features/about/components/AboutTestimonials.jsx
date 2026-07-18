@@ -8,23 +8,23 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   {
     id: "01",
-    quote: "“Working with Syncox was a game-changer for our brand. Their designs were creative, innovative, and perfectly aligned with our vision.”",
+    quote: "“Working with GBC Corporate was a game-changer for our expansion. Their team handled our Free Zone setup flawlessly and got our visas processed in record time.”",
     name: "Alexandra Linn",
-    role: "CEO of AT&T",
+    role: "CEO, TechFlow Innovations",
     image: "https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76b0ad6a6658084004655_Testimonial%203.webp",
   },
   {
     id: "02",
-    quote: "“Partnering with Syncox elevated our brand presence instantly. Their design thinking was sharp, modern, and perfectly organised”",
+    quote: "“Partnering with GBC took the stress out of navigating UAE regulations. Their corporate tax advisory has been invaluable for our mainland operations.”",
     name: "Jason Miller",
-    role: "Lead Designer",
+    role: "Managing Director, Nexus Group",
     image: "https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76b0aed8ea128e67fe557_Testimonial%202.webp",
   },
   {
     id: "03",
-    quote: "“Syncox helped us refine our brand with precision and insight. Their concepts were fresh, engaging, and aligned with our long-term strategy.”",
+    quote: "“GBC Corporate provided us with top-tier PRO and licensing services. Their experts were always available, insightful, and incredibly efficient.”",
     name: "Olivia Turner",
-    role: "Creative Lead",
+    role: "Founder, Luxe Hospitality",
     image: "https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76f7920899d6e4ee9fdfb_Woman%20Using%20Laptop.webp",
   },
 ];
@@ -34,7 +34,7 @@ const CornerImg = ({ className }) => (
     src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f5d5b6c556bc530030d0f4_Button%20Corner.png" 
     loading="lazy" 
     alt="" 
-    className={`absolute w-[5px] h-[5px] ${className}`} 
+    className={`absolute w-[5px] h-[5px] invert ${className}`} 
   />
 );
 
@@ -77,14 +77,14 @@ export const AboutTestimonials = () => {
   const t = testimonials[activeIdx];
 
   return (
-    <section ref={sectionRef} className="py-[120px] bg-[#000000] text-white border-b border-white/10">
+    <section ref={sectionRef} className="py-[120px] bg-white text-gray-900 border-b border-gray-200">
       <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16">
         
         {/* Header Block */}
         <div className="flex flex-col gap-4 mb-[60px] md:mb-[80px] testi-anim">
           <div className="flex items-center gap-2">
             <span className="text-[#6C141E]">//</span>
-            <p className="text-sm font-semibold tracking-wide text-white uppercase font-mono mt-0.5">Testimonials</p>
+            <p className="text-sm font-semibold tracking-wide text-gray-900 uppercase font-mono mt-0.5">Testimonials</p>
           </div>
           <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-normal leading-[1.1] max-w-[600px]">
             Hear From Our Happy Clients Today
@@ -92,19 +92,19 @@ export const AboutTestimonials = () => {
         </div>
 
         {/* Testimonial Block */}
-        <div className="relative border-t border-white/10 pt-16 testi-anim">
+        <div className="relative border-t border-gray-200 pt-16 testi-anim">
           
           <img 
             src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f768a7deef48ba7fb745f4_quote.png" 
             alt="Quote icon" 
-            className="absolute top-0 left-0 -translate-y-1/2 w-16 md:w-20 bg-black px-4" 
+            className="absolute top-0 left-0 -translate-y-1/2 w-16 md:w-20 bg-white px-4 invert" 
           />
           
           <div className="flex flex-col md:flex-row justify-between items-end gap-12">
             
             {/* Slider Content */}
             <div ref={slideRef} className="flex-1 max-w-[800px]">
-              <p className="text-[clamp(1.5rem,3vw,2.5rem)] font-normal leading-[1.3] text-white mb-12">
+              <p className="text-[clamp(1.5rem,3vw,2.5rem)] font-normal leading-[1.3] text-gray-900 mb-12">
                 {t.quote}
               </p>
               <div className="flex items-center gap-4">
@@ -112,7 +112,7 @@ export const AboutTestimonials = () => {
                   <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl md:text-2xl font-normal text-white">{t.name}</span>
+                  <span className="text-xl md:text-2xl font-normal text-gray-900">{t.name}</span>
                   <span className="text-sm md:text-base text-[#a1a1aa]">{t.role}</span>
                 </div>
               </div>
@@ -122,10 +122,10 @@ export const AboutTestimonials = () => {
             <div className="flex items-center gap-4 shrink-0">
               <button 
                 onClick={() => goTo(activeIdx - 1)}
-                className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 border border-white/20 group hover:border-[#6C141E] hover:bg-[#6C141E]/10 transition-colors"
+                className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 border border-gray-300 group hover:border-[#6C141E] hover:bg-[#6C141E]/10 transition-colors"
                 aria-label="Previous testimonial"
               >
-                <img src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76caafe45bcb51614e7e0_Arrow.svg" alt="" className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <img src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76caafe45bcb51614e7e0_Arrow.svg" alt="" className="w-5 h-5 invert group-hover:scale-110 transition-transform" />
                 <CornerImg className="top-0 left-0 -translate-x-[1px] -translate-y-[1px] rotate-0" />
                 <CornerImg className="top-0 right-0 translate-x-[1px] -translate-y-[1px] rotate-90" />
                 <CornerImg className="bottom-0 left-0 -translate-x-[1px] translate-y-[1px] -rotate-90" />
@@ -133,10 +133,10 @@ export const AboutTestimonials = () => {
               </button>
               <button 
                 onClick={() => goTo(activeIdx + 1)}
-                className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 border border-white/20 group hover:border-[#6C141E] hover:bg-[#6C141E]/10 transition-colors"
+                className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 border border-gray-300 group hover:border-[#6C141E] hover:bg-[#6C141E]/10 transition-colors"
                 aria-label="Next testimonial"
               >
-                <img src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76caafe45bcb51614e7e0_Arrow.svg" alt="" className="w-5 h-5 rotate-180 group-hover:scale-110 transition-transform" />
+                <img src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76caafe45bcb51614e7e0_Arrow.svg" alt="" className="w-5 h-5 rotate-180 invert group-hover:scale-110 transition-transform" />
                 <CornerImg className="top-0 left-0 -translate-x-[1px] -translate-y-[1px] rotate-0" />
                 <CornerImg className="top-0 right-0 translate-x-[1px] -translate-y-[1px] rotate-90" />
                 <CornerImg className="bottom-0 left-0 -translate-x-[1px] translate-y-[1px] -rotate-90" />

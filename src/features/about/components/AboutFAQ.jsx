@@ -8,23 +8,23 @@ gsap.registerPlugin(ScrollTrigger);
 const faqs = [
   {
     id: "01",
-    question: "How long does a typical project take?",
-    answer: "Most mainland and free zone company setups are completed within 5–10 working days once all documents are submitted. We manage the entire process end-to-end, including license issuance, bank account opening, and visa applications.",
+    question: "What is the difference between Mainland and Free Zone?",
+    answer: "Mainland companies can trade directly within the local UAE market and take on government contracts. Free Zone companies offer 100% foreign ownership and specific tax benefits, but are generally restricted to trading internationally or within the Free Zone.",
   },
   {
     id: "02",
-    question: "What is your pricing structure?",
-    answer: "Mainland companies can trade directly with the UAE local market and government contracts, while free zone companies offer 100% foreign ownership, tax benefits, and simplified corporate structures ideal for international businesses.",
+    question: "How long does it take to get a trade license in Dubai?",
+    answer: "Most mainland and free zone company setups are completed within 5–10 working days once all documents are submitted. We manage the entire process end-to-end to ensure there are no delays.",
   },
   {
     id: "03",
-    question: "Do you offer post-launch support?",
-    answer: "Absolutely. We believe in full collaboration and keep you updated at every milestone. Our team uses dedicated project channels so you can review, approve, and provide feedback in real time.",
+    question: "Do I need a local sponsor to set up my business?",
+    answer: "Recent changes in UAE law allow 100% foreign ownership for most commercial and industrial activities in the Mainland. You only need a Local Service Agent (LSA) for specific professional licenses. Free Zones always offer 100% foreign ownership.",
   },
   {
     id: "04",
-    question: "What do you need from us to get started?",
-    answer: "Typically: a valid passport copy, proof of address, and a business activity description. Depending on the structure and free zone, additional documents may be required — we'll guide you through every step.",
+    question: "Can GBC help me open a corporate bank account?",
+    answer: "Yes! We have strong relationships with top-tier UAE banks. We will prepare your corporate profile, guide you through compliance requirements, and facilitate priority account opening.",
   },
 ];
 
@@ -60,18 +60,18 @@ const FaqItem = ({ item }) => {
   };
 
   return (
-    <div className="border-t border-white/10 faq-accordion-item">
+    <div className="border-t border-gray-200 faq-accordion-item">
       <div
         onClick={toggle}
         className="flex items-center justify-between py-6 sm:py-8 cursor-pointer group"
         aria-expanded={isOpen}
       >
-        <p className="text-xl sm:text-2xl font-semibold text-white group-hover:text-[#6C141E] transition-colors pr-8">
+        <p className="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-[#6C141E] transition-colors pr-8">
           {item.question}
         </p>
         <div className="relative w-5 h-5 flex items-center justify-center shrink-0">
-          <div className="absolute w-full h-[2px] bg-white group-hover:bg-[#6C141E] transition-colors" />
-          <div ref={verticalLineRef} className="absolute h-full w-[2px] bg-white group-hover:bg-[#6C141E] transition-colors" />
+          <div className="absolute w-full h-[2px] bg-gray-900 group-hover:bg-[#6C141E] transition-colors" />
+          <div ref={verticalLineRef} className="absolute h-full w-[2px] bg-gray-900 group-hover:bg-[#6C141E] transition-colors" />
         </div>
       </div>
 
@@ -81,7 +81,7 @@ const FaqItem = ({ item }) => {
         style={{ height: 0 }}
       >
         <div ref={answerContentRef} className="pb-8">
-          <p className="text-[#a1a1aa] text-base md:text-lg leading-relaxed max-w-[800px]">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-[800px]">
             {item.answer}
           </p>
         </div>
@@ -130,7 +130,7 @@ export const AboutFAQ = () => {
   );
 
   return (
-    <section ref={sectionRef} className="py-[120px] bg-[#000000] text-white">
+    <section ref={sectionRef} className="py-[120px] bg-[#f9f9f9] text-gray-900">
       <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
@@ -139,7 +139,7 @@ export const AboutFAQ = () => {
           <div className="md:col-span-5 flex flex-col gap-4 faq-anim">
             <div className="flex items-center gap-2">
               <span className="text-[#6C141E]">//</span>
-              <p className="text-sm font-semibold tracking-wide text-white uppercase font-mono mt-0.5">Frequently Asked</p>
+              <p className="text-sm font-semibold tracking-wide text-gray-900 uppercase font-mono mt-0.5">Frequently Asked</p>
             </div>
             <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.2]">
               Frequently Asked Question
@@ -148,7 +148,7 @@ export const AboutFAQ = () => {
 
           {/* FAQ Block */}
           <div className="md:col-span-7 faq-block">
-            <div className="border-b border-white/10">
+            <div className="border-b border-gray-200">
               {faqs.map((f) => (
                 <FaqItem key={f.id} item={f} />
               ))}

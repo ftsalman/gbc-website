@@ -11,12 +11,12 @@ import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
 
 export const AboutPage = () => {
   return (
-    <div className="about-page bg-black text-white font-sans overflow-hidden">
+    <div className="about-page bg-white text-gray-900 font-sans overflow-hidden">
       {/* 1. Banner Header — "About Our Studio" */}
       <PageToolbar
-        title={"About\nOur Studio"}
+        title={"About\nGBC Corporate"}
         description={
-          "We're a dedicated team of business consultants, legal advisors, and creative strategists committed to helping companies launch, grow, and thrive across the UAE and beyond."
+          "We are a premier team of business setup consultants, legal advisors, and corporate strategists dedicated to helping entrepreneurs and enterprises launch, scale, and thrive across the UAE."
         }
         bgImage="/images/TOOLSBAR_BG@.png"
         imagePosition="right"

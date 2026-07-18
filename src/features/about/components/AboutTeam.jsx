@@ -91,7 +91,7 @@ export const AboutTeam = () => {
             <p className="text-sm font-semibold tracking-wide text-white uppercase font-mono mt-0.5">Team</p>
           </div>
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-normal leading-[1.1]">
-            Our Creative Minds
+            Meet Our Business Experts
           </h2>
         </div>
 

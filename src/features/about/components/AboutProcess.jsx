@@ -8,27 +8,27 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     num: "01",
-    title: "Research",
-    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=900&auto=format&fit=crop",
-    desc: "We listen to your business needs to understand pain points and goals, then give a clear estimate on cost and time-frame.",
+    title: "Initial Consultation",
+    img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=900&auto=format&fit=crop",
+    desc: "We analyze your business goals, advise on the best legal structure, and help you select the ideal jurisdiction (Mainland vs Free Zone).",
   },
   {
     num: "02",
-    title: "Implementation",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop",
-    desc: "Implementation is the process of turning plans and strategies into action to achieve your goals efficiently and effectively.",
+    title: "Licensing & Registration",
+    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=900&auto=format&fit=crop",
+    desc: "Our experts handle all government approvals, document drafting, and trade license issuance seamlessly and efficiently.",
   },
   {
     num: "03",
-    title: "Testing",
-    img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=900&auto=format&fit=crop",
-    desc: "Testing ensures everything works correctly — identifying issues, verifying functionality, and guaranteeing a smooth experience.",
+    title: "Visas & Emirates ID",
+    img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=900&auto=format&fit=crop",
+    desc: "We offer streamlined processing for investor visas, employee visas, medical tests, and biometrics for a hassle-free experience.",
   },
   {
     num: "04",
-    title: "Deployment",
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=900&auto=format&fit=crop",
-    desc: "We deploy the final solution, monitor performance and ensure a seamless handover so your business can hit the ground running.",
+    title: "Corporate Banking & Support",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=900&auto=format&fit=crop",
+    desc: "We facilitate priority bank account opening and provide ongoing PRO, accounting, and legal support as your business scales.",
   },
 ];
 
@@ -38,6 +38,8 @@ export const AboutProcess = () => {
 
   useGSAP(
     () => {
+      const cards = gsap.utils.toArray(".process-card");
+
       // Header slide-in
       gsap.fromTo(
         ".process-header-item",
@@ -55,8 +57,8 @@ export const AboutProcess = () => {
         },
       );
 
-      // Each card fades in and updates active sticky number on scroll
-      gsap.utils.toArray(".process-card").forEach((card, index) => {
+      // Card image & text fade-in
+      cards.forEach((card, index) => {
         gsap.fromTo(
           card,
           { y: 60, opacity: 0 },
@@ -74,13 +76,9 @@ export const AboutProcess = () => {
 
         ScrollTrigger.create({
           trigger: card,
-          start: "top 55%",
-          end: "bottom 55%",
-          onToggle: (self) => {
-            if (self.isActive) {
-              setActiveStep(index);
-            }
-          },
+          start: "top 40%",
+          onEnter: () => setActiveStep(index),
+          onLeaveBack: () => setActiveStep(Math.max(0, index - 1)),
         });
       });
     },
@@ -90,90 +88,72 @@ export const AboutProcess = () => {
   return (
     <section
       ref={sectionRef}
-      className="about-process bg-[#0a0a0a] text-white py-24 sm:py-36 border-b border-white/10 font-sans relative"
+      className="about-process bg-[#f6f6f6] text-black py-24 sm:py-36 font-sans relative"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12">
-        {/* Header */}
-        <div className="mb-16 sm:mb-24">
-          <div className="process-header-item mb-4">
-            <span className="font-mono text-sm font-semibold tracking-tight uppercase">
-              <span className="text-bordeaux mr-1">//</span>
-              <span className="text-gray-400">How We Work</span>
+        {/* Header - Centered */}
+        <div className="mb-20 sm:mb-28 flex flex-col items-center text-center">
+          <div className="process-header-item mb-4 flex items-center justify-center gap-2">
+            <span className="text-[#6C141E] font-mono font-medium text-lg">//</span>
+            <span className="font-mono text-sm tracking-widest uppercase font-semibold text-black">
+              How We Work
             </span>
           </div>
-          <h2 className="process-header-item text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.1]">
+          <h2 className="process-header-item text-4xl sm:text-5xl md:text-[80px] font-medium tracking-tight text-black leading-tight">
             Our Process
           </h2>
         </div>
 
         {/* Sticky count column + right-hand scrolling cards */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          {/* Left sticky number strip – exact Syncox behavior on lg+ */}
-          <div className="hidden lg:flex lg:col-span-4 sticky top-36 flex-col gap-6 select-none">
-            {steps.map((s, i) => {
-              const isActive = activeStep === i;
-              return (
-                <div
-                  key={s.num}
-                  className={`flex items-center gap-6 transition-all duration-500 cursor-pointer ${
-                    isActive
-                      ? "text-white scale-105 translate-x-3"
-                      : "text-white/20 hover:text-white/40"
-                  }`}
-                  onClick={() => {
-                    const el = document.getElementById(`process-card-${i}`);
-                    el?.scrollIntoView({ behavior: "smooth", block: "center" });
-                  }}
-                >
-                  <span
-                    className={`text-[64px] xl:text-[80px] font-light leading-none font-mono ${isActive ? "text-bordeaux font-normal" : ""}`}
-                  >
-                    {s.num}
-                  </span>
-                  {isActive && (
-                    <span className="text-sm font-mono tracking-widest uppercase text-gray-400 animate-fadeIn">
-                      {s.title}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start relative">
+          
+          {/* Left sliding sticky number */}
+          <div className="hidden lg:block lg:col-span-5 sticky top-1/3">
+            {/* Window height matches the number height to hide the rest */}
+            <div className="h-[160px] overflow-hidden relative flex justify-center">
+              <div 
+                className="flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] text-center"
+                style={{ transform: `translateY(-${activeStep * 160}px)` }}
+              >
+                {steps.map((s) => (
+                  <div key={s.num} className="h-[160px] flex items-center justify-center pb-4">
+                    <span className="text-[120px] md:text-[150px] font-normal leading-none text-black tracking-tighter">
+                      {s.num}
                     </span>
-                  )}
-                </div>
-              );
-            })}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Cards */}
-          <div className="lg:col-span-8 flex flex-col gap-16 sm:gap-24">
+          <div className="lg:col-span-7 flex flex-col gap-24 sm:gap-32">
             {steps.map((s, i) => (
               <div
                 key={s.num}
                 id={`process-card-${i}`}
-                className="process-card group border-t border-white/10 pt-10 sm:pt-14 first:border-t-0 first:pt-0"
+                className="process-card flex flex-col"
               >
-                {/* Mobile Step Header */}
-                <div className="flex items-center justify-between mb-6 lg:hidden">
-                  <span className="font-mono text-3xl font-bold text-bordeaux">
-                    {s.num}
-                  </span>
-                  <span className="font-mono text-sm text-gray-400 uppercase tracking-widest">
-                    Step {s.num}
-                  </span>
+                {/* Mobile Step Number */}
+                <div className="lg:hidden text-6xl font-medium tracking-tighter text-black mb-6 text-center">
+                  {s.num}
                 </div>
 
                 {/* Image Wrap */}
-                <div className="relative overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] sm:aspect-[16/9] mb-8 rounded-2xl">
+                <div className="relative overflow-hidden aspect-[16/10] mb-8 rounded-[20px]">
                   <img
                     src={s.img}
                     alt={s.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Content Body */}
-                <div className="max-w-2xl">
-                  <h3 className="text-2xl sm:text-3xl font-normal text-white group-hover:text-bordeaux transition-colors duration-300 mb-4">
+                <div className="max-w-xl">
+                  <h3 className="text-2xl sm:text-3xl font-medium text-[#6C141E] mb-4">
                     {s.title}
                   </h3>
-                  <p className="text-gray-400 group-hover:text-gray-200 text-lg sm:text-xl font-light leading-relaxed transition-colors duration-300">
+                  <p className="text-gray-600 text-lg sm:text-xl font-light leading-relaxed">
                     {s.desc}
                   </p>
                 </div>

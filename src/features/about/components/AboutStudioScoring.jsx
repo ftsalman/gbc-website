@@ -76,30 +76,30 @@ const OdometerStat = ({ numberStr, suffix }) => {
 const scoringStats = [
   {
     id: "[01]",
-    number: "50",
+    number: "500",
     suffix: "+",
-    description: "Happy clients across various industries",
+    description: "Successful company formations across the UAE",
     position: "left",
   },
   {
     id: "[02]",
-    number: "100",
+    number: "45",
     suffix: "+",
-    description: "Successfully delivered high-quality projects",
+    description: "Free Zones and mainland jurisdictions partnered with",
     position: "right",
   },
   {
     id: "[03]",
-    number: "98",
+    number: "99",
     suffix: "%",
-    description: "Successfully delivered high-quality projects",
+    description: "Client success rate for trade license approvals",
     position: "left",
   },
   {
     id: "[04]",
-    number: "30",
-    suffix: "%",
-    description: "Average client profit growth increase",
+    number: "15",
+    suffix: "+",
+    description: "Years of local corporate and legal expertise",
     position: "right",
   },
 ];
@@ -169,8 +169,7 @@ export const AboutStudioScoring = () => {
           {/* Right: headline */}
           <div className="scoring-header-item md:col-span-7">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal leading-[1.2] tracking-tight text-gray-900 max-w-xl">
-              GBC Business Connect isn't just about change — we're setting new
-              standards with bold creativity and thinking innovation.
+              Your gateway to business success in the UAE — we handle the complexity so you can focus on growth.
             </h2>
           </div>
         </div>

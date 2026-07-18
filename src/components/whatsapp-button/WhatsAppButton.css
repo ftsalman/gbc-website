@@ -69,11 +69,22 @@
 /* ── SVG circular text ring ─────────────────────────────────────── */
 /* Centered on .wab__main using top/left 50% + translate(-50%, -50%).
    The 160 × 160 SVG extends ~48 px beyond the 64 × 64 button on each side. */
+
+@keyframes spin-ring {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 .wab__ring {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: spin-ring 15s linear infinite;
   pointer-events: none;
   user-select: none;
   z-index: 0;

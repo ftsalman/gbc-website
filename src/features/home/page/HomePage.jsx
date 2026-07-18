@@ -1,5 +1,6 @@
 import React from "react";
 import { Hero } from "../components/hero/Hero";
+import { PromoPopup } from "../components/promo-popup/PromoPopup";
 import { DepartmentsAndClients } from "../components/departments-clients/DepartmentsAndClients";
 import { CustomerCarousel } from "../components/customers/CustomerCarousel";
 import { BusinessSetup } from "../components/business-setup/BusinessSetup";
@@ -18,8 +19,9 @@ import { Teams } from "../components/teams/Teams";
 export const HomePage = () => {
   return (
     <div className="">
+      <PromoPopup />
       <Hero />
-      {/* <DepartmentsAndClients /> */}
+      <DepartmentsAndClients />
       <About />
       <Works />
       <Service />
