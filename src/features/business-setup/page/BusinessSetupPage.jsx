@@ -17,7 +17,7 @@ export const BusinessSetupPage = () => {
       />
 
       <BusinessSetup />
-      <Package />
+    
       <Connect />
     </div>
   );

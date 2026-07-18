@@ -234,7 +234,7 @@ export function AwardShowcase() {
         </Canvas>
       </div>
 
-      <div ref={titleRef} className="award-showcase__title">
+      <div ref={titleRef} className="wwwww">
         <h2>
           <em>Made with</em>
           <span className="">GBC BUSINESS CONNECT.</span>
