@@ -1,26 +1,30 @@
 import React from "react";
-import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
-import { Blogs } from "../../home/components/blogs/Blogs.jsx";
+import { FeaturedArticle } from "../components/FeaturedArticle.jsx";
+import { BlogFilters } from "../components/BlogFilters.jsx";
+import { BlogGrid } from "../components/BlogGrid.jsx";
+import { NewsletterSignup } from "../components/NewsletterSignup.jsx";
 import { Connect } from "../../home/components/connect/Connect.jsx";
 
 export const BlogsPage = () => {
   return (
-    <div className="blogs-page bg-black text-white font-sans overflow-hidden">
-      {/* Exact Syncox Blogs Header Section */}
-      <PageToolbar
-        title={"Ideas &\nStories"}
-        description={
-          "Explore our latest articles, insights, and design strategies from our creative team covering web development, branding, and digital innovation."
-        }
-        bgImage="/images/TOOLSBAR_BG.png"
-        imagePosition="right"
-      />
+    <div className="blogs-page bg-white font-sans overflow-hidden min-h-screen">
+      
+      {/* 1. Cinematic Hero Featured Article */}
+      <FeaturedArticle />
 
-      {/* Blogs Grid Component */}
-      <Blogs />
+      {/* 2. Sticky Category Filters */}
+      <BlogFilters />
 
-      {/* Connect & CTA */}
+      {/* 3. Masonry / Staggered Grid of Articles */}
+      <BlogGrid />
+
+      {/* 4. Newsletter Signup */}
+      <NewsletterSignup />
+
+      {/* 5. Connect Footer (Retained from previous layout) */}
       <Connect />
+      
     </div>
   );
 };
+

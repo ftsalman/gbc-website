@@ -8,6 +8,7 @@ import { BusinessSetupProcess } from "../componnets/BusinessSetupProcess";
 import { WhyChoose } from "../../home/components/why-choose/WhyChoose";
 import { BusinessLicenses } from "../componnets/BusinessLicenses";
 import { PremiumServices } from "../componnets/PremiumServices";
+import { Testimonial } from "../../home/components/testimonial/Testimonial";
 
 export const BusinessSetupPage = () => {
   return (
@@ -33,6 +34,7 @@ export const BusinessSetupPage = () => {
       />
       <BusinessLicenses />
       {/* <PremiumServices /> */}
+      <Testimonial/>
 
       <Connect />
     </div>

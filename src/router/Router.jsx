@@ -7,6 +7,7 @@ import { BusinessSetupPage } from '../features/business-setup/page/BusinessSetup
 import { ContactPage } from '../features/contact/page/ContactPage.jsx';
 import { ServicesPage } from '../features/services/page/ServicesPage.jsx';
 import { ErrorPage } from '../pages/ErrorPage.jsx';
+import { PackagesPage } from '../features/packages/page/PackagesPage.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: 'blogs',
         element: <BlogsPage />,
+      },
+      {
+        path: 'packages',
+        element: <PackagesPage />,
       },
       {
         path: 'business-setup',

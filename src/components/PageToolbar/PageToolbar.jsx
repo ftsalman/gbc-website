@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Button } from '../../../lib/turtle-ui/components.js';
 
 export const PageToolbar = ({
   title = "About\nOur Studio",
@@ -9,6 +10,11 @@ export const PageToolbar = ({
   bgImage = "/images/TOOLSBAR_BG.png",
   imagePosition = "right",
   textAlign, // optional: "left", "right", "center"
+  buttons, // Optional custom buttons node
+  primaryButtonText,
+  primaryButtonAction,
+  secondaryButtonText,
+  secondaryButtonAction,
 }) => {
   const headerRef = useRef(null);
 
@@ -39,6 +45,12 @@ export const PageToolbar = ({
       ".toolbar-desc",
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", delay: 0.55 }
+    );
+    // Buttons fade
+    gsap.fromTo(
+      ".toolbar-buttons",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", delay: 0.7 }
     );
     // Image slide in
     gsap.fromTo(
@@ -116,6 +128,28 @@ export const PageToolbar = ({
               {description}
             </p>
           )}
+
+          {/* Buttons */}
+          {(buttons || primaryButtonText || secondaryButtonText) && (
+            <div className="toolbar-buttons mt-8 flex flex-wrap gap-4">
+              {buttons ? (
+                buttons
+              ) : (
+                <>
+                  {primaryButtonText && (
+                    <Button variant="primary" onClick={primaryButtonAction}>
+                      {primaryButtonText}
+                    </Button>
+                  )}
+                  {secondaryButtonText && (
+                    <Button variant="secondary" onClick={secondaryButtonAction}>
+                      {secondaryButtonText}
+                    </Button>
+                  )}
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </header>
@@ -131,4 +165,9 @@ PageToolbar.propTypes = {
   bgImage: PropTypes.string,
   imagePosition: PropTypes.oneOf(["right", "left"]),
   textAlign: PropTypes.oneOf(["left", "right", "center"]),
+  buttons: PropTypes.node,
+  primaryButtonText: PropTypes.string,
+  primaryButtonAction: PropTypes.func,
+  secondaryButtonText: PropTypes.string,
+  secondaryButtonAction: PropTypes.func,
 };

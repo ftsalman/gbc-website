@@ -237,7 +237,7 @@ export const Navbar = () => {
               <div key={idx} className="flex flex-col">
                 <Link
                   to={`/${item.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-")}`}
-                  className="text-white font-bold text-xl py-2 border-b border-bordeaux/10"
+                  className="text-bordeaux font-bold text-xl py-2 border-b border-bordeaux/10"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item}
@@ -248,7 +248,7 @@ export const Navbar = () => {
                       <Link
                         key={subIdx}
                         to={subItem.href || "#"}
-                        className="text-white/80 text-sm font-medium py-1 hover:text-gray-600"
+                        className="text-bordeaux/80 text-sm font-medium py-1 hover:text-bordeaux"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {subItem.name}
