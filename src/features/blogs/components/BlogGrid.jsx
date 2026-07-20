@@ -8,7 +8,7 @@ export const BlogGrid = () => {
       title: "Why Dubai is the Ultimate Hub for Tech Startups",
       category: "Market Trends",
       date: "Oct 12, 2026",
-      image: "/images/blog-tech.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
       aspectRatio: "aspect-[16/9]"
     },
@@ -17,7 +17,7 @@ export const BlogGrid = () => {
       title: "Understanding Corporate Tax Updates in 2026",
       category: "Corporate Tax",
       date: "Oct 10, 2026",
-      image: "/images/blog-tax.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1",
       aspectRatio: "aspect-square"
     },
@@ -26,7 +26,7 @@ export const BlogGrid = () => {
       title: "Step-by-Step Guide to the Golden Visa",
       category: "Visas & Residency",
       date: "Oct 05, 2026",
-      image: "/images/blog-visa.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1",
       aspectRatio: "aspect-square"
     },
@@ -35,7 +35,7 @@ export const BlogGrid = () => {
       title: "How to Open a Corporate Bank Account in 48 Hours",
       category: "Banking",
       date: "Sep 28, 2026",
-      image: "/images/blog-bank.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
       aspectRatio: "aspect-[16/9]"
     },
@@ -44,7 +44,7 @@ export const BlogGrid = () => {
       title: "Free Zone vs Mainland: What to Choose?",
       category: "Business Setup",
       date: "Sep 20, 2026",
-      image: "/images/blog-freezone.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1",
       aspectRatio: "aspect-[3/4]"
     },
@@ -53,7 +53,7 @@ export const BlogGrid = () => {
       title: "Success Story: Expanding a UK Brand to the UAE",
       category: "Success Stories",
       date: "Sep 15, 2026",
-      image: "/images/blog-success.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1",
       aspectRatio: "aspect-[3/4]"
     },
@@ -62,7 +62,7 @@ export const BlogGrid = () => {
       title: "Intellectual Property: Protecting Your Trademark",
       category: "Business Setup",
       date: "Sep 10, 2026",
-      image: "/images/blog-ip.jpg",
+      image: "/images/blogs/small1.png",
       colSpan: "col-span-1",
       aspectRatio: "aspect-[3/4]"
     }

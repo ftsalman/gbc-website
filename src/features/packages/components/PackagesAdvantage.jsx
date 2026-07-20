@@ -8,7 +8,7 @@ export const PackagesAdvantage = () => {
         {/* Left: Sticky Image */}
         <div className="w-full lg:w-1/2 relative h-[50vh] lg:h-screen lg:sticky top-0">
           <img 
-            src="/images/package-advantage.jpg" 
+            src="/images/blogs/featured.png" 
             alt="The GBC Advantage" 
             className="w-full h-full object-cover"
             onError={(e) => {

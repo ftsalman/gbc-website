@@ -19,22 +19,22 @@ export const BlogSection = () => {
   const blogs = [
     {
       title: "7 Reasons to Setup Your Business in Dubai Freezones",
-      img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800",
+      img: "/images/blogs/small1.png",
       link: "/blog/dubai-freezones"
     },
     {
       title: "How to Navigate UAE Corporate Tax 2024",
-      img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
+      img: "/images/blogs/small1.png",
       link: "/blog/corporate-tax"
     },
     {
       title: "Golden Visa Updates: What Investors Need to Know",
-      img: "https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&q=80&w=800",
+      img: "/images/blogs/small1.png",
       link: "/blog/golden-visa"
     },
     {
       title: "Mainland vs Freezone: Which is right for you?",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+      img: "/images/blogs/small1.png",
       link: "/blog/mainland-vs-freezone"
     }
   ];

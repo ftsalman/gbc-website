@@ -1,4 +1,5 @@
 import React from "react";
+import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
 import { FeaturedArticle } from "../components/FeaturedArticle.jsx";
 import { BlogFilters } from "../components/BlogFilters.jsx";
 import { BlogGrid } from "../components/BlogGrid.jsx";
@@ -9,6 +10,12 @@ export const BlogsPage = () => {
   return (
     <div className="blogs-page bg-white font-sans overflow-hidden min-h-screen">
       
+      <PageToolbar 
+        title="Our Blog" 
+        description="Latest news, insights, and stories from our team."
+        bgImage="/images/TOOLSBAR_BG.png"
+      />
+
       {/* 1. Cinematic Hero Featured Article */}
       <FeaturedArticle />
 

@@ -17,7 +17,7 @@ export const PackageShowcase = () => {
       subtitle: "100% Ownership & Zero Tax",
       description: "The ideal launchpad for digital entrepreneurs and international startups looking to scale globally from the UAE.",
       features: ["Trade License Included", "Up to 3 Visas", "Virtual Office Desk", "Corporate Bank Introduction"],
-      image: "/images/package-freezone.jpg",
+      image: "/images/blogs/small1.png",
       color: "bg-[#F3EFE9]"
     },
     {
@@ -26,7 +26,7 @@ export const PackageShowcase = () => {
       subtitle: "Trade Anywhere in the UAE",
       description: "Designed for businesses that need a physical presence and want to trade directly with the local UAE market.",
       features: ["Mainland DED License", "Local Sponsor Arrangement", "Office Lease Assistance", "Unlimited Visas Quota"],
-      image: "/images/package-mainland.jpg",
+      image: "/images/blogs/small1.png",
       color: "bg-[#EAECEF]"
     },
     {
@@ -35,7 +35,7 @@ export const PackageShowcase = () => {
       subtitle: "10-Year Residency",
       description: "A specialized concierge service handling everything required for investors to secure long-term stability.",
       features: ["Property/Investment Audit", "Family Sponsorship", "VIP Medical & Typing", "Dedicated Account Manager"],
-      image: "/images/package-golden.jpg",
+      image: "/images/blogs/small1.png",
       color: "bg-[#F5F2F0]"
     }
   ];

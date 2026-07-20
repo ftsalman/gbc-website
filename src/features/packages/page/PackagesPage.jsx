@@ -1,4 +1,5 @@
 import React from "react";
+import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
 import { PackagesHero } from "../components/PackagesHero.jsx";
 import { PackageShowcase } from "../components/PackageShowcase.jsx";
 import { PackageInclusions } from "../components/PackageInclusions.jsx";
@@ -9,6 +10,12 @@ export const PackagesPage = () => {
   return (
     <div className="packages-page bg-white font-sans overflow-hidden min-h-screen">
       
+      <PageToolbar 
+        title="Our Packages" 
+        description="Comprehensive business setup solutions tailored for your success."
+        bgImage="/images/TOOLSBAR_BG.png"
+      />
+
       {/* 1. Minimalist Editorial Hero */}
       <PackagesHero />
 

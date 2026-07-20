@@ -9,25 +9,25 @@ const steps = [
   {
     num: "01",
     title: "Initial Consultation",
-    img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=900&auto=format&fit=crop",
+    img: "/images/blogs/small1.png",
     desc: "We analyze your business goals, advise on the best legal structure, and help you select the ideal jurisdiction (Mainland vs Free Zone).",
   },
   {
     num: "02",
     title: "Licensing & Registration",
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=900&auto=format&fit=crop",
+    img: "/images/blogs/small1.png",
     desc: "Our experts handle all government approvals, document drafting, and trade license issuance seamlessly and efficiently.",
   },
   {
     num: "03",
     title: "Visas & Emirates ID",
-    img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=900&auto=format&fit=crop",
+    img: "/images/blogs/small1.png",
     desc: "We offer streamlined processing for investor visas, employee visas, medical tests, and biometrics for a hassle-free experience.",
   },
   {
     num: "04",
     title: "Corporate Banking & Support",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=900&auto=format&fit=crop",
+    img: "/images/blogs/small1.png",
     desc: "We facilitate priority bank account opening and provide ongoing PRO, accounting, and legal support as your business scales.",
   },
 ];

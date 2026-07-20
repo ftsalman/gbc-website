@@ -61,7 +61,7 @@ export const FeaturedArticle = () => {
              <div className="w-full h-full bg-gradient-to-tr from-gray-100 to-gray-300"></div>
           </div>
           <img 
-            src="/images/blog-featured.jpg" 
+            src="/images/blogs/featured.png" 
             alt="Business Setup Trends" 
             className="featured-image absolute inset-0 w-full h-full object-cover z-10 transition-transform duration-700 group-hover:scale-105"
             onError={(e) => e.target.style.display = 'none'} // Hide broken image to show gradient
