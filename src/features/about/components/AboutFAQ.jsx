@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+aimport React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -130,19 +130,19 @@ export const AboutFAQ = () => {
   );
 
   return (
-    <section ref={sectionRef} className="py-[120px] bg-[#f9f9f9] text-gray-900">
-      <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16">
+    <section ref={sectionRef} className="relative py-[120px] bg-[#f9f9f9] font-sans text-gray-900 overflow-hidden">
+      <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
           
           {/* Header Block */}
-          <div className="md:col-span-5 flex flex-col gap-4 faq-anim">
-            <div className="flex items-center gap-2">
-              <span className="text-[#6C141E]">//</span>
-              <p className="text-sm font-semibold tracking-wide text-gray-900 uppercase font-mono mt-0.5">Frequently Asked</p>
+          <div className="md:col-span-5 flex flex-col gap-6 faq-anim">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[#6C141E] font-bold text-sm">//</span>
+              <p className="text-sm font-bold tracking-[0.1em] text-[#1a202c] uppercase">Frequently Asked</p>
             </div>
-            <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.2]">
-              Frequently Asked Question
+            <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] font-medium text-[#1a202c] leading-[1.15] tracking-tight">
+              Frequently Asked<br />Question
             </h2>
           </div>
 
@@ -157,6 +157,25 @@ export const AboutFAQ = () => {
 
         </div>
 
+      </div>
+
+      {/* Decorative Circular Badge (Bottom Right) */}
+      <div className="absolute -bottom-10 -right-10 w-48 h-48 md:w-56 md:h-56 z-0 pointer-events-none opacity-80">
+        <img 
+          src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f5d5b6c556bc530030d0f4_Button%20Corner.png" 
+          alt="" 
+          className="w-full h-full object-cover hidden" 
+        />
+        {/* Placeholder for the rotating "TALK TO US" circle badge shown in screenshot */}
+        <div className="w-full h-full rounded-full border border-gray-200/50 flex items-center justify-center relative animate-spin-slow">
+           <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0">
+             <path id="curve" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+             <text className="text-[10px] uppercase font-bold tracking-[0.3em] fill-[#6C141E]">
+               <textPath href="#curve">Talk to an expert • Talk to an expert • </textPath>
+             </text>
+           </svg>
+           <div className="w-20 h-20 bg-[#1a202c] rounded-full"></div>
+        </div>
       </div>
     </section>
   );

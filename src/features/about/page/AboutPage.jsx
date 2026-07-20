@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../../../components/seo/SEO.jsx";
 
 import { AboutStudioScoring } from "../components/AboutStudioScoring.jsx";
 import { AboutProcess } from "../components/AboutProcess.jsx";
@@ -11,7 +12,8 @@ import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
 
 export const AboutPage = () => {
   return (
-    <div className="about-page bg-white text-gray-900 font-sans overflow-hidden">
+    <div className="about-page bg-white text-gray-900 font-sans">
+      <SEO title="About Us" description="Learn about GBC Corporate's journey, our team of experts, and how we help businesses thrive in the UAE." />
       {/* 1. Banner Header — "About Our Studio" */}
       <PageToolbar
         title={"About\nGBC Corporate"}

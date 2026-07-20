@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../../../components/seo/SEO.jsx";
 import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
 import { FeaturedArticle } from "../components/FeaturedArticle.jsx";
 import { BlogFilters } from "../components/BlogFilters.jsx";
@@ -9,6 +10,7 @@ import { Connect } from "../../home/components/connect/Connect.jsx";
 export const BlogsPage = () => {
   return (
     <div className="blogs-page bg-white font-sans overflow-hidden min-h-screen">
+      <SEO title="Blog" description="Read the latest insights, success stories, and news about business setup in the UAE." />
       
       <PageToolbar 
         title="Our Blog" 

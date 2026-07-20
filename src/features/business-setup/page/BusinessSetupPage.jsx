@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../../../components/seo/SEO";
 import { PageToolbar } from "../../../components/PageToolbar/PageToolbar";
 import { BusinessSetup } from "../../home/components/business-setup/BusinessSetup";
 import { Connect } from "../../home/components/connect/Connect";
@@ -13,6 +14,7 @@ import { Testimonial } from "../../home/components/testimonial/Testimonial";
 export const BusinessSetupPage = () => {
   return (
     <div className="business-setup-page bg-black text-white font-sans">
+      <SEO title="Business Setup" description="End-to-end company formation services in the UAE, mainland, free zones, and offshore jurisdictions." />
       <PageToolbar
         title={"Launch Your Business in Dubai with Confidence"}
         description={

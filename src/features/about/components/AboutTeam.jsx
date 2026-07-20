@@ -8,52 +8,58 @@ gsap.registerPlugin(ScrollTrigger);
 const teamMembers = [
   {
     id: "01",
-    name: "Alexander Vance",
-    role: "Managing Director & Founder",
+    name: "Avery K.",
+    role: "Chief Operating Officer",
     image: "/images/blogs/small1.png",
   },
   {
     id: "02",
-    name: "Fatima Al-Zahra",
-    role: "Head of Legal & Compliance",
+    name: "Tyler P.",
+    role: "Founder & CEO",
     image: "/images/blogs/small1.png",
   },
   {
     id: "03",
-    name: "Marcus Sterling",
-    role: "Senior Business Advisory Lead",
+    name: "Morgan T.",
+    role: "Lead Product Designer",
     image: "/images/blogs/small1.png",
   },
   {
     id: "04",
-    name: "Sophia Khennouf",
-    role: "Corporate Tax & Strategy Lead",
+    name: "Marcus W.",
+    role: "Head of Marketing",
     image: "/images/blogs/small1.png",
   },
   {
     id: "05",
-    name: "Tariq Mansoor",
-    role: "Government Relations Director",
+    name: "Jessica R.",
+    role: "Product Manager",
     image: "/images/blogs/small1.png",
   },
   {
     id: "06",
-    name: "Elena Rostova",
-    role: "VIP Client Concierge",
+    name: "Daniel K.",
+    role: "Lead Developer",
     image: "/images/blogs/small1.png",
   },
   {
     id: "07",
-    name: "Rania Khalil",
-    role: "PRO & Licensing Specialist",
+    name: "Jordan S.",
+    role: "Head of Marketing",
     image: "/images/blogs/small1.png",
   },
   {
     id: "08",
-    name: "David Osei",
-    role: "Investment Advisory Lead",
+    name: "Raj P.",
+    role: "Software Engineer",
     image: "/images/blogs/small1.png",
   },
+  {
+    id: "09",
+    name: "Tina C.",
+    role: "UX Researcher",
+    image: "/images/blogs/small1.png",
+  }
 ];
 
 export const AboutTeam = () => {
@@ -68,7 +74,7 @@ export const AboutTeam = () => {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          stagger: 0.1,
+          stagger: 0.05,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -81,35 +87,38 @@ export const AboutTeam = () => {
   );
 
   return (
-    <section ref={sectionRef} className="py-[120px] bg-[#000000] text-white">
+    <section ref={sectionRef} className="py-[120px] bg-[#000000] text-white font-sans">
       <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16">
         
         {/* Header Block */}
-        <div className="flex flex-col gap-4 mb-[60px] md:mb-[100px] text-center items-center">
+        <div className="flex flex-col gap-4 mb-16 md:mb-24 text-center items-center">
           <div className="flex items-center gap-2">
-            <span className="text-[#6C141E]">//</span>
-            <p className="text-sm font-semibold tracking-wide text-white uppercase font-mono mt-0.5">Team</p>
+            <span className="text-[#6C141E] font-bold text-lg">//</span>
+            <p className="text-sm font-semibold tracking-wide text-white font-sans mt-0.5">Team</p>
           </div>
-          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-normal leading-[1.1]">
-            Meet Our Business Experts
+          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-medium leading-[1.1] tracking-tight">
+            Our Creative Minds
           </h2>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 gap-y-12">
+        {/* Team Grid with 1px gap trick for internal borders */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/10 border-t border-b border-white/10 py-[1px]">
           {teamMembers.map((m) => (
-            <div key={m.id} className="team-02-card flex flex-col gap-6 group">
-              <div className="w-full aspect-[4/5] overflow-hidden bg-white/[0.02]">
+            <div key={m.id} className="team-02-card bg-[#000000] p-6 sm:p-8 flex items-center gap-6 group hover:bg-white/[0.02] transition-colors duration-300">
+              {/* Image */}
+              <div className="w-20 h-20 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden bg-white/5 relative">
                 <img
                   src={m.image}
-                  alt="Team Headshot"
-                  className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                  alt={m.name}
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                   loading="lazy"
                 />
               </div>
-              <div className="flex flex-col gap-1 text-center">
-                <p className="text-2xl font-semibold text-white">{m.name}</p>
-                <p className="text-[#a1a1aa] text-base">{m.role}</p>
+              
+              {/* Info */}
+              <div className="flex flex-col gap-1.5">
+                <p className="text-xl sm:text-2xl font-semibold text-white tracking-tight">{m.name}</p>
+                <p className="text-[#a1a1aa] text-sm sm:text-base font-light">{m.role}</p>
               </div>
             </div>
           ))}

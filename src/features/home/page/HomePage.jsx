@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../../../components/seo/SEO.jsx";
 import { Hero } from "../components/hero/Hero";
 import { PromoPopup } from "../components/promo-popup/PromoPopup";
 import { DepartmentsAndClients } from "../components/departments-clients/DepartmentsAndClients";
@@ -19,6 +20,7 @@ import { Teams } from "../components/teams/Teams";
 export const HomePage = () => {
   return (
     <div className="">
+      <SEO title="Home" description="GBC Corporate offers premier business setup, legal advisory, and corporate tax services in the UAE." />
       <PromoPopup />
       <Hero />
       <DepartmentsAndClients />

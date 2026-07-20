@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../../../components/seo/SEO.jsx";
 import { PageToolbar } from "../../../components/PageToolbar/PageToolbar.jsx";
 import { Service } from "../../home/components/service/Service.jsx";
 import { Connect } from "../../home/components/connect/Connect.jsx";
@@ -14,6 +15,7 @@ import { BottomBanner } from "../components/BottomBanner.jsx";
 export const ServicesPage = () => {
   return (
     <div className="services-page bg-black text-white font-sans overflow-hidden">
+      <SEO title="Services" description="Comprehensive business setup, legal, tax, and advisory services tailored for the UAE market." />
       {/* Exact Syncox Services Header with Image on Left & Text on Right */}
       <PageToolbar
         title={"Creative pros run their businesses with Global Business Connect"}

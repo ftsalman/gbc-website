@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   {
     id: "01",
-    quote: "“Working with GBC Corporate was a game-changer for our expansion. Their team handled our Free Zone setup flawlessly and got our visas processed in record time.”",
+    quote: "“Working with Syncox was a game-changer for our brand. Their designs were creative, innovative, and perfectly aligned with our vision.”",
     name: "Alexandra Linn",
-    role: "CEO, TechFlow Innovations",
+    role: "CEO of AT&T",
     image: "https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76b0ad6a6658084004655_Testimonial%203.webp",
   },
   {
@@ -28,15 +28,6 @@ const testimonials = [
     image: "https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76f7920899d6e4ee9fdfb_Woman%20Using%20Laptop.webp",
   },
 ];
-
-const CornerImg = ({ className }) => (
-  <img 
-    src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f5d5b6c556bc530030d0f4_Button%20Corner.png" 
-    loading="lazy" 
-    alt="" 
-    className={`absolute w-[5px] h-[5px] invert ${className}`} 
-  />
-);
 
 export const AboutTestimonials = () => {
   const sectionRef = useRef(null);
@@ -62,7 +53,6 @@ export const AboutTestimonials = () => {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -77,71 +67,73 @@ export const AboutTestimonials = () => {
   const t = testimonials[activeIdx];
 
   return (
-    <section ref={sectionRef} className="py-[120px] bg-white text-gray-900 border-b border-gray-200">
-      <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16">
-        
-        {/* Header Block */}
-        <div className="flex flex-col gap-4 mb-[60px] md:mb-[80px] testi-anim">
-          <div className="flex items-center gap-2">
-            <span className="text-[#6C141E]">//</span>
-            <p className="text-sm font-semibold tracking-wide text-gray-900 uppercase font-mono mt-0.5">Testimonials</p>
-          </div>
-          <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-normal leading-[1.1] max-w-[600px]">
-            Hear From Our Happy Clients Today
-          </h2>
-        </div>
-
-        {/* Testimonial Block */}
-        <div className="relative border-t border-gray-200 pt-16 testi-anim">
+    <section ref={sectionRef} className="py-[120px] bg-white font-sans border-t border-gray-100">
+      <div className="w-full max-w-[1280px] mx-auto px-5 sm:px-10 lg:px-16 testi-anim">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2.5fr] lg:grid-cols-[1fr_2fr] gap-x-12 gap-y-12">
           
-          <img 
-            src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f768a7deef48ba7fb745f4_quote.png" 
-            alt="Quote icon" 
-            className="absolute top-0 left-0 -translate-y-1/2 w-16 md:w-20 bg-white px-4 invert" 
-          />
-          
-          <div className="flex flex-col md:flex-row justify-between items-end gap-12">
+          {/* Left Column */}
+          <div className="flex flex-col justify-between">
+            <div className="flex items-center gap-1 mb-8 md:mb-0">
+              <span className="text-[#6C141E] font-bold text-sm">//</span>
+              <span className="text-sm font-semibold tracking-wide text-gray-600">Testimonials</span>
+            </div>
             
-            {/* Slider Content */}
-            <div ref={slideRef} className="flex-1 max-w-[800px]">
-              <p className="text-[clamp(1.5rem,3vw,2.5rem)] font-normal leading-[1.3] text-gray-900 mb-12">
-                {t.quote}
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] rounded-full overflow-hidden shrink-0">
-                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl md:text-2xl font-normal text-gray-900">{t.name}</span>
-                  <span className="text-sm md:text-base text-[#a1a1aa]">{t.role}</span>
-                </div>
+            <div className="hidden md:block">
+              {/* Quote icon matching screenshot */}
+              <div className="text-[120px] font-sans font-bold leading-none text-[#1a1a1a] tracking-[-0.1em] h-[80px]">
+                “
               </div>
             </div>
+          </div>
 
-            {/* Arrows */}
-            <div className="flex items-center gap-4 shrink-0">
-              <button 
-                onClick={() => goTo(activeIdx - 1)}
-                className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 border border-gray-300 group hover:border-[#6C141E] hover:bg-[#6C141E]/10 transition-colors"
-                aria-label="Previous testimonial"
-              >
-                <img src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76caafe45bcb51614e7e0_Arrow.svg" alt="" className="w-5 h-5 invert group-hover:scale-110 transition-transform" />
-                <CornerImg className="top-0 left-0 -translate-x-[1px] -translate-y-[1px] rotate-0" />
-                <CornerImg className="top-0 right-0 translate-x-[1px] -translate-y-[1px] rotate-90" />
-                <CornerImg className="bottom-0 left-0 -translate-x-[1px] translate-y-[1px] -rotate-90" />
-                <CornerImg className="bottom-0 right-0 translate-x-[1px] translate-y-[1px] rotate-180" />
-              </button>
-              <button 
-                onClick={() => goTo(activeIdx + 1)}
-                className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 border border-gray-300 group hover:border-[#6C141E] hover:bg-[#6C141E]/10 transition-colors"
-                aria-label="Next testimonial"
-              >
-                <img src="https://cdn.prod.website-files.com/6995fabf57848ea09e9db42c/69f76caafe45bcb51614e7e0_Arrow.svg" alt="" className="w-5 h-5 rotate-180 invert group-hover:scale-110 transition-transform" />
-                <CornerImg className="top-0 left-0 -translate-x-[1px] -translate-y-[1px] rotate-0" />
-                <CornerImg className="top-0 right-0 translate-x-[1px] -translate-y-[1px] rotate-90" />
-                <CornerImg className="bottom-0 left-0 -translate-x-[1px] translate-y-[1px] -rotate-90" />
-                <CornerImg className="bottom-0 right-0 translate-x-[1px] translate-y-[1px] rotate-180" />
-              </button>
+          {/* Right Column */}
+          <div className="flex flex-col gap-10 md:gap-16">
+            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-medium leading-[1.1] text-[#1a1a1a] tracking-tight max-w-2xl">
+              Hear From Our Happy Clients Today
+            </h2>
+
+            {/* Slider Content */}
+            <div ref={slideRef} className="flex flex-col gap-10">
+              <p className="text-[clamp(1.25rem,2vw,1.75rem)] font-normal leading-[1.5] text-[#333333] max-w-3xl">
+                {t.quote}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
+                
+                {/* Author Info */}
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl overflow-hidden shrink-0">
+                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-lg font-medium text-[#1a1a1a]">{t.name}</span>
+                    <span className="text-sm text-gray-500">{t.role}</span>
+                  </div>
+                </div>
+
+                {/* Navigation Arrows */}
+                <div className="flex items-center gap-2 shrink-0">
+                  <button 
+                    onClick={() => goTo(activeIdx - 1)}
+                    className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 border border-gray-200 bg-white hover:bg-gray-50 transition-colors"
+                    aria-label="Previous testimonial"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+                      <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                  </button>
+                  <button 
+                    onClick={() => goTo(activeIdx + 1)}
+                    className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 border border-gray-200 bg-white hover:bg-gray-50 transition-colors"
+                    aria-label="Next testimonial"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+
+              </div>
             </div>
           </div>
 
