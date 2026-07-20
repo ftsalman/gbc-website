@@ -1,129 +1,108 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { 
+  MessageSquare, 
+  Briefcase, 
+  FileCheck, 
+  CheckCircle, 
+  FileText, 
+  CreditCard, 
+  Rocket,
+  IdCard
+} from "lucide-react";
 
 const steps = [
-  { id: "01", title: "Consultation" },
-  { id: "02", title: "Choose Business Activity" },
-  { id: "03", title: "Trade Name Reservation" },
-  { id: "04", title: "License Approval" },
-  { id: "05", title: "Visa Processing" },
-  { id: "06", title: "Emirates ID" },
-  { id: "07", title: "Corporate Bank Account" },
-  { id: "08", title: "Business Launch" },
+  { id: "01", title: "Consultation", icon: MessageSquare, desc: "Initial meeting to understand your goals." },
+  { id: "02", title: "Business Activity", icon: Briefcase, desc: "Select the right activity." },
+  { id: "03", title: "Trade Name", icon: FileCheck, desc: "Reserve your company name." },
+  { id: "04", title: "License Approval", icon: CheckCircle, desc: "Get initial approvals." },
+  { id: "05", title: "Visa Processing", icon: FileText, desc: "Apply for your residency visa." },
+  { id: "06", title: "Emirates ID", icon: IdCard, desc: "Medical and Emirates ID." },
+  { id: "07", title: "Bank Account", icon: CreditCard, desc: "Open a corporate account." },
+  { id: "08", title: "Launch", icon: Rocket, desc: "Start doing business!" },
 ];
 
 export const BusinessSetupProcess = () => {
-  const containerRef = useRef(null);
-  
-  // Track scroll progress within this section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 60%", "end 80%"], // Animates as it passes through the center of viewport
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  let mouseX = useMotionValue(Infinity);
 
   return (
-    <section ref={containerRef} className="py-24 bg-white relative overflow-hidden border-b border-gray-200">
-      <div className="container mx-auto px-4 md:px-8">
-        
-        {/* Heading */}
-        <div className="text-center mb-24 max-w-2xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-medium text-gray-900 leading-tight tracking-tight"
-          >
-            From Idea to <br className="hidden md:block"/>
-            <span className="text-[#D4AF37] font-bold">Business in Dubai</span>
-          </motion.h2>
-        </div>
+    <section className="py-32 bg-white/90 relative overflow-hidden flex flex-col items-center justify-center min-h-[700px] border-b border-gray-200">
+      <div className="text-center mb-32 max-w-2xl mx-auto px-4 z-10">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-medium text-black leading-tight tracking-tight mb-4"
+        >
+          Your Journey to <br className="hidden md:block"/>
+          <span className="text-[#7A2B37] font-bold">Success</span>
+        </motion.h2>
+        <p className="text-gray-600">Interact with the dock below to explore our seamless setup process.</p>
+      </div>
 
-        {/* Timeline Container */}
-        <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row justify-between h-[800px] md:h-auto">
-          
-          {/* Background Line (Gray) */}
-          <div className="absolute left-[22px] md:left-0 md:top-1/2 md:-translate-y-1/2 w-1 md:w-full h-full md:h-1 bg-gray-200 rounded-full" />
-          
-          {/* Animated Gold Line (Desktop - Horizontal) */}
-          <motion.div 
-            className="absolute hidden md:block left-0 top-1/2 -translate-y-1/2 h-1 bg-[#D4AF37] rounded-full origin-left z-0"
-            style={{ scaleX: smoothProgress, width: "100%" }}
-          />
-          
-          {/* Animated Gold Line (Mobile - Vertical) */}
-          <motion.div 
-            className="absolute md:hidden left-[22px] top-0 w-1 bg-[#D4AF37] rounded-full origin-top z-0"
-            style={{ scaleY: smoothProgress, height: "100%" }}
-          />
-
-          {/* Steps */}
-          <div className="relative z-10 flex flex-col md:flex-row justify-between w-full h-full md:h-auto gap-8 md:gap-0">
-            {steps.map((step, index) => {
-              // Calculate activation point for each step
-              const stepTarget = index / (steps.length - 1);
-              
-              return (
-                <ProcessStep 
-                  key={step.id} 
-                  step={step} 
-                  progress={scrollYProgress} 
-                  target={stepTarget} 
-                />
-              );
-            })}
-          </div>
-          
-        </div>
+      <div 
+        onMouseMove={(e) => mouseX.set(e.pageX)}
+        onMouseLeave={() => mouseX.set(Infinity)}
+        className="mx-auto flex h-[100px] items-end gap-10 rounded-3xl bg-gray-50/80 border border-gray-200 backdrop-blur-xl px-12 pb-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-10"
+      >
+        {steps.map((step) => (
+          <AppIcon mouseX={mouseX} key={step.id} step={step} />
+        ))}
       </div>
     </section>
   );
 };
 
-const ProcessStep = ({ step, progress, target }) => {
-  // Map the scroll progress to color changes
-  const borderColor = useTransform(
-    progress, 
-    [target - 0.1, target], 
-    ["#e5e7eb", "#D4AF37"] // gray-200 to gold
-  );
+function AppIcon({ mouseX, step }) {
+  let ref = useRef(null);
   
-  const numberColor = useTransform(
-    progress, 
-    [target - 0.1, target], 
-    ["#9ca3af", "#D4AF37"] // gray-400 to gold
-  );
-  
-  const titleColor = useTransform(
-    progress, 
-    [target - 0.1, target], 
-    ["#6b7280", "#111827"] // gray-500 to gray-900
-  );
-  
+  let distance = useTransform(mouseX, (val) => {
+    let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    return val - bounds.x - bounds.width / 2;
+  });
+
+  // Calculate the width of the icon based on distance from mouse
+  let widthSync = useTransform(distance, [-150, 0, 150], [60, 120, 60]);
+  let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+
+  const [hovered, setHovered] = useState(false);
+  const Icon = step.icon;
+
   return (
-    <div className="flex flex-col md:items-center relative w-full md:w-32 pl-16 md:pl-0 md:-mt-[1.6rem]">
-      
-      {/* Circular Step Indicator */}
-      <motion.div 
-        className="w-12 h-12 rounded-full border-4 flex items-center justify-center bg-white absolute left-0 md:static md:mb-4 z-10"
-        style={{ borderColor, color: numberColor }}
+    <div className="relative flex flex-col items-center group  ">
+      <motion.div
+        ref={ref}
+        style={{ width }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="aspect-square w-[60px] rounded-[1.2rem] bg-white border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center justify-center cursor-pointer hover:bg-gray-100 transition-colors relative z-10"
       >
-        <span className="font-bold text-sm">{step.id}</span>
+        <Icon className="w-1/2 h-1/2 text-[#7A2B37]" />
       </motion.div>
       
-      {/* Title */}
-      <motion.div 
-        className="md:text-center w-full pt-3 md:pt-2"
-        style={{ color: titleColor }}
-      >
-        <h4 className="font-medium text-lg md:text-sm leading-tight">{step.title}</h4>
-      </motion.div>
+      {/* Label under icon */}
+      <span className="text-[12px] font-medium text-gray-600 absolute -bottom-14 whitespace-nowrap">
+        {step.title}
+      </span>
       
+      {/* Expanded Mockup Tooltip */}
+      {hovered && (
+        <motion.div 
+          initial={{ opacity: 0, y: 20, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 10, scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="absolute -top-[180px] w-64 bg-white/95 backdrop-blur-xl p-5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-gray-100 flex flex-col items-center text-center z-50 pointer-events-none"
+        >
+          <div className="w-12 h-12 bg-[#7A2B37]/10 rounded-full flex items-center justify-center mb-3 text-[#7A2B37]">
+            <Icon size={24} />
+          </div>
+          <span className="text-[10px] uppercase tracking-wider font-bold text-gray-400 mb-1">Step {step.id}</span>
+          <h4 className="text-base font-semibold text-black mb-2">{step.title}</h4>
+          <p className="text-sm text-gray-500 leading-snug">{step.desc}</p>
+        </motion.div>
+      )}
     </div>
   );
-};
+}
+

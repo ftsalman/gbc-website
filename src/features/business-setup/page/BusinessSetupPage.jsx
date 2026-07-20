@@ -35,6 +35,7 @@ export const BusinessSetupPage = () => {
         gradient3="bg-red-100/50"
       />
       <BusinessLicenses />
+      <BusinessSetupProcess />
       {/* <PremiumServices /> */}
       <Testimonial/>
 
