@@ -1,8 +1,8 @@
 export const navItems = [
   "About",
-  "Packages",
-  "Business Setup",
   "Services",
+  "Business Setup",
+    "Packages",
   "Blogs",
   "Contact",
 ];
