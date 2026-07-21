@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { DataList } from "../../../lib/turtle-ui/components/list/DataList";
 import { Button } from "../../../lib/turtle-ui/components/button/Button";
-import { navItems, megaMenuData } from "../../constants/navData";
+import { navItems } from "../../constants/navData";
+// import { navItems, megaMenuData } from "../../constants/navData";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -62,11 +63,11 @@ export const Navbar = () => {
                     key={index}
                     className="h-full flex items-center cursor-pointer nav-item-animate opacity-0"
                     onMouseEnter={() => {
-                      if (megaMenuData[item]) {
-                        setActiveMenu(item);
-                      } else {
+                      // if (megaMenuData[item]) {
+                      //   setActiveMenu(item);
+                      // } else {
                         setActiveMenu(null);
-                      }
+                      // }
                     }}
                   >
                     <Link
@@ -148,6 +149,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mega Menu Dropdown */}
+        {/*
         <div
           className={`absolute left-0 w-full overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[#0a0a0a] backdrop-blur-xl border-b border-gray-200/50 shadow-sm ${
             activeMenu
@@ -157,7 +159,7 @@ export const Navbar = () => {
         >
           {activeMenu && megaMenuData[activeMenu] && (
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between gap-8 transform transition-transform duration-500 delay-75 translate-y-0">
-              {/* Column 1 */}
+              {/* Column 1 * /}
               <div className="flex flex-col flex-1">
                 <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
                   {megaMenuData[activeMenu].col1.title}
@@ -181,7 +183,7 @@ export const Navbar = () => {
                 </ul>
               </div>
 
-              {/* Column 2 */}
+              {/* Column 2 * /}
               <div className="flex flex-col flex-1">
                 <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
                   {megaMenuData[activeMenu].col2.title}
@@ -201,7 +203,7 @@ export const Navbar = () => {
                 </ul>
               </div>
 
-              {/* Column 3 */}
+              {/* Column 3 * /}
               <div className="flex flex-col flex-1">
                 <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
                   {megaMenuData[activeMenu].col3.title}
@@ -223,6 +225,7 @@ export const Navbar = () => {
             </div>
           )}
         </div>
+        */}
 
         {/* Mobile Menu Dropdown */}
         <div
@@ -242,7 +245,7 @@ export const Navbar = () => {
                 >
                   {item}
                 </Link>
-                {megaMenuData[item] && (
+                {/* {megaMenuData[item] && (
                   <div className="pl-4 mt-3 flex flex-col space-y-3 border-l-2 border-bordeaux/20">
                     {megaMenuData[item].col1.items.map((subItem, subIdx) => (
                       <Link
@@ -255,7 +258,7 @@ export const Navbar = () => {
                       </Link>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             ))}
             <Button
