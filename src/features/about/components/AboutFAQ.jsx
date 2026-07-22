@@ -166,16 +166,7 @@ export const AboutFAQ = () => {
           alt="" 
           className="w-full h-full object-cover hidden" 
         />
-        {/* Placeholder for the rotating "TALK TO US" circle badge shown in screenshot */}
-        <div className="w-full h-full rounded-full border border-gray-200/50 flex items-center justify-center relative animate-spin-slow">
-           <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0">
-             <path id="curve" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-             <text className="text-[10px] uppercase font-bold tracking-[0.3em] fill-[#6C141E]">
-               <textPath href="#curve">Talk to an expert • Talk to an expert • </textPath>
-             </text>
-           </svg>
-           <div className="w-20 h-20 bg-[#1a202c] rounded-full"></div>
-        </div>
+        
       </div>
     </section>
   );
