@@ -19,7 +19,7 @@ const steps = [
     id: "drafting-moa-lsa-agreement",
     num: "02",
     title: "Drafting MoA & LSA Agreement",
-    img: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1000&auto=format&fit=crop",
+    img: "https://i.pinimg.com/736x/98/49/f1/9849f1eb0a6753887a7bd1e08bc5c11a.jpg",
     desc: "Our legal team drafts a robust Memorandum of Association (MoA) or a Local Service Agent (LSA) agreement depending on your license type, ensuring your rights are fully protected.",
   },
   {
@@ -141,7 +141,10 @@ export const MainlandProcess = () => {
                   {s.num}
                 </div>
 
-                <Link to={`/services/mainland/${s.id}`} className="block relative overflow-hidden aspect-[16/10] mb-8 rounded-[20px] group">
+                <Link
+                  to={`/services/mainland/${s.id}`}
+                  className="block relative overflow-hidden aspect-[16/10] mb-8 rounded-[20px] group"
+                >
                   <img
                     src={s.img}
                     alt={s.title}
@@ -151,7 +154,10 @@ export const MainlandProcess = () => {
                 </Link>
 
                 <div className="max-w-xl space-y-4">
-                  <Link to={`/services/mainland/${s.id}`} className="block hover:text-red-800 transition-colors">
+                  <Link
+                    to={`/services/mainland/${s.id}`}
+                    className="block hover:text-red-800 transition-colors"
+                  >
                     <h3 className="text-2xl sm:text-3xl font-medium text-[#6C141E]">
                       {s.title}
                     </h3>
@@ -160,7 +166,7 @@ export const MainlandProcess = () => {
                     {s.desc}
                   </p>
                   <div className="w-12 h-[1px] bg-[#6C141E] pt-2" />
-                  <Link 
+                  <Link
                     to={`/services/mainland/${s.id}`}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#6C141E] hover:text-red-800 transition-colors group/link pt-2"
                   >
