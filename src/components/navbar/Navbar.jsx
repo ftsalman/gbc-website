@@ -45,7 +45,7 @@ export const Navbar = () => {
                 aria-label="Home"
               >
                 <img
-                  src="/public/images/LOGO_GBC.png"
+                  src="/images/LOGO_GBC.png"
                   alt="logo"
                   className=" w-24"
                 />
