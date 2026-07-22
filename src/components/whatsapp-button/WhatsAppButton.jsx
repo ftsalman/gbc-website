@@ -3,28 +3,11 @@ import "./WhatsAppButton.css";
 
 /* ── Icon Components ───────────────────────────────────────────────── */
 
-const IconTelegram = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="22"
-    height="22"
-    fill="white"
-    aria-hidden="true"
-  >
-    <path
-      d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562
-      8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053
-      5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194
-      1.006.131.833.932z"
-    />
-  </svg>
-);
-
 const IconWhatsApp = () => (
   <svg
     viewBox="0 0 24 24"
-    width="22"
-    height="22"
+    width="26"
+    height="26"
     fill="white"
     aria-hidden="true"
   >
@@ -42,55 +25,6 @@ const IconWhatsApp = () => (
   </svg>
 );
 
-const IconCalendar = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="20"
-    height="20"
-    fill="none"
-    stroke="white"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <rect x="3" y="4" width="18" height="18" rx="2" />
-    <line x1="16" y1="2" x2="16" y2="6" />
-    <line x1="8" y1="2" x2="8" y2="6" />
-    <line x1="3" y1="10" x2="21" y2="10" />
-    <line x1="12" y1="14" x2="12" y2="18" />
-    <line x1="10" y1="16" x2="14" y2="16" />
-  </svg>
-);
-
-const IconChat = () => (
-  <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
-    <path
-      d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-      fill="white"
-    />
-    <circle cx="9" cy="12" r="1.2" fill="#131929" />
-    <circle cx="12" cy="12" r="1.2" fill="#131929" />
-    <circle cx="15" cy="12" r="1.2" fill="#131929" />
-  </svg>
-);
-
-const IconClose = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="20"
-    height="20"
-    fill="none"
-    stroke="white"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    aria-hidden="true"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
 /* ── Config ─────────────────────────────────────────────────────────── */
 
 const PHONE_NUMBER = "971501234567";
@@ -101,87 +35,12 @@ const MESSAGE_TEXT =
   "about business setup in the UAE.";
 const WHATSAPP_URL = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(MESSAGE_TEXT)}`;
 
-// Sub-button dimensions (px) — used to compute the collapse animation offset
-const BTN_SIZE = 56;
-const BTN_GAP = 12;
 const AUTO_OPEN_DELAY = 1000;
-
-// Events that count as a "user gesture" and unblock the browser audio policy
-const INTERACTION_EVENTS = [
-  "click",
-  "scroll",
-  "touchstart",
-  "mousemove",
-  "keydown",
-];
-
-// Play a two-tone chime using a shared, pre-warmed AudioContext.
-// Accepts the context so the browser's suspension state is handled upstream.
-const playChime = (ctx) => {
-  if (!ctx) return;
-  try {
-    const gain = ctx.createGain();
-    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.5);
-    gain.connect(ctx.destination);
-
-    [660, 880].forEach((frequency, index) => {
-      const osc = ctx.createOscillator();
-      const start = ctx.currentTime + index * 0.13;
-      osc.type = 'sine';
-      osc.frequency.value = frequency;
-      osc.connect(gain);
-      osc.start(start);
-      osc.stop(start + 0.35);
-    });
-  } catch {
-    // Silently ignore if the browser still blocks it.
-  }
-};
-
-// Actions listed top → bottom above the main button
-const ACTIONS = [
-  {
-    Icon: IconTelegram,
-    href: "https://t.me/globalbusinessconnect",
-    label: "Message on Telegram",
-  }, // TODO: update handle
-  { Icon: IconWhatsApp, href: WHATSAPP_URL, label: "Chat on WhatsApp" },
-  {
-    Icon: IconCalendar,
-    href: "#book-consultation",
-    label: "Book a Free Consultation",
-  }, // TODO: replace with Calendly link
-];
 
 /* ── Component ───────────────────────────────────────────────────────── */
 
 export const WhatsAppButton = () => {
-  const [visible,   setVisible]   = useState(false);
-  const [open,      setOpen]      = useState(false);
-  // When true the user has manually clicked the button → stop the pulse loop
-  const [userActed, setUserActed] = useState(false);
-  const userActedRef = React.useRef(false);
-  // Shared AudioContext — created once and reused for all chimes
-  const audioCtxRef  = React.useRef(null);
-
-  // ── Create + pre-warm the AudioContext as early as possible ─────────
-  // Calling resume() immediately gives the browser the best chance of
-  // allowing auto-play before any explicit user gesture is required.
-  useEffect(() => {
-    const AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return;
-    const ctx = new AC();
-    audioCtxRef.current = ctx;
-    ctx.resume().catch(() => {});
-    return () => { ctx.close(); audioCtxRef.current = null; };
-  }, []);
-
-  // ── Play chime every time the menu OPENS ────────────────────────────
-  useEffect(() => {
-    if (open) playChime(audioCtxRef.current);
-  }, [open]);
+  const [visible, setVisible] = useState(false);
 
   // ── Visible entrance after 1 s ──────────────────────────────────────
   useEffect(() => {
@@ -189,72 +48,12 @@ export const WhatsAppButton = () => {
     return () => clearTimeout(t);
   }, []);
 
-  // ── Pulse loop: open → (1 s pause) → close → (1 s pause) → open … ──
-  // Stops as soon as the user manually clicks the toggle button.
-  useEffect(() => {
-    if (userActed) return;
-
-    const startTimer = setTimeout(() => {
-      if (userActedRef.current) return;
-      setOpen(true);
-
-      const interval = setInterval(() => {
-        if (userActedRef.current) {
-          clearInterval(interval);
-          return;
-        }
-        setOpen((prev) => !prev);
-      }, 4000);
-
-      return () => clearInterval(interval);
-    }, AUTO_OPEN_DELAY);
-
-    return () => clearTimeout(startTimer);
-  }, [userActed]);
-
-  /** Called when the user manually clicks the toggle button */
-  const handleToggle = () => {
-    userActedRef.current = true;
-    setUserActed(true);
-    setOpen((v) => !v);
-  };
-
   return (
     <div
       className="wab"
       style={{ opacity: visible ? 1 : 0 }}
       aria-label="Contact options"
     >
-      {/* ── Sub-action buttons ──────────────────────────────────────── */}
-      <div className="wab__actions">
-        {ACTIONS.map(({ Icon, href, label }, i) => (
-          <a
-            key={i}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="wab__action"
-            tabIndex={open ? 0 : -1}
-            style={{
-              // Closed: each button is translated down to the main button position
-              transform: open
-                ? "translateY(0) scale(1)"
-                : `translateY(${(ACTIONS.length - i) * (BTN_SIZE + BTN_GAP)}px) scale(0.4)`,
-              opacity: open ? 1 : 0,
-              // Open cascade: top → bottom | Close cascade: bottom → top
-              transitionDelay: open
-                ? `${i * 55}ms`
-                : `${(ACTIONS.length - 1 - i) * 55}ms`,
-              pointerEvents: open ? "auto" : "none",
-            }}
-          >
-            <Icon />
-          </a>
-        ))}
-      </div>
-
-      {/* ── Main toggle button ──────────────────────────────────────── */}
       <div className="wab__main">
         {/*
           Circular text ring — SVG centered absolutely on the dark button.
@@ -290,28 +89,21 @@ export const WhatsAppButton = () => {
             letterSpacing="3"
           >
             <textPath href="#wab-text-path" startOffset="8%">
-              TALK TO AN EXPERT · FREE CONSULT ·
+              TALK TO AN EXPERT · CHAT ON WHATSAPP ·
             </textPath>
           </text>
         </svg>
 
         {/* Dark navy button — sits on top of the SVG ring (z-index: 1) */}
-        <button
+        <a
           className="wab__btn"
-          onClick={handleToggle}
-          aria-label={open ? "Close contact options" : "Open contact options"}
-          aria-expanded={open}
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
         >
-          {/* Chat bubble icon — shown when closed */}
-          <span className={`wab__icon ${!open ? "wab__icon--visible" : ""}`}>
-            <IconChat />
-          </span>
-
-          {/* × icon — shown when open */}
-          <span className={`wab__icon ${open ? "wab__icon--visible" : ""}`}>
-            <IconClose />
-          </span>
-        </button>
+          <IconWhatsApp />
+        </a>
       </div>
     </div>
   );
