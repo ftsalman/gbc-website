@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../../lib/turtle-ui/components/button/Button";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -56,10 +57,10 @@ const ArrowUpRightIcon = ({ className = "w-5 h-5" }) => (
 );
 
 const servicesList = [
-  { name: "Business Setup", number: "01" },
-  { name: "PRO Services", number: "02" },
-  { name: "Visa & Immigration", number: "03" },
-  { name: "Trade License", number: "04" },
+  { name: "Business Setup", number: "01", link: "/services/mainland", image: "/images/services/business_setup.png" },
+  { name: "PRO Services", number: "02", link: "/services", image: "/images/services/pro_services.png" },
+  { name: "Visa & Immigration", number: "03", link: "/services", image: "/images/services/visa_immigration.png" },
+  { name: "Trade License", number: "04", link: "/services", image: "/images/services/trade_license.png" },
 ];
 
 // Interactive Three.js Floating Particles & Parallax Field overlaying the Hero Image
@@ -142,6 +143,7 @@ const HeroImageBackground = () => (
 
 export const Hero = () => {
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   useGSAP(
     () => {
@@ -219,13 +221,7 @@ export const Hero = () => {
           <h1 className="hero-text text-[52px] sm:text-[72px] md:text-[88px] lg:text-[100px] xl:text-[110px] font-medium tracking-tight leading-[0.92] text-white opacity-0">
             Business <br />
             Setup &amp; PRO <br />
-            <span className="relative inline-block">
-              Services
-              <sup className="text-2xl sm:text-4xl lg:text-5xl font-light absolute -top-2 -right-5 sm:-top-4 sm:-right-8 text-white/90">
-                ®
-              </sup>
-            </span>{" "}
-            <br />
+            <span className="relative inline-block">Services</span> <br />
             <span className="text-white font-serif italic font-normal">
               in Dubai
             </span>
@@ -265,19 +261,29 @@ export const Hero = () => {
         {servicesList.map((item) => (
           <motion.div
             key={item.number}
+            onClick={() => navigate(item.link)}
             whileHover={{ x: -6 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="hero-card flex-1 border-b border-white/10 relative flex flex-col justify-between p-6 xl:p-8 hover:bg-[#262626] transition-colors duration-300 group cursor-pointer opacity-0 overflow-hidden"
+            className="hero-card flex-1 border-b border-white/10 relative flex flex-col justify-between p-6 xl:p-8 bg-black transition-colors duration-300 group cursor-pointer opacity-0 overflow-hidden"
           >
+            {/* Background Image Layer (permanent) - increased base opacity so images are brighter */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 group-hover:opacity-90 transition-all duration-700 z-0 group-hover:scale-110"
+              style={{ backgroundImage: `url(${item.image})` }}
+            />
+            
+            {/* Soft gradient overlay just at the bottom to ensure the white text always pops */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-0 pointer-events-none" />
+            
             {/* Top Right Diagonal Arrow Icon matching Syncox .hero-service-list-item-icon */}
-            <div className="w-full flex justify-end">
+            <div className="w-full flex justify-end relative z-10">
               <span className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 -translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0">
                 <ArrowUpRightIcon className="w-5 h-5 stroke-[1.5]" />
               </span>
             </div>
 
             {/* Bottom Bar: Service Name and Number matching Syncox .hero-service-list-item */}
-            <div className="w-full flex items-end justify-between mt-auto">
+            <div className="w-full flex items-end justify-between mt-auto relative z-10">
               <span className="text-white/90 group-hover:text-white font-medium text-lg xl:text-xl transition-colors">
                 {item.name}
               </span>

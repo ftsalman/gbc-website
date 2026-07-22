@@ -1,11 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Building2, Globe2, Briefcase, MapPin, ArrowRight } from "lucide-react";
 import { Card } from "../../../../lib/turtle-ui/components";
 
 const structures = [
   {
     id: 1,
+    slug: "mainland-company",
     title: "Mainland Company",
     description:
       "Operate anywhere across the UAE with complete business flexibility.",
@@ -15,6 +17,7 @@ const structures = [
   },
   {
     id: 2,
+    slug: "freezone-company",
     title: "Free Zone Company",
     description: "100% foreign ownership with tax-efficient benefits.",
     icon: Briefcase,
@@ -23,6 +26,7 @@ const structures = [
   },
   {
     id: 3,
+    slug: "offshore-company",
     title: "Offshore Company",
     description:
       "Ideal for international business, asset protection, and global expansion.",
@@ -32,6 +36,7 @@ const structures = [
   },
   {
     id: 4,
+    slug: "branch-office",
     title: "Branch Office",
     description: "Expand your existing international company into Dubai.",
     icon: Building2,
@@ -106,33 +111,35 @@ export const BusinessStructureSection = () => {
               variants={cardVariants}
               className="h-full"
             >
-              <Card className="group flex flex-col h-[400px] sm:h-[450px] p-6 sm:p-8 justify-between relative overflow-hidden border border-gray-200/20 rounded-2xl w-full !bg-clip-padding">
-                {/* Full Card Background Image & Overlay */}
-                <div className="absolute inset-0 z-0">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  {/* Gradient for text readability at the top, and slight darkening overall */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/30 transition-colors duration-500" />
-                </div>
+              <Link to={`/business-setup/${item.slug}`} className="block h-full cursor-pointer">
+                <Card className="group flex flex-col h-[400px] sm:h-[450px] p-6 sm:p-8 justify-between relative overflow-hidden border border-gray-200/20 rounded-2xl w-full !bg-clip-padding">
+                  {/* Full Card Background Image & Overlay */}
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Gradient for text readability at the top, and slight darkening overall */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/30 transition-colors duration-500" />
+                  </div>
 
-                {/* Top Content */}
-                <div className="z-10 relative">
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-[15px] text-white/90 leading-relaxed max-w-[95%]">
-                    {item.description}
-                  </p>
-                </div>
+                  {/* Top Content */}
+                  <div className="z-10 relative">
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-[15px] text-white/90 leading-relaxed max-w-[95%]">
+                      {item.description}
+                    </p>
+                  </div>
 
-                {/* Bottom Right Arrow */}
-                <div className="relative z-10 flex justify-end w-full mt-auto">
-                  <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </Card>
+                  {/* Bottom Right Arrow */}
+                  <div className="relative z-10 flex justify-end w-full mt-auto">
+                    <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

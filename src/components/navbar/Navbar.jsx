@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { DataList } from "../../../lib/turtle-ui/components/list/DataList";
 import { Button } from "../../../lib/turtle-ui/components/button/Button";
-import { navItems } from "../../constants/navData";
-// import { navItems, megaMenuData } from "../../constants/navData";
+import { navItems, megaMenuData } from "../../constants/navData";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -46,7 +45,7 @@ export const Navbar = () => {
                 aria-label="Home"
               >
                 <img
-                  src="/images/LOGO_GBC.png"
+                  src="/public/images/LOGO_GBC.png"
                   alt="logo"
                   className=" w-24"
                 />
@@ -61,18 +60,18 @@ export const Navbar = () => {
                 render={(item, index) => (
                   <div
                     key={index}
-                    className="h-full flex items-center cursor-pointer nav-item-animate opacity-0"
+                    className="h-full flex items-center cursor-pointer nav-item-animate opacity-0 relative group"
                     onMouseEnter={() => {
-                      // if (megaMenuData[item]) {
-                      //   setActiveMenu(item);
-                      // } else {
+                      if (megaMenuData[item]) {
+                        setActiveMenu(item);
+                      } else {
                         setActiveMenu(null);
-                      // }
+                      }
                     }}
                   >
                     <Link
                       to={`/${item.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-")}`}
-                      className={`text-white transition-all duration-300 text-sm tracking-wide whitespace-nowrap ${
+                      className={`text-white transition-all duration-300 text-sm tracking-wide whitespace-nowrap py-2 ${
                         activeMenu === item
                           ? "opacity-100"
                           : "opacity-80 hover:opacity-100"
@@ -80,6 +79,31 @@ export const Navbar = () => {
                     >
                       {item}
                     </Link>
+
+                    {/* Standard Dropdown */}
+                    {megaMenuData[item] && (
+                      <div
+                        className={`absolute top-[90%] left-1/2 -translate-x-1/2 w-48 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[#0a0a0a] backdrop-blur-xl border border-gray-800 rounded-b-xl shadow-xl ${
+                          activeMenu === item
+                            ? "max-h-[500px] opacity-100 py-2 border-t-0"
+                            : "max-h-0 opacity-0 py-0 border-transparent"
+                        }`}
+                      >
+                        <ul className="flex flex-col">
+                          {megaMenuData[item].map((link, idx) => (
+                            <li key={idx}>
+                              <Link
+                                to={link.href || "#"}
+                                onClick={() => setActiveMenu(null)}
+                                className="block px-4 py-2.5 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm font-medium tracking-wide text-start"
+                              >
+                                {link.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 )}
               />
@@ -148,84 +172,7 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mega Menu Dropdown */}
-        {/*
-        <div
-          className={`absolute left-0 w-full overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-[#0a0a0a] backdrop-blur-xl border-b border-gray-200/50 shadow-sm ${
-            activeMenu
-              ? "max-h-[500px] opacity-100 py-10"
-              : "max-h-0 opacity-0 py-0 border-transparent"
-          }`}
-        >
-          {activeMenu && megaMenuData[activeMenu] && (
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between gap-8 transform transition-transform duration-500 delay-75 translate-y-0">
-              {/* Column 1 * /}
-              <div className="flex flex-col flex-1">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
-                  {megaMenuData[activeMenu].col1.title}
-                </h3>
-                <ul className="space-y-3">
-                  {megaMenuData[activeMenu].col1.items.map((link, idx) => (
-                    <li key={idx} className={link.big ? "mb-1" : "mt-4"}>
-                      <Link
-                        to={link.href || "#"}
-                        onClick={() => setActiveMenu(null)}
-                        className={`text-white hover:text-gray-600 transition-colors ${
-                          link.big
-                            ? "text-xl font-semibold tracking-tight block"
-                            : "text-xs font-medium"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Column 2 * /}
-              <div className="flex flex-col flex-1">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
-                  {megaMenuData[activeMenu].col2.title}
-                </h3>
-                <ul className="space-y-2">
-                  {megaMenuData[activeMenu].col2.items.map((link, idx) => (
-                    <li key={idx}>
-                      <Link
-                        to={link.href || "#"}
-                        onClick={() => setActiveMenu(null)}
-                        className="text-white hover:text-gray-600 text-xs font-medium transition-colors"
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Column 3 * /}
-              <div className="flex flex-col flex-1">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
-                  {megaMenuData[activeMenu].col3.title}
-                </h3>
-                <ul className="space-y-2">
-                  {megaMenuData[activeMenu].col3.items.map((link, idx) => (
-                    <li key={idx}>
-                      <Link
-                        to={link.href || "#"}
-                        onClick={() => setActiveMenu(null)}
-                        className="text-white hover:text-gray-600 text-xs font-medium transition-colors"
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-        </div>
-        */}
+        {/* Desktop dropdowns are now rendered inline with each nav item */}
 
         {/* Mobile Menu Dropdown */}
         <div
@@ -245,9 +192,9 @@ export const Navbar = () => {
                 >
                   {item}
                 </Link>
-                {/* {megaMenuData[item] && (
+                {megaMenuData[item] && (
                   <div className="pl-4 mt-3 flex flex-col space-y-3 border-l-2 border-bordeaux/20">
-                    {megaMenuData[item].col1.items.map((subItem, subIdx) => (
+                    {megaMenuData[item].map((subItem, subIdx) => (
                       <Link
                         key={subIdx}
                         to={subItem.href || "#"}
@@ -258,7 +205,7 @@ export const Navbar = () => {
                       </Link>
                     ))}
                   </div>
-                )} */}
+                )}
               </div>
             ))}
             <Button

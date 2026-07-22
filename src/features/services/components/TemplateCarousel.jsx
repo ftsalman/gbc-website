@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
-import { SHOWCASE_DATA } from "../constants/index.js";
+import { SHOWCASE_DATA } from "../constants/constants.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
