@@ -3,6 +3,7 @@ import { Layout } from '../layout/Layout.jsx';
 import { HomePage } from '../features/home/page/HomePage.jsx';
 import { AboutPage } from '../features/about/page/AboutPage.jsx';
 import { BlogsPage } from '../features/blogs/page/BlogsPage.jsx';
+import { BlogDetailsPage } from '../features/blogs/page/BlogDetailsPage.jsx';
 import { BusinessSetupPage } from '../features/business-setup/page/BusinessSetupPage.jsx';
 import { BusinessSetupDetailsPage } from '../features/business-setup/page/BusinessSetupDetailsPage.jsx';
 import { ContactPage } from '../features/contact/page/ContactPage.jsx';
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: 'blogs',
         element: <BlogsPage />,
+      },
+      {
+        path: 'blogs/:id',
+        element: <BlogDetailsPage />,
       },
       {
         path: 'packages',
