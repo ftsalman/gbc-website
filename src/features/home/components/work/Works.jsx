@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,46 +14,27 @@ gsap.registerPlugin(ScrollTrigger);
 const worksData = [
   {
     id: "01.",
-    title: (
-      <>
-        Mainland Company Setup <br />
-        in 48 Hours - <br />
-        100% Foreign Ownership &amp; <br />
-        Trade License Approval
-      </>
-    ),
-    year: "2025",
-    buttonText: "View Details",
-    logoText: "NEXUS GROUP",
+    title: "Mainland Company Setup",
+    buttonText: "Explore Mainland →",
+    link: "/business-setup/mainland-company",
+    description: "Establish your business in the UAE Mainland with complete flexibility to trade across the Emirates and internationally. Enjoy 100% foreign ownership, access to government contracts, and the freedom to operate without geographical restrictions—ideal for businesses planning long-term growth in the UAE.",
     image: "/dubai_business_setup.png",
   },
   {
     id: "02.",
-    title: (
-      <>
-        Offshore Asset Protection &amp; <br />
-        Holding Company Formation <br />
-        in DIFC &amp; ADGM
-      </>
-    ),
-    year: "2024",
-    buttonText: "View Details",
-    logoText: "SOVEREIGN WEALTH",
+    title: "Free Zone Company Setup",
+    buttonText: "Explore Free Zone →",
+    link: "/business-setup/freezone-company",
+    description: "Launch your business quickly with a UAE Free Zone company and benefit from simplified registration, tax advantages, and business-friendly regulations. Perfect for startups, SMEs, e-commerce businesses, consultants, and international entrepreneurs looking for a fast and cost-effective setup.",
     image:
       "https://i.pinimg.com/1200x/45/8a/8a/458a8a52f13186f67ecfe80fc12971a7.jpg",
   },
   {
     id: "03.",
-    title: (
-      <>
-        Multi-Currency Corporate Banking <br />
-        &amp; VIP Golden Visa Processing <br />
-        for Executive Team
-      </>
-    ),
-    year: "2024",
-    buttonText: "View Details",
-    logoText: "AURA CAPITAL",
+    title: "Offshore Company Formation",
+    buttonText: "Explore Offshore →",
+    link: "/business-setup/offshore-company",
+    description: "Build your international business with a UAE Offshore company designed for global operations, asset protection, and international investments. An excellent solution for holding companies, international trading, wealth management, and entrepreneurs seeking a secure business structure.",
     image:
       "https://i.pinimg.com/1200x/6d/9a/8f/6d9a8f89b95887bf9ebb27ceefa78b47.jpg",
   },
@@ -60,6 +42,7 @@ const worksData = [
 
 export const Works = () => {
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   useGSAP(
     () => {
@@ -112,16 +95,20 @@ export const Works = () => {
           <div className="works-header-element md:col-span-5 shrink-0">
             <span className="font-mono text-sm sm:text-base font-semibold tracking-tight uppercase">
               <span className="text-bordeaux mr-1">//</span>
-              <span className="text-gray-400">Selected Works</span>
+              <span className="text-gray-400">Business Setup in Dubai</span>
             </span>
           </div>
 
           {/* Right: Proven Results, Stunning Designs */}
           <div className="works-header-element md:col-span-7">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.1]">
-              Proven Results, <br />
-              Stunning Designs
+              Choose the Right UAE Business Setup
             </h2>
+            <p className="hero-text text-white/80 text-sm sm:text-base md:text-3xl max-w-xl font-light leading-relaxed mt-8 lg:mt-10 ">
+              Whether you're launching a startup, expanding internationally, or
+              relocating your business, we'll help you choose the right company
+              structure.
+            </p>
           </div>
         </div>
 
@@ -138,7 +125,10 @@ export const Works = () => {
                   zIndex: index + 1,
                 }}
               >
-                <Card className="!p-8 sm:!p-12 md:!p-16 !rounded-3xl !border !border-white/15 !shadow-none !bg-[#121212] overflow-hidden relative flex flex-col justify-between h-full w-full  transition-all duration-500 group cursor-pointer">
+                <Card 
+                  onClick={() => navigate(work.link)}
+                  className="!p-8 sm:!p-12 md:!p-16 !rounded-3xl !border !border-white/15 !shadow-none !bg-[#121212] overflow-hidden relative flex flex-col justify-between h-full w-full transition-all duration-500 group cursor-pointer"
+                >
                   {/* Background Image with smooth hover scale (Syncox .work-thumbnail) */}
                   <img
                     src={work.image}
@@ -160,23 +150,17 @@ export const Works = () => {
                         {work.title}
                       </h3>
                     </div>
-
-                    {/* Right Year */}
-                    <div className="font-mono text-base sm:text-lg font-medium text-white/90 self-start shrink-0">
-                      {work.year}
-                    </div>
                   </div>
-
                   {/* Bottom Row: View Details Button & Logo Text */}
                   <div className="flex items-end justify-between relative z-20 w-full mt-auto pt-10">
                     {/* Exact Corner Bracket Button matching tech UI setting */}
-                    <Button variant="corner" size="sm">
+                    <Button variant="corner" size="sm" onClick={(e) => { e.stopPropagation(); navigate(work.link); }}>
                       {work.buttonText}
                     </Button>
 
-                    {/* Right Logo/Brand Text */}
-                    <div className="font-sans font-black text-2xl sm:text-3xl tracking-tighter uppercase text-white/90">
-                      {work.logoText}
+                    {/* Right Description Text */}
+                    <div className="text-sm sm:text-base md:text-lg font-light text-white/80 max-w-[280px] sm:max-w-xs md:max-w-sm text-right leading-relaxed">
+                      {work.description}
                     </div>
                   </div>
                 </Card>
@@ -187,7 +171,7 @@ export const Works = () => {
 
         {/* Bottom CTA Button matching exact corner bracket setting */}
         <div className="flex justify-center mt-12 sm:mt-16">
-          <Button variant="corner" size="lg">
+          <Button variant="corner" size="lg" onClick={() => navigate('/business-setup')}>
             View All Works
           </Button>
         </div>

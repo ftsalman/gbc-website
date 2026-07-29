@@ -32,7 +32,7 @@ export const HomePage = () => {
       <PartnersLogos />
       <Works />
       <Service />
-      <BusinessSetup />
+      {/* <BusinessSetup /> */}
       <Teams />
       <Counter />
       <WhyChoose />

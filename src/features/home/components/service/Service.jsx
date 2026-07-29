@@ -2,7 +2,12 @@ import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, DataList, Button, Tag } from "../../../../../lib/turtle-ui/components";
+import {
+  Card,
+  DataList,
+  Button,
+  Tag,
+} from "../../../../../lib/turtle-ui/components";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,26 +15,51 @@ const servicesData = [
   {
     id: "01",
     title: "Business Setup",
-    description: "Complete mainland, freezone, and offshore company formation across Dubai and the UAE with 100% foreign ownership.",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
+    description: "Mainland, Free Zone & Offshore Company Formation",
+    image:
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: "02",
-    title: "PRO Services",
-    description: "Dedicated government relations, document clearance, legal approvals, and corporate compliance managed with precision.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
+    title: "Complete PRO Services",
+    description: "Government Relations, Document Clearing & Compliance",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: "03",
     title: "Visa & Immigration",
-    description: "Expedited investor visas, golden visas, employment visas, and family residency processing with VIP assistance.",
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop",
+    description: "Employment, Investor, Family & Golden Visa Services",
+    image:
+      "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: "04",
+    title: "Accounting & Tax",
+    description: "Bookkeeping, VAT & Corporate Tax Compliance",
+    image:
+      "https://i.pinimg.com/736x/38/f0/43/38f04349f63faee8775816f83c48a4fd.jpg",
+  },
+  {
+    id: "05",
+    title: "Legal & Document Services",
+    description: "MOA, Attestation, Legal Translation & Agreements",
+    image:
+      "https://i.pinimg.com/736x/3c/8b/ae/3c8baea5c50d357543ea946ff1672e3f.jpg",
+  },
+  {
+    id: "06",
     title: "Trade Licensing",
-    description: "Hassle-free trade license issuance, renewals, commercial activity amendments, and corporate bank account assistance.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+    description: "License Issuance, Renewal & Activity Amendments",
+    image:
+      "https://i.pinimg.com/736x/32/7b/88/327b888450ac480391e0bbae2f3c9b33.jpg",
+  },
+  {
+    id: "07",
+    title: "Business Centers",
+    description: "Office Space, Flexi Desk & Virtual Offices",
+    image:
+      "https://i.pinimg.com/736x/88/ad/fe/88adfefbc9776d8942cf1516d1471954.jpg",
   },
 ];
 
@@ -52,7 +82,7 @@ export const Service = () => {
             trigger: containerRef.current,
             start: "top 80%",
           },
-        }
+        },
       );
 
       // Entrance animation for service rows
@@ -69,10 +99,10 @@ export const Service = () => {
             trigger: containerRef.current,
             start: "top 75%",
           },
-        }
+        },
       );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -94,8 +124,14 @@ export const Service = () => {
           {/* Right: Our Services */}
           <div className="service-header-element md:col-span-7">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[#18181B] leading-[1.1]">
-              Our Services
+              Complete Business Solutions for UAE Companies
             </h2>
+
+            <p className="hero-text text-gray-600 text-sm sm:text-base md:text-3xl max-w-xl font-light leading-relaxed mt-8 lg:mt-10 ">
+              From company formation and visas to accounting, taxation and legal
+              compliance, Connect GBC provides complete corporate solutions for
+              businesses across the UAE.
+            </p>
           </div>
         </div>
 
@@ -106,9 +142,7 @@ export const Service = () => {
             className="!flex !flex-col !gap-0 !grid-cols-none w-full"
             render={(service) => (
               <div key={service.id} className="service-row-item w-full">
-                <Card
-                  className="!p-0 !rounded-none !border-0 !border-b !border-gray-200/80 !shadow-none !bg-transparent transition-all duration-500 relative overflow-hidden group cursor-pointer block"
-                >
+                <Card className="!p-0 !rounded-none !border-0 !border-b !border-gray-200/80 !shadow-none !bg-transparent transition-all duration-500 relative overflow-hidden group cursor-pointer block">
                   {/* Full-width Thumbnail & Overlay revealed on hover (Syncox .services-list-item-thumbnail) */}
                   <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                     <img

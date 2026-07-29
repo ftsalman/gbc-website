@@ -3,7 +3,12 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CheckCircle2, ArrowLeft, ArrowRight } from "lucide-react";
-import { Card, DataList, Button, Tag } from "../../../../../lib/turtle-ui/components";
+import {
+  Card,
+  DataList,
+  Button,
+  Tag,
+} from "../../../../../lib/turtle-ui/components";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,9 +19,12 @@ const testimonials = [
     name: "John Doe",
     company: "Tech Innovations",
     logoText: "LOGOIPSUM",
-    logoSvg: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08c9f507094bc22221_logo-testimonials-2.svg",
-    image: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1e292b510eb2c1be03_testimonials-img-1.avif",
-    quote: "They brought clarity to complex problems, breaking down barriers and delivering innovative solutions.",
+    logoSvg:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08c9f507094bc22221_logo-testimonials-2.svg",
+    image:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1e292b510eb2c1be03_testimonials-img-1.avif",
+    quote:
+      "They brought clarity to complex problems, breaking down barriers and delivering innovative solutions.",
     overallScore: "5.00 / 5.0",
     speedScore: "100%",
     verifiedDate: "July 2026",
@@ -27,9 +35,12 @@ const testimonials = [
     name: "Elena Rostova",
     company: "Global Strategy Group",
     logoText: "LOQO",
-    logoSvg: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd0853b0828f2ba09cf4_logo-testimonials-3.svg",
-    image: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1eaa619febe5b5dbbe_testimonials-img-2.avif",
-    quote: "Their insight resolved difficult hurdles, opening new paths and creating highly effective strategies.",
+    logoSvg:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd0853b0828f2ba09cf4_logo-testimonials-3.svg",
+    image:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1eaa619febe5b5dbbe_testimonials-img-2.avif",
+    quote:
+      "Their insight resolved difficult hurdles, opening new paths and creating highly effective strategies.",
     overallScore: "4.99 / 5.0",
     speedScore: "100%",
     verifiedDate: "June 2026",
@@ -40,9 +51,12 @@ const testimonials = [
     name: "Carlos Mendez",
     company: "Fintech & AI Systems",
     logoText: "LOGO",
-    logoSvg: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08a824b982dbb8e14f_logo-testimonials-1.svg",
-    image: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1ec7c3cf972adaf7d0_testimonials-img-3.avif",
-    quote: "We found focus for tricky requirements, cutting through noise and providing truly advanced responses.",
+    logoSvg:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08a824b982dbb8e14f_logo-testimonials-1.svg",
+    image:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1ec7c3cf972adaf7d0_testimonials-img-3.avif",
+    quote:
+      "We found focus for tricky requirements, cutting through noise and providing truly advanced responses.",
     overallScore: "5.00 / 5.0",
     speedScore: "99.9%",
     verifiedDate: "July 2026",
@@ -53,9 +67,12 @@ const testimonials = [
     name: "Zara Khan",
     company: "TechFlow Middle East",
     logoText: "IPSUM",
-    logoSvg: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692a148227a37705feded0ce_ipsum-logo.svg",
-    image: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1ef44243d100a616ae_testimonials-img-4.avif",
-    quote: "They gave simple paths to hard puzzles, removing all delays while building fresh, brilliant corporate structures.",
+    logoSvg:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692a148227a37705feded0ce_ipsum-logo.svg",
+    image:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1ef44243d100a616ae_testimonials-img-4.avif",
+    quote:
+      "They gave simple paths to hard puzzles, removing all delays while building fresh, brilliant corporate structures.",
     overallScore: "4.98 / 5.0",
     speedScore: "100%",
     verifiedDate: "May 2026",
@@ -66,9 +83,12 @@ const testimonials = [
     name: "Sarah Khan",
     company: "RetailHub Global",
     logoText: "LOGOIPSUM",
-    logoSvg: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08c9f507094bc22221_logo-testimonials-2.svg",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-    quote: "Excellent service from start to finish. They handled all our commercial trade licenses and mainland clearances without friction.",
+    logoSvg:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08c9f507094bc22221_logo-testimonials-2.svg",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    quote:
+      "Excellent service from start to finish. They handled all our commercial trade licenses and mainland clearances without friction.",
     overallScore: "5.00 / 5.0",
     speedScore: "100%",
     verifiedDate: "June 2026",
@@ -79,9 +99,12 @@ const testimonials = [
     name: "Ahmed Raza",
     company: "Sovereign Capital",
     logoText: "LOQO",
-    logoSvg: "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd0853b0828f2ba09cf4_logo-testimonials-3.svg",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
-    quote: "Highly knowledgeable about mainland vs financial freezone holding structures. Saved our family office substantial time and capital.",
+    logoSvg:
+      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd0853b0828f2ba09cf4_logo-testimonials-3.svg",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+    quote:
+      "Highly knowledgeable about mainland vs financial freezone holding structures. Saved our family office substantial time and capital.",
     overallScore: "4.99 / 5.0",
     speedScore: "100%",
     verifiedDate: "May 2026",
@@ -170,18 +193,29 @@ export const Testimonial = () => {
       tl.fromTo(
         ".aeline-testi-card",
         { opacity: 0, y: 40, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: "power3.out" }
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   const handlePrev = () => {
-    setStartIndex((prev) => (prev === 0 ? testimonials.length - visibleCount : prev - 1));
+    setStartIndex((prev) =>
+      prev === 0 ? testimonials.length - visibleCount : prev - 1,
+    );
   };
 
   const handleNext = () => {
-    setStartIndex((prev) => (prev + 1 > testimonials.length - visibleCount ? 0 : prev + 1));
+    setStartIndex((prev) =>
+      prev + 1 > testimonials.length - visibleCount ? 0 : prev + 1,
+    );
   };
 
   // Get current visible slice of cards
@@ -231,26 +265,18 @@ export const Testimonial = () => {
 
           {/* Heading using official bordeaux typography color */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-bordeaux tracking-tight leading-tight">
-            What they say about us?
+            Trusted by Businesses, <br /> Recommended by Clients.
           </h2>
 
           {/* Subtitle & Custom Button Controls bar (`.testi_wrap`) */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mt-4 pt-2">
             <p className="text-gray-700 text-sm sm:text-base leading-relaxed max-w-xl font-medium">
-              Here’s what they shared about their experience working with our team.
+              From business setup and visa processing to ongoing PRO support,
+              businesses across the UAE trust Connect GBC for reliable corporate
+              services.
             </p>
 
             <div className="flex items-center gap-6">
-              {/* Live Rating Badge with bordeaux accents */}
-              <Card className="hidden lg:flex items-center gap-3 !bg-white !border-gray-200/90 !shadow-sm !px-4 !py-2 !rounded-xl !cursor-default">
-                <div className="flex items-center gap-1">{renderStars(5)}</div>
-                <div className="text-xs font-mono text-gray-700">
-                  <span>
-                    Rated <strong className="text-bordeaux font-bold">{liveScore}/5.0</strong> by {liveReviewCount.toLocaleString()}+ clients
-                  </span>
-                </div>
-              </Card>
-
               {/* Navigation Controls using custom Button component from turtle-ui */}
               <div className="flex items-center gap-3">
                 <Button
@@ -349,7 +375,9 @@ export const Testimonial = () => {
               <div
                 key={m.label}
                 className={`flex flex-col justify-between ${
-                  idx < scoringMetrics.length - 1 ? "sm:border-r border-gray-200 sm:pr-4" : ""
+                  idx < scoringMetrics.length - 1
+                    ? "sm:border-r border-gray-200 sm:pr-4"
+                    : ""
                 }`}
               >
                 <div className="text-[11px] font-mono text-gray-500 uppercase tracking-widest flex items-center justify-between mb-1">
@@ -358,8 +386,12 @@ export const Testimonial = () => {
                 </div>
                 <div className="text-xl sm:text-2xl font-light text-bordeaux font-mono tracking-tight flex items-baseline gap-2">
                   {m.label === "Satisfaction Index" ? liveScore : m.value}
-                  <span className="text-sm font-normal text-gray-500">{m.unit}</span>
-                  <span className="text-xs font-mono text-gray-400 ml-auto">{m.note}</span>
+                  <span className="text-sm font-normal text-gray-500">
+                    {m.unit}
+                  </span>
+                  <span className="text-xs font-mono text-gray-400 ml-auto">
+                    {m.note}
+                  </span>
                 </div>
               </div>
             )}

@@ -6,9 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { id: 1, label: "Trade Licenses Issued", value: 500, suffix: "+", suffixColor: "text-bordeaux" },
-  { id: 2, label: "Happy Clients", value: 2000, suffix: "+", suffixColor: "text-bordeaux" },
-  { id: 3, label: "Visas Processed", value: 10, suffix: "K+", suffixColor: "text-bordeaux" },
+  { id: 1, label: "Applications Processed", value: 100000, suffix: "+", suffixColor: "text-bordeaux" },
+  { id: 2, label: "Happy Clients", value: 98, suffix: "%", suffixColor: "text-bordeaux" },
+  { id: 3, label: "Businesses Served", value: 5000, suffix: "+", suffixColor: "text-bordeaux" },
   { id: 4, label: "Years Experience", value: 15, suffix: "+", suffixColor: "text-bordeaux" },
 ];
 
@@ -48,7 +48,7 @@ export const Counter = () => {
           },
           onUpdate: () => {
             if (el) {
-              el.innerText = Math.floor(obj.val);
+              el.innerText = Math.floor(obj.val).toLocaleString();
             }
           }
         });
