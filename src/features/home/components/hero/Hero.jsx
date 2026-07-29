@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../../../lib/turtle-ui/components/button/Button";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -7,6 +7,39 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { motion } from "framer-motion";
+
+// Custom interactive expanding button matching the provided design
+const InteractiveButton = ({ children, href, target, rel }) => {
+  return (
+    <a
+      href={href}
+      target={target}
+      rel={rel}
+      className="group relative inline-flex items-center h-[52px] pl-[6px] pr-8 rounded-full cursor-pointer"
+    >
+      {/* Expanding Background */}
+      <span className="absolute left-0 top-0 h-full w-[52px] bg-[#6C141E] rounded-full transition-all duration-500 ease-[cubic-bezier(0.5,1,0.89,1)] group-hover:w-full"></span>
+      
+      {/* Icon Container */}
+      <span className="relative z-10 w-10 h-10 flex items-center justify-center bg-transparent rounded-full">
+        {/* Short Chevron */}
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 transition-all duration-500 absolute group-hover:opacity-0 group-hover:-translate-x-4 group-hover:scale-50">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        {/* Long Arrow */}
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 transition-all duration-500 absolute opacity-0 translate-x-4 scale-50 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </span>
+
+      {/* Text */}
+      <span className="relative z-10 ml-4 text-white font-semibold text-[13px] uppercase tracking-[0.1em] transition-colors duration-500">
+        {children}
+      </span>
+    </a>
+  );
+};
 
 // Helper components for icons to keep code clean
 const GoogleIcon = () => (
@@ -57,10 +90,34 @@ const ArrowUpRightIcon = ({ className = "w-5 h-5" }) => (
 );
 
 const servicesList = [
-  { name: "Business Setup", number: "01", link: "/services/mainland", image: "/images/services/business_setup.png" },
-  { name: "PRO Services", number: "02", link: "/services", image: "/images/services/pro_services.png" },
-  { name: "Visa & Immigration", number: "03", link: "/services", image: "/images/services/visa_immigration.png" },
-  { name: "Trade License", number: "04", link: "/services", image: "/images/services/trade_license.png" },
+  {
+    name: "Start a Business",
+    number: "01",
+    link: "/services/mainland",
+    image:
+      "https://i.pinimg.com/736x/68/b7/c7/68b7c734d24c35a65af05162d7616dc3.jpg",
+  },
+  {
+    name: "Dedicated PRO Subscription",
+    number: "02",
+    link: "/services",
+    image:
+      "https://i.pinimg.com/736x/85/0e/7e/850e7ea08eca0d71666ddc3d37e7156c.jpg",
+  },
+  {
+    name: "Visa & Immigration",
+    number: "03",
+    link: "/services",
+    image:
+      "https://i.pinimg.com/1200x/89/cb/73/89cb73854cadc9f8bb45b5f8bf55c71a.jpg",
+  },
+  {
+    name: "Trade License",
+    number: "04",
+    link: "/services",
+    image:
+      "https://i.pinimg.com/736x/1b/21/64/1b2164703102ef91cfb7a182d0538d6d.jpg",
+  },
 ];
 
 // Interactive Three.js Floating Particles & Parallax Field overlaying the Hero Image
@@ -127,11 +184,11 @@ const HeroFloatingParticles = () => {
 const HeroImageBackground = () => (
   <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
     <img
-      src="/images/hero.jpeg"
+      src="/images/hero_business_handshake.png"
       alt="Hero Left Section Background"
       className="absolute inset-0 w-full h-full object-cover object-left md:object-center pointer-events-none"
     />
-    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/60 pointer-events-none" />
+    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent pointer-events-none" />
     {/* Three.js Interactive Floating Particles Layer */}
     <div className="absolute inset-0 z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 6], fov: 60 }}>
@@ -188,13 +245,13 @@ export const Hero = () => {
       </div>
 
       {/* Main Left / Center Area (With Hero Background Image & Three.js Overlay matching Syncox .hero-title-block) */}
-      <div className="relative z-10 flex-1 flex flex-col justify-between px-6 sm:px-12 md:px-16 lg:px-20 pt-28 pb-16 min-h-screen overflow-hidden">
+      <div className="relative z-10 flex-1 flex flex-col justify-between px-6 sm:px-12 md:px-16 lg:px-20 pt-28 pb-10 min-h-screen overflow-hidden">
         {/* Hero Left Section Background using /images/hero.jpeg + Three.js Particles */}
         <HeroImageBackground />
 
         {/* Top Trust Badges Bar enhanced with Framer Motion */}
-        <div className="hero-text flex items-center justify-start lg:justify-center gap-6 flex-wrap relative z-10 mb-auto opacity-0">
-          <motion.div
+        <div className="hero-text flex items-center justify-start gap-6 flex-wrap relative z-10 mb-auto opacity-0">
+          {/* <motion.div
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="flex items-center text-sm font-medium text-white/80 bg-white/[0.06] border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md cursor-pointer"
@@ -207,51 +264,43 @@ export const Hero = () => {
             className="flex items-center text-sm font-medium text-white/80 bg-white/[0.06] border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md cursor-pointer"
           >
             <TrustpilotIcon /> 4.9 Trustpilot
-          </motion.div>
-          <div className="flex items-center gap-2 text-xs font-mono text-white/60">
-            <span className="!text-white !text-[15px] !font-semibold">🇦🇪</span>
+          </motion.div> */}
+          <div className="flex items-center gap-2.5 text-xs font-mono text-white/60">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" className="w-5 h-auto rounded-[1px] shadow-sm">
+              <rect width="1200" height="600" fill="#00732f"/>
+              <rect width="1200" height="200" y="200" fill="#fff"/>
+              <rect width="1200" height="200" y="400" fill="#000"/>
+              <rect width="300" height="600" fill="#ff0000"/>
+            </svg>
             <span className="!text-white !text-[15px] !font-semibold">
-              Trusted by 5000+ Businesses in Dubai &amp; UAE
+              Trusted by 1,000+ Businesses Across the &amp; UAE Since 2010
             </span>
           </div>
         </div>
 
         {/* Huge Stacked Headline & Subtitle aligned across the middle/right of the bloom matching exact Syncox Hero layout */}
-        <div className="relative z-10 my-auto py-10 lg:pl-[20%] xl:pl-[26%] max-w-5xl">
-          <h1 className="hero-text text-[52px] sm:text-[72px] md:text-[88px] lg:text-[100px] xl:text-[110px] font-medium tracking-tight leading-[0.92] text-white opacity-0">
-            Business <br />
-            Setup &amp; PRO <br />
-            <span className="relative inline-block">Services</span> <br />
+        <div className="relative z-10 my-auto py-10 max-w-5xl">
+          <h1 className="hero-text text-[52px] sm:text-[72px] md:text-[88px] lg:text-[100px] xl:text-[100px] font-semibold tracking-tight leading-[1.05] text-white opacity-0 max-w-4xl">
+            Business Setup &amp; PRO <span className="relative inline-block">Services</span> <br />
             <span className="text-white font-serif italic font-normal">
               in Dubai
             </span>
           </h1>
 
-          <p className="hero-text text-white/80 text-sm sm:text-base md:text-lg max-w-md font-light leading-relaxed mt-8 lg:mt-10 opacity-0">
+          <p className="hero-text text-white/80 text-sm sm:text-base md:text-3xl max-w-xl font-light leading-relaxed mt-8 lg:mt-10 opacity-0">
             From company formation to visas and PRO services, we handle
             everything so you can focus on growing your business.
           </p>
 
-          {/* Call to Action Buttons enhanced with Framer Motion spring */}
-          <div className="hero-buttons flex flex-wrap items-center gap-4 mt-8 opacity-0">
-            <motion.div
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button variant="corner" size="md">
-                Get Started Free
-              </Button>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button variant="corner" size="md">
-                Talk to Our Expert
-              </Button>
-            </motion.div>
+          {/* Call to Action Buttons enhanced with custom interactive design */}
+          <div className="hero-buttons flex flex-wrap items-center gap-6 mt-10 opacity-0 relative z-50">
+            <InteractiveButton href="https://wa.me/971585277775" target="_blank" rel="noopener noreferrer">
+              Get Free Consultation
+            </InteractiveButton>
+            
+            <InteractiveButton href="https://wa.me/971585277775" target="_blank" rel="noopener noreferrer">
+              Talk to an Expert
+            </InteractiveButton>
           </div>
         </div>
       </div>
@@ -267,14 +316,14 @@ export const Hero = () => {
             className="hero-card flex-1 border-b border-white/10 relative flex flex-col justify-between p-6 xl:p-8 bg-black transition-colors duration-300 group cursor-pointer opacity-0 overflow-hidden"
           >
             {/* Background Image Layer (permanent) - increased base opacity so images are brighter */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 group-hover:opacity-90 transition-all duration-700 z-0 group-hover:scale-110"
               style={{ backgroundImage: `url(${item.image})` }}
             />
-            
+
             {/* Soft gradient overlay just at the bottom to ensure the white text always pops */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-0 pointer-events-none" />
-            
+
             {/* Top Right Diagonal Arrow Icon matching Syncox .hero-service-list-item-icon */}
             <div className="w-full flex justify-end relative z-10">
               <span className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 -translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0">
