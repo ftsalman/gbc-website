@@ -21,17 +21,6 @@ export const BusinessSetupDetailsPage = () => {
       <SEO title={setup.title} description={setup.tagline} />
 
       <main className="w-full bg-[#fafafa] text-gray-900 font-sans pb-20">
-        {/* Navigation Breadcrumb / Back button */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 pt-8">
-          <Link
-            to="/business-setup"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-bordeaux transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Business Setup
-          </Link>
-        </div>
-
         <PageToolbar
           title={setup.title}
           description={setup.tagline}
@@ -39,6 +28,8 @@ export const BusinessSetupDetailsPage = () => {
           imagePosition="right"
           primaryButtonText="Get Free Consultation"
           primaryButtonAction={() => (window.location.href = "/contact")}
+          backUrl="/business-setup"
+          backText="Back to Business Setup"
         />
 
         <section className="py-16 sm:py-24">

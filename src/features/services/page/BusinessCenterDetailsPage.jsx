@@ -25,17 +25,6 @@ export const BusinessCenterDetailsPage = () => {
       </Helmet>
 
       <main className="w-full bg-[#fafafa] text-gray-900 font-sans pb-20">
-        {/* Navigation Breadcrumb / Back button */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 pt-8">
-          <Link
-            to="/services/business-center"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-[#6C141E] transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Business Center
-          </Link>
-        </div>
-
         <PageToolbar
           title={space.title}
           description={space.overview}
@@ -43,6 +32,8 @@ export const BusinessCenterDetailsPage = () => {
           imagePosition="right"
           primaryButtonText="Book Workspace"
           primaryButtonAction={() => (window.location.href = "/contact")}
+          backUrl="/services/business-center"
+          backText="Back to Business Center"
         />
 
         <section className="py-16 sm:py-24">

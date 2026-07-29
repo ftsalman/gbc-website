@@ -32,7 +32,7 @@ export const BlogDetailsPage = () => {
       <SEO title={blog.title} description={blog.title} />
 
       {/* Header Container */}
-      <section className="w-full px-4 md:px-8 lg:px-12 pt-8 md:pt-16 bg-white">
+      <section className="w-full px-4 md:px-8 lg:px-12 pt-24 md:pt-32 bg-white">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <Link 

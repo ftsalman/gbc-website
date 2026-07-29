@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { Button } from '../../../lib/turtle-ui/components.js';
 
 export const PageToolbar = ({
@@ -15,6 +17,8 @@ export const PageToolbar = ({
   primaryButtonAction,
   secondaryButtonText,
   secondaryButtonAction,
+  backUrl,
+  backText,
 }) => {
   const headerRef = useRef(null);
 
@@ -111,8 +115,20 @@ export const PageToolbar = ({
       )}
 
       {/* ── Text content ── */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 pt-24 md:pt-32 pb-12">
         <div className={`flex flex-col justify-center ${alignmentClasses}`}>
+          
+          {/* Optional Back Button */}
+          {backUrl && (
+            <Link
+              to={backUrl}
+              className="inline-flex items-center gap-2 text-sm font-medium text-white/60 hover:text-white transition-colors group mb-6 toolbar-desc"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              {backText || "Back"}
+            </Link>
+          )}
+
           {/* Title — large Syncox-style, font-weight 400 */}
           <h1 className="text-[clamp(3rem,8vw,7rem)] font-normal text-white tracking-tight leading-[1.0] overflow-hidden">
             {titleLines.map((line, idx) => (

@@ -24,17 +24,6 @@ export const ProserviceDetailsPage = () => {
       </Helmet>
 
       <main className="w-full bg-[#fafafa] text-gray-900 font-sans pb-20">
-        {/* Navigation Breadcrumb / Back button */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 pt-8">
-          <Link
-            to="/services/pro-services"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-bordeaux transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to PRO Services
-          </Link>
-        </div>
-
         <PageToolbar
           title={service.title}
           description={service.desc}
@@ -42,6 +31,8 @@ export const ProserviceDetailsPage = () => {
           imagePosition="right"
           primaryButtonText="Request PRO Service"
           primaryButtonAction={() => (window.location.href = "/contact")}
+          backUrl="/services/pro-services"
+          backText="Back to PRO Services"
         />
 
         <section className="py-16 sm:py-24">

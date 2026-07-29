@@ -95,16 +95,16 @@ export const VisaDetailsPage = () => {
       </Helmet>
       
       <main className="w-full bg-white text-gray-900 font-sans pb-24">
-        {/* Navigation Breadcrumb / Back button */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 pt-8">
-          <Link
-            to="/services/visa"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-[#6C141E] transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Visa Services
-          </Link>
-        </div>
+        <PageToolbar
+          title={visa.title}
+          description={visa.overview}
+          bgImage={visa.img}
+          imagePosition="right"
+          primaryButtonText="Apply for this Visa"
+          primaryButtonAction={() => document.getElementById("visa-contact-form")?.scrollIntoView({ behavior: "smooth" })}
+          backUrl="/services/visa"
+          backText="Back to Visa Services"
+        />
 
         {/* Dynamic Detail Section */}
         <section className="py-12 sm:py-16">
