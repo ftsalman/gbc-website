@@ -25,14 +25,16 @@ export const Button = ({
     variant === "primary" ||
     variant === "secondary";
 
+  const Component = props.href ? 'a' : 'button';
+
   return (
-    <button
+    <Component
       ref={ref}
       className={`${buttonVariants({ size, variant, className })} ${
         showCorners ? "relative group overflow-hidden !rounded-none" : ""
       }`}
       onClick={onClick}
-      type="button"
+      type={props.href ? undefined : "button"}
       role="button"
       {...props}
     >
@@ -61,7 +63,7 @@ export const Button = ({
           {children}
         </span>
       </div>
-    </button>
+    </Component>
   );
 };
 

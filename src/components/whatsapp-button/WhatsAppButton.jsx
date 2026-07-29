@@ -41,11 +41,54 @@ const AUTO_OPEN_DELAY = 1000;
 
 export const WhatsAppButton = () => {
   const [visible, setVisible] = useState(false);
+  const [isLightBg, setIsLightBg] = useState(false);
 
-  // ── Visible entrance after 1 s ──────────────────────────────────────
+  // ── Visible entrance after 1 s and dynamic color check ──────────────
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), AUTO_OPEN_DELAY);
-    return () => clearTimeout(t);
+    
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // Point just roughly where the button is (bottom right)
+          const elements = document.elementsFromPoint(window.innerWidth - 60, window.innerHeight - 60);
+          let isDark = true; // Default to dark background
+          
+          for (let i = 0; i < elements.length; i++) {
+            const el = elements[i];
+            if (el.closest('.wab') || el.classList.contains('wab')) continue;
+            
+            const style = window.getComputedStyle(el);
+            const bg = style.backgroundColor;
+            
+            if (bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+              const rgbMatch = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+              if (rgbMatch) {
+                const r = parseInt(rgbMatch[1]);
+                const g = parseInt(rgbMatch[2]);
+                const b = parseInt(rgbMatch[3]);
+                const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+                isDark = brightness < 128;
+              }
+              break;
+            }
+          }
+          
+          setIsLightBg(!isDark);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -80,9 +123,10 @@ export const WhatsAppButton = () => {
           {/* Transparent ring backdrop — no white disc */}
           <circle cx="80" cy="80" r="76" fill="none" />
 
-          {/* Circular inscription text — bordeaux brand colour (#6C141E) */}
+          {/* Circular inscription text — dynamic color */}
           <text
-            fill="#6C141E"
+            fill={isLightBg ? "#6C141E" : "#ffffff"}
+            style={{ transition: "fill 0.3s ease" }}
             fontSize="8.5"
             fontFamily="'Inter','Helvetica Neue',Arial,sans-serif"
             fontWeight="700"

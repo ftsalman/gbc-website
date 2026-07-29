@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { MessageSquare } from "lucide-react";
 import { DataList } from "../../../../../lib/turtle-ui/components";
 
-// Updated with actual GBC Corporate Services partners (Free Zones & Government Authorities)
 const partners = [
   {
     name: "IFZA",
@@ -116,46 +114,38 @@ const partners = [
     },
   },
 ];
-
-export const DepartmentsAndClients = () => {
+export const PartnersLogos = () => {
   const [hoveredClient, setHoveredClient] = useState(null);
-
   return (
     <div className="bg-white py-24 sm:py-32 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
         {/* Header section */}
-         <div className="about-header-item md:col-span-5 shrink-0 pt-1">
-            <span className="font-mono text-sm sm:text-base font-semibold tracking-tight uppercase">
-              <span className="text-bordeaux mr-1">//</span>
-              <span className="text-gray-400"> Our Clients</span>
-            </span>
-          </div>
-
         <div className="text-center max-w-4xl mx-auto mb-20 sm:mb-28">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-[#1c1d20] mb-6 sm:mb-8 tracking-tight">
-            Trusted by 5,000+ Businesses Across the UAE
+            Expertise Across UAE Government Authorities & Free Zones
           </h2>
           <p className="text-gray-600 text-lg sm:text-[19px] leading-relaxed font-light max-w-3xl mx-auto">
-            From startups to established enterprises, businesses across the UAE
-            trust Connect GBC for business setup, PRO, visa, accounting, and
-            corporate support.
+             Connect GBC has experience handling applications across the UAE's
+            major government authorities and business jurisdictions. They know
+            the system, so they can help my company regardless of where I want
+            to set up.
           </p>
         </div>
 
         {/* Logos Grid using DataList component */}
-        {/* Logos Marquee */}
-        <div className="relative w-full overflow-y-visible overflow-x-clip flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] pt-48 pb-20 -mt-44 -mb-16">
-          <div className="animate-marquee flex gap-16 md:gap-2 items-center w-max">
-            {[...partners, ...partners, ...partners].map((client, idx) => (
+        <DataList
+          data={partners}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-16 items-center justify-items-center"
+          render={(client, idx) => (
             <div
               key={idx}
-              className="relative group flex justify-center cursor-pointer min-w-[150px] md:min-w-[180px]"
-              onMouseEnter={() => setHoveredClient(idx % partners.length)}
+              className="relative group w-full flex justify-center cursor-pointer"
+              onMouseEnter={() => setHoveredClient(idx)}
               onMouseLeave={() => setHoveredClient(null)}
             >
               {/* Client Logo visual simulation */}
               <div
-                className={`flex items-center justify-center transition-all duration-300 ${hoveredClient !== null && hoveredClient !== (idx % partners.length) ? "opacity-20" : "opacity-100"} ${hoveredClient === (idx % partners.length) ? "scale-105" : "scale-100"}`}
+                className={`flex items-center justify-center transition-all duration-300 ${hoveredClient !== null && hoveredClient !== idx ? "opacity-20" : "opacity-100"} ${hoveredClient === idx ? "scale-105" : "scale-100"}`}
               >
                 {client.icon && (
                   <span className="flex items-center justify-center">
@@ -176,7 +166,7 @@ export const DepartmentsAndClients = () => {
               </div>
 
               {/* Special Badge (e.g., SHOW CASE) */}
-              {hoveredClient === (idx % partners.length) && !client.tooltip && (
+              {hoveredClient === idx && !client.tooltip && (
                 <div className="absolute -inset-8 md:-inset-10 flex items-center justify-center animate-[spin_12s_linear_infinite] pointer-events-none opacity-80 transition-opacity">
                   <svg
                     viewBox="0 0 100 100"
@@ -200,7 +190,7 @@ export const DepartmentsAndClients = () => {
               {client.tooltip && (
                 <div
                   className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-6 w-80 bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] p-6 transition-all duration-300 z-50 pointer-events-none ${
-                    hoveredClient === (idx % partners.length)
+                    hoveredClient === idx
                       ? "opacity-100 translate-y-0 visible"
                       : "opacity-0 translate-y-4 invisible"
                   }`}
@@ -220,9 +210,8 @@ export const DepartmentsAndClients = () => {
                 </div>
               )}
             </div>
-            ))}
-          </div>
-        </div>
+          )}
+        />
       </div>
     </div>
   );

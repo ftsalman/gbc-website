@@ -16,15 +16,20 @@ import { Testimonial } from "../components/testimonial/Testimonial";
 import { Blogs } from "../components/blogs/Blogs";
 import { Connect } from "../components/connect/Connect";
 import { Teams } from "../components/teams/Teams";
+import { PartnersLogos } from "../components/partners-logo/PartnersLogos.jsx";
 
 export const HomePage = () => {
   return (
     <div className="">
-      <SEO title="Home" description="GBC Corporate offers premier business setup, legal advisory, and corporate tax services in the UAE." />
+      <SEO
+        title="Home"
+        description="GBC Corporate offers premier business setup, legal advisory, and corporate tax services in the UAE."
+      />
       <PromoPopup />
       <Hero />
       <DepartmentsAndClients />
       <About />
+      <PartnersLogos />
       <Works />
       <Service />
       <BusinessSetup />

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DataList } from "../../../lib/turtle-ui/components/list/DataList";
 import { Button } from "../../../lib/turtle-ui/components/button/Button";
@@ -9,7 +9,56 @@ import { useGSAP } from "@gsap/react";
 export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isLightBg, setIsLightBg] = useState(false);
   const navRef = useRef(null);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 10) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+
+          // Dynamically check background color behind navbar
+          const elements = document.elementsFromPoint(window.innerWidth / 2, 30);
+          let isDark = true; // Default to dark (like hero)
+          
+          for (let i = 0; i < elements.length; i++) {
+            const el = elements[i];
+            if (el.tagName === 'NAV' || el.closest('nav')) continue;
+            
+            const style = window.getComputedStyle(el);
+            const bg = style.backgroundColor;
+            
+            if (bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+              const rgbMatch = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+              if (rgbMatch) {
+                const r = parseInt(rgbMatch[1]);
+                const g = parseInt(rgbMatch[2]);
+                const b = parseInt(rgbMatch[3]);
+                const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+                isDark = brightness < 128;
+              }
+              break;
+            }
+          }
+          
+          setIsLightBg(!isDark);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check on mount
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useGSAP(
     () => {
@@ -32,7 +81,9 @@ export const Navbar = () => {
     <>
       <nav
         ref={navRef}
-        className="sticky top-0 z-50 w-full backdrop-blur-md  bg-black border-b border-gray-200/50 transition-all duration-300"
+        className={`fixed top-0 z-50 w-full  transition-all duration-300 border-b p-4 ${
+          isScrolled ? " backdrop-blur-sm border-none" : "bg-transparent border-transparent"
+        }`}
         onMouseLeave={() => setActiveMenu(null)}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,13 +92,13 @@ export const Navbar = () => {
             <div className="flex-shrink-0 flex items-center nav-item-animate opacity-0">
               <Link
                 to="/"
-                className="text-white hover:opacity-80 transition-colors duration-300 opacity-80 hover:opacity-100 flex items-center"
+                className={`hover:opacity-80 transition-colors duration-300 opacity-80 hover:opacity-100 flex items-center ${isLightBg ? "text-black" : "text-white"}`}
                 aria-label="Home"
               >
                 <img
                   src="/images/LOGO_GBC.png"
                   alt="logo"
-                  className=" w-24"
+                  className={`w-24 transition-all duration-300 ${isLightBg ? "invert" : ""}`}
                 />
               </Link>
             </div>
@@ -71,7 +122,7 @@ export const Navbar = () => {
                   >
                     <Link
                       to={`/${item.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-")}`}
-                      className={`text-white transition-all duration-300 text-sm tracking-wide whitespace-nowrap py-2 ${
+                      className={`transition-all duration-300 text-sm tracking-wide whitespace-nowrap py-2 ${isLightBg ? "text-black" : "text-white"} ${
                         activeMenu === item
                           ? "opacity-100"
                           : "opacity-80 hover:opacity-100"
@@ -117,7 +168,7 @@ export const Navbar = () => {
                 className="hidden md:flex px-5"
                 onClick={() => (window.location.href = "/contact")}
               >
-                Connect Agent
+                Get Free Consultation
                 <svg
                   className="w-4 h-4 ml-1"
                   fill="none"
@@ -134,7 +185,7 @@ export const Navbar = () => {
               </Button>
               {/* Mobile Menu Toggle */}
               <Button
-                className="!p-0 !bg-transparent md:hidden text-white hover:opacity-80 ml-2 transition-opacity"
+                className={`!p-0 !bg-transparent md:hidden hover:opacity-80 ml-2 transition-opacity ${isLightBg ? "text-black" : "text-white"}`}
                 aria-label="Menu"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
