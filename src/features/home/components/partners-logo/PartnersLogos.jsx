@@ -2,122 +2,29 @@ import React, { useState } from "react";
 import { DataList } from "../../../../../lib/turtle-ui/components";
 
 const partners = [
-  {
-    name: "IFZA",
-    font: "font-black tracking-widest text-2xl text-blue-900",
-    img: null,
-  },
-  {
-    name: "DMCC",
-    font: "font-black tracking-tighter text-2xl text-yellow-500",
-    img: null,
-  },
-  { name: "Meydan", font: "font-serif text-gray-800 text-3xl", img: null },
-  {
-    name: "Shams",
-    font: "font-sans font-bold text-orange-500 text-xl flex items-center gap-2",
-    icon: (
-      <span className="w-5 h-5 bg-orange-400 rounded-full inline-block"></span>
-    ),
-  },
-  { name: "JAFZA", font: "font-black text-blue-800 text-2xl", img: null },
-  {
-    name: "RAKEZ",
-    font: "font-sans font-bold text-gray-800 flex items-center gap-2 text-xl",
-    icon: <span className="text-red-500 font-black">R</span>,
-  },
-  {
-    name: "Dubai Economy",
-    font: "font-sans font-medium text-lg text-gray-700 tracking-wide",
-    img: null,
-  },
-  {
-    name: "DDA",
-    font: "font-black text-indigo-500 text-2xl tracking-tighter",
-    img: null,
-  },
-  {
-    name: "DWC",
-    font: "font-black italic border-2 border-black px-1 transform -skew-x-12 text-xl",
-    img: null,
-  },
-  {
-    name: "SPC Free Zone",
-    font: "font-bold text-blue-900 flex items-center gap-2 text-lg",
-    icon: <span className="text-blue-500 text-xl">◆</span>,
-  },
-  { name: "Masdar", font: "font-black text-green-600 text-2xl", img: null },
-  {
-    name: "KIZAD",
-    font: "font-medium text-gray-800 tracking-[0.2em] text-sm flex items-center gap-2",
-    icon: <span className="text-red-600 font-bold">K</span>,
-  },
-  {
-    name: "TwoFour54",
-    font: "font-sans font-bold text-gray-800 flex flex-col justify-center text-sm text-center leading-none",
-    icon: (
-      <span className="font-black text-purple-600 text-2xl mr-2 leading-none">
-        24
-      </span>
-    ),
-    tooltip: {
-      subtitle: "Abu Dhabi Media Zone",
-      desc: "Providing world-class infrastructure for media, entertainment, and gaming businesses in Abu Dhabi.",
-    },
-  },
-  {
-    name: "AFZA",
-    font: "font-sans font-black text-xl text-blue-700",
-    img: null,
-    tooltip: {
-      subtitle: "Ajman Free Zone",
-      desc: "Offering highly cost-effective setup options for startups and SMEs globally.",
-    },
-  },
-  {
-    name: "SAIF Zone",
-    font: "font-serif text-black text-xs text-center leading-tight flex flex-col items-center uppercase font-bold",
-    subtext: "SHARJAH AIRPORT",
-    icon: (
-      <div className="w-5 h-5 border-[3px] border-black rounded-sm mb-1"></div>
-    ),
-    tooltip: {
-      subtitle: "Sharjah Airport International Free Zone",
-      desc: "The premier business destination offering fast-track setup and premium logistics.",
-    },
-  },
-  {
-    name: "Creative City",
-    font: "font-black text-pink-500 text-xl tracking-tight",
-    img: null,
-    tooltip: {
-      subtitle: "Fujairah Creative City",
-      desc: "Dedicated to media, consulting, and education professionals seeking flexible setups.",
-    },
-  },
-  {
-    name: "UAQ FTZ",
-    font: "font-serif text-blue-900 leading-tight text-center text-[16px] font-bold",
-    img: null,
-    tooltip: {
-      subtitle: "Umm Al Quwain Free Trade Zone",
-      desc: "A business-friendly environment tailored for micro-businesses and freelancers.",
-    },
-  },
-  {
-    name: "Dubai Silicon Oasis",
-    font: "font-black text-blue-600 text-[15px] tracking-tight",
-    img: null,
-    tooltip: {
-      subtitle: "DSO Authority",
-      desc: "An integrated technology park providing unmatched IT infrastructure and tech incubators.",
-    },
-  },
+  { name: "DP World", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/1.png" },
+  { name: "Dubai Municipality", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/2.png" },
+  { name: "Dubai Land Department", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/3.jpg" },
+  { name: "Ministry of Interior", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/4.png" },
+  { name: "Emirates Identity Authority", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/5.png" },
+  { name: "Dubai Courts", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/6.png" },
+  { name: "Dubai Chambers", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/7.png" },
+  { name: "RTA", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/8.png" },
+  { name: "Amer", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/9.png" },
+  { name: "Tarakees", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/10.png" },
+  { name: "Dubai Health Authority", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/11.png" },
+  { name: "General Pension & Social Security Authority", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/12.png" },
+  { name: "Tasheel", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/13.png", tooltip: { subtitle: "MOHRE Services", desc: "Providing comprehensive Ministry of Human Resources and Emiratisation services." } },
+  { name: "Tawjeeh", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/14.png", tooltip: { subtitle: "Guidance Center", desc: "Awareness and guidance center for workers and employers in the UAE." } },
+  { name: "DMCC", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/15.png", tooltip: { subtitle: "Dubai Multi Commodities Centre", desc: "The world's flagship free zone and Government of Dubai Authority on commodities trade and enterprise." } },
+  { name: "Shams", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/16.png", tooltip: { subtitle: "Sharjah Media City", desc: "A world-class media hub for innovative facilities and services." } },
+  { name: "Meydan", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/17.png", tooltip: { subtitle: "Meydan Free Zone", desc: "Offering premium business setups in the heart of Dubai." } },
+  { name: "JAFZA", font: "font-sans font-bold text-gray-800 text-xl hidden", img: "/logos/18.png", tooltip: { subtitle: "Jebel Ali Free Zone", desc: "The leading trade and logistics hub in the Middle East." } },
 ];
 export const PartnersLogos = () => {
   const [hoveredClient, setHoveredClient] = useState(null);
   return (
-    <div className="bg-white py-24 sm:py-32 relative overflow-hidden font-sans">
+    <div className="bg-white py-24 sm:py-32 relative font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
         {/* Header section */}
         <div className="text-center max-w-4xl mx-auto mb-20 sm:mb-28">
@@ -147,22 +54,28 @@ export const PartnersLogos = () => {
               <div
                 className={`flex items-center justify-center transition-all duration-300 ${hoveredClient !== null && hoveredClient !== idx ? "opacity-20" : "opacity-100"} ${hoveredClient === idx ? "scale-105" : "scale-100"}`}
               >
-                {client.icon && (
-                  <span className="flex items-center justify-center">
-                    {client.icon}
-                  </span>
-                )}
+                {client.img ? (
+                  <img src={client.img} alt={client.name} className="max-h-24 w-auto object-contain px-2" />
+                ) : (
+                  <>
+                    {client.icon && (
+                      <span className="flex items-center justify-center">
+                        {client.icon}
+                      </span>
+                    )}
 
-                <span
-                  className={`${client.font} flex flex-col items-center justify-center`}
-                >
-                  {client.name}
-                  {client.subtext && (
-                    <span className="block mt-0.5 tracking-[0.2em]">
-                      {client.subtext}
+                    <span
+                      className={`${client.font} flex flex-col items-center justify-center`}
+                    >
+                      {client.name}
+                      {client.subtext && (
+                        <span className="block mt-0.5 tracking-[0.2em]">
+                          {client.subtext}
+                        </span>
+                      )}
                     </span>
-                  )}
-                </span>
+                  </>
+                )}
               </div>
 
               {/* Special Badge (e.g., SHOW CASE) */}
