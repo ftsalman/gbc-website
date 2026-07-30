@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,43 +8,35 @@ gsap.registerPlugin(ScrollTrigger);
 const featuresData = [
   {
     id: 1,
-    title: "15+ Years Experience",
-    desc: "Trusted UAE business setup experts with 15+ years' experience.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 11.8V6h1.5v5.2l4.5 4.5-.8.7z" />
-      </svg>
-    ),
+    targetNumber: 15,
+    stringSuffix: "",
+    blueSuffix: "+",
+    label: "[01]",
+    desc: "Years of experience helping businesses succeed in the UAE.",
   },
   {
     id: 2,
-    title: "5,000+ Businesses Served",
-    desc: "Successfully helping 5,000+ businesses establish and grow in the UAE.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-      </svg>
-    ),
+    targetNumber: 5000,
+    stringSuffix: "",
+    blueSuffix: "+",
+    label: "[02]",
+    desc: "Businesses successfully established and growing.",
   },
   {
     id: 3,
-    title: "100,000+ Applications Processed",
-    desc: "100,000+ visas, licenses, and government applications successfully processed.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-      </svg>
-    ),
+    targetNumber: 100,
+    stringSuffix: "k",
+    blueSuffix: "+",
+    label: "[03]",
+    desc: "Visas, licenses, and government applications processed.",
   },
   {
     id: 4,
-    title: "98% Client Satisfaction",
-    desc: "Committed to exceptional customer service.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-      </svg>
-    ),
+    targetNumber: 98,
+    stringSuffix: "",
+    blueSuffix: "%",
+    label: "[04]",
+    desc: "Client satisfaction committed to exceptional service.",
   },
 ];
 
@@ -150,14 +142,74 @@ export const About = () => {
   );
 };
 
-const FeatureCard = ({ data }) => (
-  <div className="about-card-animate flex-1 bg-[#f4f3ee] rounded-3xl p-8 flex flex-col justify-between min-h-[240px] transition-transform duration-300 hover:-translate-y-1">
-    <div className="w-12 h-12 rounded-xl bg-[#141b34] text-white flex items-center justify-center mb-12 shadow-sm">
-      {data.icon}
+const RollingNumber = ({ value, stringSuffix, blueSuffix }) => {
+  const [play, setPlay] = useState(false);
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 85%",
+      onEnter: () => setPlay(true),
+    });
+  }, { scope: containerRef });
+
+  const formattedValue = typeof value === 'number' && value >= 1000 
+    ? value.toLocaleString('en-US') 
+    : value.toString();
+  const chars = formattedValue.split('');
+  const column = [0,1,2,3,4,5,6,7,8,9, 0,1,2,3,4,5,6,7,8,9];
+
+  return (
+    <div ref={containerRef} className="flex overflow-hidden leading-none items-center h-[1em]">
+      {chars.map((char, i) => {
+        if (!/[0-9]/.test(char)) {
+          return <span key={i} className="inline-block h-[1em]">{char}</span>;
+        }
+        const digit = parseInt(char, 10);
+        const targetIndex = play ? 10 + digit : 0;
+        
+        return (
+          <div key={i} className="h-[1em] overflow-hidden inline-block relative">
+             <div 
+               className="flex flex-col transition-transform duration-[2000ms]" 
+               style={{ 
+                 transform: `translateY(-${targetIndex * 5}%)`,
+                 transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                 transitionDelay: `${i * 100}ms`
+               }}
+             >
+               {column.map((n, idx) => (
+                 <span key={idx} className="h-[1em] flex items-center justify-center leading-none">{n}</span>
+               ))}
+             </div>
+          </div>
+        );
+      })}
+      {stringSuffix && <span className="inline-block h-[1em]">{stringSuffix}</span>}
+      {blueSuffix && <span className="text-bordeaux inline-block h-[1em]">{blueSuffix}</span>}
     </div>
-    <div className="text-gray-600 text-sm sm:text-[15px] leading-relaxed">
-      <strong className="text-gray-900 font-semibold mr-1">{data.title}</strong>
-      {data.desc}
+  );
+};
+
+const FeatureCard = ({ data }) => {
+  return (
+    <div className="about-card-animate flex-1 bg-[#f8f9fc] rounded-2xl p-8 flex flex-col justify-between min-h-[280px] transition-transform duration-300 hover:-translate-y-1">
+      <div className="flex justify-between items-start">
+        <div className="text-6xl sm:text-7xl font-normal tracking-tighter text-[#1a1a1a]">
+          <RollingNumber 
+            value={data.targetNumber} 
+            stringSuffix={data.stringSuffix} 
+            blueSuffix={data.blueSuffix} 
+          />
+        </div>
+        <div className="text-[#9ea4b0] font-mono text-sm mt-2 font-medium">
+          {data.label}
+        </div>
+      </div>
+      <div className="text-[#333] text-[16px] leading-relaxed max-w-[85%] mt-12">
+        {data.desc}
+      </div>
     </div>
-  </div>
-);
+  );
+};

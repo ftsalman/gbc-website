@@ -39,7 +39,7 @@ export const HomePage = () => {
       <Testimonial />
       <AwardShowcase />
       {/* <Package /> */}
-      <Blogs />
+      {/* <Blogs /> */}
       <Connect />
     </div>
   );

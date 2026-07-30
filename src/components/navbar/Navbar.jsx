@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DataList } from "../../../lib/turtle-ui/components/list/DataList";
 import { Button } from "../../../lib/turtle-ui/components/button/Button";
+import { ParticleButton } from "../ui/particle-button";
 import { navItems, megaMenuData } from "../../constants/navData";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -162,27 +163,14 @@ export const Navbar = () => {
 
             {/* Connect Agent Button - Right Aligned */}
             <div className="flex items-center space-x-4 flex-shrink-0 justify-end nav-item-animate opacity-0">
-              <Button
-                size="sm"
-                variant="primary"
-                className="hidden md:flex px-5"
+              <ParticleButton
+                className="hidden md:flex rounded-xl"
                 onClick={() => (window.location.href = "/contact")}
+                successDuration={1000}
+                variant="default"
               >
                 Get Free Consultation
-                <svg
-                  className="w-4 h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </Button>
+              </ParticleButton>
               {/* Mobile Menu Toggle */}
               <Button
                 className={`!p-0 !bg-transparent md:hidden hover:opacity-80 ml-2 transition-opacity ${isLightBg ? "text-black" : "text-white"}`}
