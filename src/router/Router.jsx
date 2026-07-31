@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Layout } from '../layout/Layout.jsx';
 import { HomePage } from '../features/home/page/HomePage.jsx';
 import { AboutPage } from '../features/about/page/AboutPage.jsx';
@@ -18,6 +18,11 @@ import { BusinessCenterPage } from '../features/services/page/BusinessCenterPage
 import { BusinessCenterDetailsPage } from '../features/services/page/BusinessCenterDetailsPage.jsx';
 import { ErrorPage } from '../pages/ErrorPage.jsx';
 import { PackagesPage } from '../features/packages/page/PackagesPage.jsx';
+import { AuthLayout } from '../admin/auth/layout/AuthLayout.jsx';
+import { AdminLoginPage } from '../admin/auth/page/AdminLoginPage.jsx';
+import { AdminBlogPage } from '../admin/blog/page/AdminBlogPage.jsx';
+
+import { CreateBlogPage } from '../admin/blog/create-blogs/pages/CreateBlogPage.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -95,4 +100,26 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/admin',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <AdminLoginPage />,
+      },
+    ],
+  },
+  {
+    path: '/admin/dashboard',
+    element: <Navigate to="/admin/blog-create" replace />
+  },
+  // {
+  //   path: '/admin/blog',
+  //   element: <AdminBlogPage />
+  // },
+  {
+    path: '/admin/blog-create',
+    element: <CreateBlogPage />
+  }
 ]);

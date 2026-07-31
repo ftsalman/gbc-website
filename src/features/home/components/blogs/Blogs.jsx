@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../../../../../lib/turtle-ui/components";
+import { getFirebaseBlogs } from "../../../../admin/blog/create-blogs/utils/firebaseBlogStorage";
 
-const blogPosts = [
+const staticBlogPosts = [
   {
     id: "01",
     date: "May 14, 2026",
@@ -41,6 +42,35 @@ const blogPosts = [
 ];
 
 export const Blogs = () => {
+  const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const firebaseBlogs = await getFirebaseBlogs();
+        if (firebaseBlogs && firebaseBlogs.length > 0) {
+          const mappedBlogs = firebaseBlogs.map((b) => ({
+            id: b.id,
+            date: b.date,
+            title: b.title,
+            image: b.image,
+            href: `/blogs/${b.id}`, // Route to dynamic blog page
+          }));
+          
+          // Combine dynamic and static blogs, ensuring no duplicates
+          const combined = [...mappedBlogs, ...staticBlogPosts].filter(
+            (blog, index, self) => index === self.findIndex(t => t.id === blog.id)
+          ).slice(0, 4); // Only show top 4 on home page
+          
+          setBlogPosts(combined);
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
   return (
     <section className="blogs-section relative bg-white text-black py-20 md:py-28 border-b border-black/10 overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
@@ -62,7 +92,7 @@ export const Blogs = () => {
           {/* Blog Collection List matching exact Syncox w-dyn-list / blog-collection-list */}
           <div className="w-dyn-list">
             <div role="list" className="blog-collection-list grid grid-cols-1 gap-0">
-              {blogPosts.map((post) => (
+              {blogPosts.slice(0, 4).map((post) => (
                 <div role="listitem" key={post.id} className="w-dyn-item">
                   <div className="blog-list-item py-10 md:py-14 border-b border-black/10 flex flex-col lg:flex-row justify-between gap-8 lg:gap-16 items-start lg:items-center group transition-colors duration-500 hover:bg-black/[0.02]">
                     {/* Thumbnail matching exact Syncox .blog-thumbnail-wrap with rounded-xl (var(--spacing--2x)) */}
@@ -113,6 +143,26 @@ export const Blogs = () => {
                 </div>
               ))}
             </div>
+          </div>
+          
+          {/* View All Blogs Button */}
+          <div className="flex justify-center mt-4">
+            <a
+              href="/blogs"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/blogs";
+              }}
+              className="w-inline-block"
+            >
+              <Button
+                variant="primary"
+                size="lg"
+                className="px-8 py-4 text-base tracking-wide"
+              >
+                View all blogs
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -1,17 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { SEO } from "../../../components/seo/SEO.jsx";
-import { Connect } from "../../home/components/connect/Connect.jsx";
 import { blogsData } from "../constants/blogsData.jsx";
 import { Button } from "../../../../lib/turtle-ui/components/button/Button.jsx";
+import { getFirebaseBlogs } from "../../../admin/blog/create-blogs/utils/firebaseBlogStorage";
 
 export const BlogDetailsPage = () => {
   const { id } = useParams();
-  const blog = blogsData[id];
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const fetchBlog = async () => {
+      // First check static data
+      if (blogsData[id]) {
+        setBlog(blogsData[id]);
+        setLoading(false);
+        return;
+      }
+      
+      // If not in static data, check Firebase
+      try {
+        const firebaseBlogs = await getFirebaseBlogs();
+        const found = firebaseBlogs.find(b => String(b.id) === String(id));
+        if (found) {
+          // Map to the expected UI schema
+          setBlog({
+            ...found,
+            category: found.categoryLabel || "Blog",
+            avatar: found.authorImage || "/images/blogs/avatar_lana.png",
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching blog:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchBlog();
   }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center font-sans">
+        <span className="w-8 h-8 border-4 border-gray-200 border-t-[#6C141E] rounded-full animate-spin mb-4"></span>
+        <p className="text-gray-500">Loading article...</p>
+      </div>
+    );
+  }
 
   if (!blog) {
     return (
@@ -96,7 +135,11 @@ export const BlogDetailsPage = () => {
       <section className="w-full px-4 md:px-8 lg:px-12 bg-white pb-20">
         <div className="max-w-3xl mx-auto">
           <div className="blog-content-body prose prose-lg prose-slate max-w-none">
-            {blog.content}
+            {typeof blog.content === "string" ? (
+              <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+            ) : (
+              blog.content
+            )}
           </div>
         </div>
       </section>
