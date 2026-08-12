@@ -77,8 +77,8 @@ export const ContactForm = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-normal text-gray-900 mb-2">Email</h4>
-                  <a href="mailto:contact@gbc-business.com" className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light">
-                    contact@gbc-business.com
+                  <a href="mailto:typing@connectgbc.com" className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light">
+                    typing@connectgbc.com
                   </a>
                 </div>
               </div>
@@ -103,8 +103,8 @@ export const ContactForm = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-normal text-gray-900 mb-2">Phone</h4>
-                  <a href="tel:+971501234567" className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light">
-                    +971 50 123 4567
+                  <a href="tel:+971585277775" className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light">
+                    +971 58 527 7775
                   </a>
                 </div>
               </div>

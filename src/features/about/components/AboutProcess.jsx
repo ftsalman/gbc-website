@@ -8,27 +8,39 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     num: "01",
-    title: "Initial Consultation",
-    img: "/images/blogs/small1.png",
-    desc: "We analyze your business goals, advise on the best legal structure, and help you select the ideal jurisdiction (Mainland vs Free Zone).",
+    subtitle: "Tell Us What You Need",
+    title: "Free Consultation & Requirement Assessment",
+    img: "https://i.pinimg.com/736x/c2/09/08/c209085321637c55c49a17776ca95156.jpg",
+    desc: "Tell us about your business, service requirements and goals. Our consultants review your needs and recommend the right solution, whether you need business setup, PRO services, visa processing, licensing, accounting or corporate support.",
+    cta: "Get Free Consultation",
+    href: "/contact",
   },
   {
     num: "02",
-    title: "Licensing & Registration",
-    img: "/images/blogs/small1.png",
-    desc: "Our experts handle all government approvals, document drafting, and trade license issuance seamlessly and efficiently.",
+    subtitle: "Get the Right Solution",
+    title: "Choose the Right Business & Service Option",
+    img: "https://i.pinimg.com/736x/fa/7e/cf/fa7ecfd0d2b272989842b1142f8a7fc3.jpg",
+    desc: "Based on your requirements, we explain the available options, required documents, government procedures, estimated timelines and applicable fees. For business setup, we help you understand the differences between Mainland, Free Zone and Offshore structures.",
+    cta: "Explore Business Setup",
+    href: "/services",
   },
   {
     num: "03",
-    title: "Visas & Emirates ID",
-    img: "/images/blogs/small1.png",
-    desc: "We offer streamlined processing for investor visas, employee visas, medical tests, and biometrics for a hassle-free experience.",
+    subtitle: "We Handle the Process",
+    title: "Application, Documentation & Government Processing",
+    img: "https://i.pinimg.com/736x/1b/21/64/1b2164703102ef91cfb7a182d0538d6d.jpg",
+    desc: "Once you approve the solution, we handle all the paperwork, submit applications to the relevant authorities, and manage the entire government processing workflow on your behalf.",
+    cta: "View Corporate Services",
+    href: "/services",
   },
   {
     num: "04",
-    title: "Corporate Banking & Support",
-    img: "/images/blogs/small1.png",
-    desc: "We facilitate priority bank account opening and provide ongoing PRO, accounting, and legal support as your business scales.",
+    subtitle: "Final Handover & Support",
+    title: "Completion & Ongoing Compliance",
+    img: "https://i.pinimg.com/736x/0b/21/58/0b2158ac4dbf4b08d75601a302fe3868.jpg",
+    desc: "We deliver your finalized documents, licenses, or visas. Our support continues with ongoing assistance for your corporate compliance, renewals, and business needs.",
+    cta: "Contact Our Team",
+    href: "/contact",
   },
 ];
 
@@ -94,29 +106,39 @@ export const AboutProcess = () => {
         {/* Header - Centered */}
         <div className="mb-20 sm:mb-28 flex flex-col items-center text-center">
           <div className="process-header-item mb-4 flex items-center justify-center gap-2">
-            <span className="text-[#6C141E] font-mono font-medium text-lg">//</span>
+            <span className="text-[#6C141E] font-mono font-medium text-lg">
+              //
+            </span>
             <span className="font-mono text-sm tracking-widest uppercase font-semibold text-black">
-              How We Work
+              HOW IT WORKS
             </span>
           </div>
-          <h2 className="process-header-item text-4xl sm:text-5xl md:text-[80px] font-medium tracking-tight text-black leading-tight">
-            Our Process
+          <h2 className="process-header-item text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-medium tracking-tight text-black leading-tight max-w-4xl">
+            Our Simple 4-Step Process
           </h2>
+
+          <p className="toolbar-desc mt-6 max-w-sm sm:max-w-xl text-[14px] sm:text-base text-gray-500 font-light leading-relaxed">
+            From your first consultation to completed applications and ongoing
+            support, our experienced team manages the process while keeping you
+            informed at every stage.
+          </p>
         </div>
 
         {/* Sticky count column + right-hand scrolling cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start relative">
-          
           {/* Left sliding sticky number */}
           <div className="hidden lg:block lg:col-span-5 sticky top-1/3">
             {/* Window height matches the number height to hide the rest */}
             <div className="h-[160px] overflow-hidden relative flex justify-center">
-              <div 
+              <div
                 className="flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] text-center"
                 style={{ transform: `translateY(-${activeStep * 160}px)` }}
               >
                 {steps.map((s) => (
-                  <div key={s.num} className="h-[160px] flex items-center justify-center pb-4">
+                  <div
+                    key={s.num}
+                    className="h-[160px] flex items-center justify-center pb-4"
+                  >
                     <span className="text-[120px] md:text-[150px] font-normal leading-none text-black tracking-tighter">
                       {s.num}
                     </span>
@@ -150,12 +172,40 @@ export const AboutProcess = () => {
 
                 {/* Content Body */}
                 <div className="max-w-xl">
-                  <h3 className="text-2xl sm:text-3xl font-medium text-[#6C141E] mb-4">
-                    {s.title}
-                  </h3>
-                  <p className="text-gray-600 text-lg sm:text-xl font-light leading-relaxed">
+                  <div className="mb-4">
+                    <span className="text-gray-500 font-mono text-sm uppercase tracking-wider block mb-2">
+                      {s.subtitle}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-medium text-[#6C141E]">
+                      {s.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 text-lg sm:text-xl font-light leading-relaxed mb-8">
                     {s.desc}
                   </p>
+                  {s.cta && (
+                    <a
+                      href={s.href}
+                      className="inline-flex items-center gap-2 bg-[#6C141E] text-white px-6 py-3 rounded-full hover:bg-black transition-colors duration-300 font-medium text-sm"
+                    >
+                      {s.cta}
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 7H13M13 7L7 1M13 7L7 13"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

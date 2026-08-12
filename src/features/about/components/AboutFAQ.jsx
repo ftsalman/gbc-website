@@ -8,24 +8,66 @@ gsap.registerPlugin(ScrollTrigger);
 const faqs = [
   {
     id: "01",
-    question: "What is the difference between Mainland and Free Zone?",
-    answer: "Mainland companies can trade directly within the local UAE market and take on government contracts. Free Zone companies offer 100% foreign ownership and specific tax benefits, but are generally restricted to trading internationally or within the Free Zone.",
+    question: "What services does GBC provide in the UAE?",
+    answer: "GBC provides a wide range of business and corporate services under one roof. Our services include UAE business setup, Mainland and Free Zone company formation, PRO services, visa and immigration support, accounting and VAT services, business centre solutions, trade licensing, and government approvals.",
   },
   {
     id: "02",
-    question: "How long does it take to get a trade license in Dubai?",
-    answer: "Most mainland and free zone company setups are completed within 5–10 working days once all documents are submitted. We manage the entire process end-to-end to ensure there are no delays.",
+    question: "Should I choose a Mainland or Free Zone company in the UAE?",
+    answer: "It depends on your business activity, target market and long-term plans. Mainland and Free Zone companies have different requirements, benefits and operating structures. Our consultants can understand your business requirements and help you choose the option that best fits your goals.",
+    cta: "Compare Business Setup Options →",
   },
   {
     id: "03",
-    question: "Do I need a local sponsor to set up my business?",
-    answer: "Recent changes in UAE law allow 100% foreign ownership for most commercial and industrial activities in the Mainland. You only need a Local Service Agent (LSA) for specific professional licenses. Free Zones always offer 100% foreign ownership.",
+    question: "Can GBC help me set up a company in Dubai?",
+    answer: "Yes. GBC assists entrepreneurs and businesses with company formation and business setup in Dubai and across the UAE. We can guide you through the required documentation, licensing, registration and related government procedures from the initial consultation through completion.",
   },
   {
     id: "04",
-    question: "Can GBC help me open a corporate bank account?",
-    answer: "Yes! We have strong relationships with top-tier UAE banks. We will prepare your corporate profile, guide you through compliance requirements, and facilitate priority account opening.",
+    question: "What are PRO services and why does my business need them?",
+    answer: "PRO services help businesses manage essential government and administrative procedures, including document processing, government applications, renewals and other corporate requirements. GBC's PRO team handles these processes on your behalf, helping you save time and focus on your core business.",
   },
+  {
+    id: "05",
+    question: "Can GBC handle my company's visa and immigration requirements?",
+    answer: "Yes. We provide support for UAE visa and immigration services, including employment, investor, partner and family-related visa requirements. Our team helps with the required documentation and coordinates the relevant procedures based on your specific requirements.",
+  },
+  {
+    id: "06",
+    question: "Does GBC provide accounting and VAT services?",
+    answer: "Yes. GBC provides accounting and VAT support for UAE businesses, including bookkeeping, VAT-related services and ongoing financial administration. Our team helps businesses keep their financial records organized and meet their applicable compliance requirements.",
+  },
+  {
+    id: "07",
+    question: "Can GBC help with trade licence applications and renewals?",
+    answer: "Yes. We assist businesses with trade licence applications, renewals, amendments and related government procedures. Our team can help you understand the requirements, prepare the necessary documentation and coordinate the process.",
+  },
+  {
+    id: "08",
+    question: "Can I get PRO, visa, accounting and other services from one company?",
+    answer: "Yes. One of GBC's key advantages is that businesses can access multiple corporate and administrative services through one trusted partner. Instead of coordinating with different providers, you can work with one team for your business setup, PRO, visa, accounting and other ongoing requirements.",
+  },
+  {
+    id: "09",
+    question: "Can GBC help with government approvals and external permits?",
+    answer: "Yes. GBC assists businesses with government approvals, external permits, clearances and related regulatory procedures, depending on the business activity and authority involved. Our team helps identify the applicable requirements and coordinates the necessary processes.",
+  },
+  {
+    id: "10",
+    question: "How does the GBC business setup process work?",
+    answer: "It starts with understanding your business requirements. We then recommend the appropriate setup or service, explain the required documents and applicable costs, and coordinate the necessary applications and government procedures. Once the process is completed, we can continue supporting your business with ongoing corporate requirements.",
+  },
+  {
+    id: "11",
+    question: "How much does it cost to set up a business in the UAE?",
+    answer: "The cost depends on several factors, including the business activity, jurisdiction, licence type, visa requirements, office requirements and government fees. Rather than giving every business the same price, our team can assess your requirements and provide a solution based on your specific needs.",
+    cta: "Get a Free Consultation →",
+  },
+  {
+    id: "12",
+    question: "Why should I choose GBC for my UAE business services?",
+    answer: "GBC has 14+/15+ years of experience in business and corporate services, supported by a team of 70+ professionals and experience serving 1,000+ companies. We bring multiple business services together under one partner, with a focus on responsible processing, compliance, follow-up and ongoing client support.",
+  }
 ];
 
 const FaqItem = ({ item }) => {
@@ -84,6 +126,13 @@ const FaqItem = ({ item }) => {
           <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-[800px]">
             {item.answer}
           </p>
+          {item.cta && (
+            <div className="mt-4">
+              <a href="#" className="inline-flex items-center text-sm sm:text-base font-medium text-[#6C141E] hover:text-gray-900 transition-colors duration-300">
+                {item.cta}
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

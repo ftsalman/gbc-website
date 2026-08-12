@@ -9,75 +9,43 @@ gsap.registerPlugin(ScrollTrigger);
 const teamMembers = [
   {
     id: "01",
-    name: "Alexander Vance",
-    role: "Managing Director & Founder",
-    bio: "20+ years of structuring Fortune 500 expansions across the UAE mainland and free zones.",
-    image:
-      "https://i.pinimg.com/736x/60/b0/07/60b0074625b5e334945b83ccb34fdaed.jpg",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    handle: "alexvance",
-    time: "12m ago",
+    name: "Muhammed Shereef & Rafeeq",
+    role: "CEO",
+    bio: "Leading the company's strategic vision and driving growth across the global business landscape.",
+    image: "/images/team/shereef-rafeeq.png",
+    avatar: "/images/team/shereef-rafeeq.jpeg",
+    handle: "gbc_ceo",
+    time: "2m ago",
   },
   {
     id: "02",
-    name: "Fatima Al-Zahra",
-    role: "Head of Legal & Compliance",
-    bio: "Specialist in UAE corporate governance, cross-border restructuring, and regulatory frameworks.",
-    image:
-      "https://i.pinimg.com/736x/65/37/31/653731305f342118664309530fce2871.jpg",
-    avatar:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
-    handle: "fatima_legal",
-    time: "8m ago",
-  },
-  {
-    id: "03",
-    name: "Marcus Sterling",
-    role: "Senior Business Advisory Lead",
-    bio: "Advising high-net-worth investors and family offices on strategic UAE market entry.",
-    image:
-      "https://i.pinimg.com/736x/26/40/fd/2640fdbc23f8b47e0a070cad1ad6f849.jpg",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
-    handle: "marcus_uae",
+    name: "Sajjad Ali",
+    role: "Administration Manager",
+    bio: "Ensuring smooth operational workflows and managing day-to-day administrative functions.",
+    image: "/images/team/sajjad-ali.png",
+    avatar: "/images/team/sajjad-ali.png",
+    handle: "sajjad_admin",
     time: "15m ago",
   },
   {
+    id: "03",
+    name: "Unais P",
+    role: "HR",
+    bio: "Fostering a culture of excellence and managing our growing talent pool.",
+    image: "/images/team/unais.png",
+    avatar: "/images/team/unais.png",
+    handle: "unais_hr",
+    time: "1h ago",
+  },
+  {
     id: "04",
-    name: "Sophia Khennouf",
-    role: "Corporate Tax & Strategy Lead",
-    bio: "Former Big-4 consultant ensuring seamless corporate tax optimization and VAT compliance.",
-    image:
-      "https://i.pinimg.com/736x/b6/28/46/b628467f0c4c5caac3f4fb7267e68c58.jpg",
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
-    handle: "sophiak_tax",
-    time: "24m ago",
-  },
-  {
-    id: "05",
-    name: "Tariq Mansoor",
-    role: "Government Relations & PRO Director",
-    bio: "Executing expedited regulatory clearances, licensing, and VIP government liaising.",
-    image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
-    avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop",
-    handle: "tariq_pro",
-    time: "5m ago",
-  },
-  {
-    id: "06",
-    name: "Elena Rostova",
-    role: "VIP Client Concierge & Success",
-    bio: "Dedicated advisor orchestrating seamless onboarding and banking relations for global elites.",
-    image:
-      "https://i.pinimg.com/736x/92/40/55/924055b550306b67352c9a6d588848ab.jpg",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
-    handle: "elena_vip",
-    time: "18m ago",
+    name: "Muhammed  Nisab",
+    role: "Operations Manager",
+    bio: "Optimizing operational efficiency and driving seamless execution of client projects.",
+    image: "/images/team/Muhammed-nisab.png",
+    avatar: "/images/team/Muhammed-nisab.png",
+    handle: "nisab_ops",
+    time: "3h ago",
   },
 ];
 
@@ -157,7 +125,7 @@ export const Teams = () => {
           {/* Featured Large Founder Card (Left Column - Syncox .founder-card) */}
           {firstMember && (
             <div className="team-card-item lg:col-span-4 w-full flex flex-col">
-              <Card className="!p-0 !rounded-2xl sm:!rounded-3xl !border !border-white/10 !bg-[#121212] overflow-hidden relative group h-[480px] sm:h-[540px] lg:h-[560px] max-w-full shadow-none flex-1 cursor-pointer">
+              <Card className="!p-0 !rounded-2xl sm:!rounded-3xl !border !border-white/10 !bg-[#121212] overflow-hidden relative group h-[480px] sm:h-[540px] lg:h-[540px] max-w-full shadow-none flex-1 cursor-pointer">
                 <img
                   src={firstMember.image}
                   alt={firstMember.name}
@@ -186,14 +154,14 @@ export const Teams = () => {
               className="!flex !flex-col sm:!grid sm:!grid-cols-2 lg:!grid-cols-3 !gap-6 !w-full !grid-cols-none"
               render={(member) => (
                 <div key={member.id} className="team-card-item w-full h-full">
-                  <Card className="!p-0 !rounded-xl sm:!rounded-2xl !border !border-white/10 !bg-[#121212] overflow-hidden relative group h-[260px] sm:h-[270px] shadow-none cursor-pointer flex flex-col">
+                  <Card className="!p-0 !rounded-xl sm:!rounded-2xl !border !border-white/10 !bg-[#121212] overflow-hidden relative group h-[260px] sm:h-[360px] shadow-none cursor-pointer flex flex-col">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     {/* Frosted Dark Glass overlay matching Syncox .team-member-info-wrap */}
-                    <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/95 via-black/60 to-transparent backdrop-blur-[4px] pointer-events-none transition-opacity duration-500" />
+                    <div className="absolute inset-x-0 bottom-0 h-[29%] bg-gradient-to-t from-black/95 via-black/60 to-transparent backdrop-blur-[4px] pointer-events-none transition-opacity duration-500" />
 
                     {/* Member Details */}
                     <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex flex-col justify-end z-10">

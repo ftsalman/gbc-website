@@ -8,10 +8,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CornerBrackets = ({ size = "w-3 h-3", color = "border-white/30" }) => (
   <>
-    <span className={`absolute top-0 left-0 ${size} border-t-2 border-l-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`} />
-    <span className={`absolute top-0 right-0 ${size} border-t-2 border-r-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`} />
-    <span className={`absolute bottom-0 left-0 ${size} border-b-2 border-l-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`} />
-    <span className={`absolute bottom-0 right-0 ${size} border-b-2 border-r-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`} />
+    <span
+      className={`absolute top-0 left-0 ${size} border-t-2 border-l-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`}
+    />
+    <span
+      className={`absolute top-0 right-0 ${size} border-t-2 border-r-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`}
+    />
+    <span
+      className={`absolute bottom-0 left-0 ${size} border-b-2 border-l-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`}
+    />
+    <span
+      className={`absolute bottom-0 right-0 ${size} border-b-2 border-r-2 ${color} group-hover:border-bordeaux transition-all duration-300 pointer-events-none`}
+    />
   </>
 );
 
@@ -20,42 +28,48 @@ const services = [
     id: "01",
     title: "Business Setup",
     description:
-      "We structure your UAE company from scratch — mainland, free zone, or offshore — with zero hassle and full regulatory compliance.",
+      "Start your UAE business with the right company structure. We provide Mainland, Free Zone and Offshore company formation support, including licensing, documentation and registration guidance from start to finish.",
+    cta: "Explore Business Setup",
     href: "/services",
   },
   {
     id: "02",
-    title: "Legal & Compliance",
+    title: "PRO Services",
     description:
-      "Specialist corporate governance, cross-border structuring, and licensing work to keep your business operating safely and legally.",
+      "Simplify your day-to-day government procedures with professional PRO support. From document clearing and government applications to renewals and corporate requirements, our team manages the process efficiently on your behalf.",
+    cta: "Explore PRO Services",
     href: "/services",
   },
   {
     id: "03",
-    title: "Corporate Tax",
+    title: "Visa & Immigration Services",
     description:
-      "Former Big-4 expertise ensuring seamless corporate tax optimization, VAT registration, and long-term financial compliance.",
+      "Manage your UAE visa and immigration requirements with expert support. We assist with employment, investor, partner, family and other visa-related processes, including the required documentation and government procedures.",
+    cta: "Explore Visa Services",
     href: "/services",
   },
   {
     id: "04",
-    title: "Government Relations",
+    title: "Accounting & VAT Services",
     description:
-      "Expedited regulatory clearances, golden visa applications, VIP government liaising, and PRO services handled end-to-end.",
+      "Keep your business finances organized and compliant with professional bookkeeping, VAT registration, VAT filing and accounting support tailored to your business requirements in the UAE.",
+    cta: "Explore Accounting",
     href: "/services",
   },
   {
     id: "05",
-    title: "Banking & Finance",
+    title: "Business Centre Services",
     description:
-      "Assisting clients in opening UAE business and personal bank accounts, plus navigating credit facilities and investment vehicles.",
+      "Find the right business workspace for your company with flexible office and business centre solutions. We support businesses with professional office facilities designed to meet their operational and business setup requirements.",
+    cta: "Explore Business Centres",
     href: "/services",
   },
   {
     id: "06",
-    title: "Strategic Advisory",
+    title: "Government Approvals & External Services",
     description:
-      "High-level market-entry strategy, investor relations, and growth planning for companies and family offices targeting the UAE.",
+      "Get professional assistance with external government approvals, permits, clearances and regulatory procedures required for your business. Our team coordinates the necessary processes to help you complete requirements accurately and efficiently.",
+    cta: "Explore Government Services",
     href: "/services",
   },
 ];
@@ -78,7 +92,7 @@ export const AboutServices = () => {
             trigger: sectionRef.current,
             start: "top 80%",
           },
-        }
+        },
       );
 
       gsap.utils.toArray(".svc-card").forEach((card) => {
@@ -94,11 +108,11 @@ export const AboutServices = () => {
               trigger: card,
               start: "top 85%",
             },
-          }
+          },
         );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -126,6 +140,13 @@ export const AboutServices = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-gray-900 leading-[1.18]">
               Comprehensive Corporate Services
             </h2>
+
+            <p className="toolbar-desc mt-6 max-w-sm sm:max-w-xl text-[20px] sm:text-base text-gray-500 font-light leading-relaxed">
+              From setting up your company and managing PRO requirements to
+              visas, accounting, business centres and government approvals, GBC
+              provides essential business services through one experienced team
+              across the UAE.
+            </p>
           </div>
         </div>
 
@@ -151,9 +172,15 @@ export const AboutServices = () => {
               </div>
 
               {/* Description */}
-              <p className="mt-8 text-gray-600 font-light leading-relaxed text-base sm:text-lg group-hover:text-gray-900 transition-colors duration-300">
-                {svc.description}
-              </p>
+              <div className="mt-8 flex flex-col flex-grow justify-between">
+                <p className="text-gray-600 font-light leading-relaxed text-base sm:text-lg group-hover:text-gray-900 transition-colors duration-300 mb-8">
+                  {svc.description}
+                </p>
+                <div className="flex items-center gap-2 text-sm sm:text-base font-medium text-gray-900 group-hover:text-bordeaux transition-colors duration-300">
+                  <span>{svc.cta}</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
+                </div>
+              </div>
             </a>
           ))}
         </div>
@@ -161,4 +188,3 @@ export const AboutServices = () => {
     </section>
   );
 };
-

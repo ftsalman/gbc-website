@@ -33,15 +33,15 @@ export const Footer = () => {
   ];
 
   const contactLinks = [
-    { name: "+971 50 123 4567", href: "tel:+971501234567" },
-    { name: "info@gbc.ae", href: "mailto:info@gbc.ae" },
+    { name: "+971 58 527 7775", href: "tel:+971585277775" },
+    { name: "typing@connectgbc.com", href: "mailto:typing@connectgbc.com" },
     { name: "Business Bay, Dubai", href: "#" },
   ];
 
   const socialLinks = [
+    { name: "Instagram", href: "https://www.instagram.com/globalbusinessconnect/" },
+    { name: "YouTube", href: "https://www.youtube.com/@globalbusinessconnect" },
     { name: "Facebook", href: "https://facebook.com" },
-    { name: "Instagram", href: "https://instagram.com" },
-    { name: "Twitter", href: "https://x.com" },
     { name: "Linkedin", href: "https://linkedin.com" },
   ];
 

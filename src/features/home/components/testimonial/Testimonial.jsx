@@ -16,15 +16,15 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    company: "Tech Innovations",
-    logoText: "LOGOIPSUM",
+    name: "Laxman Sana",
+    company: "Allied Coontracting LLC",
+    logoText: "Allied Contracting LLC",
     logoSvg:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08c9f507094bc22221_logo-testimonials-2.svg",
+      "",
     image:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1e292b510eb2c1be03_testimonials-img-1.avif",
+      "/images/testimonials/testimonials3.png",
     quote:
-      "They brought clarity to complex problems, breaking down barriers and delivering innovative solutions.",
+      "It’s been more than 13 years since we started working with Global Business Connect, and they’ve been taking care of our typing and PRO requirements ever since. From MOHRE and immigration work to other PRO services, they’ve always handled everything responsibly and professionally. One thing that really stands out is their knowledge—each team member knows their area very well, which gives us a lot of confidence. We’ve always been 100% satisfied with their service, and we’re happy to have them as our trusted service partner.",
     overallScore: "5.00 / 5.0",
     speedScore: "100%",
     verifiedDate: "July 2026",
@@ -33,14 +33,14 @@ const testimonials = [
   {
     id: 2,
     name: "Elena Rostova",
-    company: "Global Strategy Group",
-    logoText: "LOQO",
+    company: "Kensington Design LLC",
+    logoText: "KD",
     logoSvg:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd0853b0828f2ba09cf4_logo-testimonials-3.svg",
+      "",
     image:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1eaa619febe5b5dbbe_testimonials-img-2.avif",
+      "/images/testimonials/testimonials1.png",
     quote:
-      "Their insight resolved difficult hurdles, opening new paths and creating highly effective strategies.",
+      "We have been working with GBC for more than 10 years, and throughout this journey, they have consistently been fast, efficient and highly professional. Their entire team, from the staff to the management and CEO, is highly knowledgeable and skilled in their respective areas. What we appreciate most is the way they communicate with us—always friendly and approachable, while maintaining complete professionalism and seriousness towards their work. Over the years, they have become more than just a service provider; we genuinely feel that they are part of our business family",
     overallScore: "4.99 / 5.0",
     speedScore: "100%",
     verifiedDate: "June 2026",
@@ -48,15 +48,15 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Carlos Mendez",
-    company: "Fintech & AI Systems",
-    logoText: "LOGO",
+    name: "Rana Nabeel",
+    company: "MAQS GROUP",
+    logoText: "MAQS",
     logoSvg:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08a824b982dbb8e14f_logo-testimonials-1.svg",
+      "",
     image:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1ec7c3cf972adaf7d0_testimonials-img-3.avif",
+      "/images/testimonials/testimonials2.jpeg",
     quote:
-      "We found focus for tricky requirements, cutting through noise and providing truly advanced responses.",
+     " For the past eight years, GBC Corporate Services Provider LLC has managed our PRO, visa and government liaison requirements, and they have never let us down. From visa processing and immigration formalities to licence renewals and corporate documentation, their team handles everything accurately. They anticipate our requirements, keep us compliant, and are always available when needed. GBC has earned our trust through consistency, transparency and excellent service. We highly recommend them to businesses across the UAE!",
     overallScore: "5.00 / 5.0",
     speedScore: "99.9%",
     verifiedDate: "July 2026",
@@ -326,7 +326,7 @@ export const Testimonial = () => {
                       className="h-7 sm:h-8 w-auto object-contain brightness-0 invert opacity-95 transition-opacity group-hover:opacity-100"
                     />
                   ) : (
-                    <span className="text-white font-serif font-bold tracking-widest text-xl opacity-95">
+                    <span className="text-white font-serif font-extrabold tracking-widest text-2xl opacity-95">
                       {t.logoText}
                     </span>
                   )}

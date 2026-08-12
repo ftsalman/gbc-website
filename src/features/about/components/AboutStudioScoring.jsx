@@ -76,30 +76,30 @@ const OdometerStat = ({ numberStr, suffix }) => {
 const scoringStats = [
   {
     id: "[01]",
-    number: "500",
+    number: "1,000",
     suffix: "+",
-    description: "Successful company formations across the UAE",
+    description: "Trusted Companies Served Across the UAE",
     position: "left",
   },
   {
     id: "[02]",
-    number: "45",
+    number: "70",
     suffix: "+",
-    description: "Free Zones and mainland jurisdictions partnered with",
+    description: "Experienced Professionals Supporting Your Business",
     position: "right",
   },
   {
     id: "[03]",
-    number: "99",
-    suffix: "%",
-    description: "Client success rate for trade license approvals",
+    number: "15",
+    suffix: "+",
+    description: "Years of Business Setup & Corporate Services Experience",
     position: "left",
   },
   {
     id: "[04]",
-    number: "15",
+    number: "3",
     suffix: "+",
-    description: "Years of local corporate and legal expertise",
+    description: "Strategic Locations Across the UAE",
     position: "right",
   },
 ];
@@ -162,14 +162,14 @@ export const AboutStudioScoring = () => {
           <div className="scoring-header-item md:col-span-5 shrink-0 pt-1">
             <span className="font-mono text-sm font-semibold tracking-tight uppercase flex items-center gap-1.5">
               <span className="text-bordeaux">//</span>
-              <span className="text-gray-400">About GBC Business Connect</span>
+              <span className="text-gray-400"> WHY CHOOSE GBC</span>
             </span>
           </div>
 
           {/* Right: headline */}
           <div className="scoring-header-item md:col-span-7">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal leading-[1.2] tracking-tight text-gray-900 max-w-xl">
-              Your gateway to business success in the UAE — we handle the complexity so you can focus on growth.
+            GBC provides fast, accurate and reliable business setup and corporate services through an experienced team, multiple locations and one trusted partner for your business needs across the UAE.
             </h2>
           </div>
         </div>

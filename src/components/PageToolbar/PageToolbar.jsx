@@ -130,7 +130,7 @@ export const PageToolbar = ({
           )}
 
           {/* Title — large Syncox-style, font-weight 400 */}
-          <h1 className="text-[clamp(3rem,8vw,7rem)] font-normal text-white tracking-tight leading-[1.0] overflow-hidden">
+          <h1 className="text-[clamp(3rem,8vw,4rem)] font-normal text-white tracking-tight leading-[1.0] overflow-hidden">
             {titleLines.map((line, idx) => (
               <span key={idx} className="toolbar-title-line block overflow-hidden">
                 {line}

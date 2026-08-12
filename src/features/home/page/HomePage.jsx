@@ -17,6 +17,7 @@ import { Blogs } from "../components/blogs/Blogs";
 import { Connect } from "../components/connect/Connect";
 import { Teams } from "../components/teams/Teams";
 import { PartnersLogos } from "../components/partners-logo/PartnersLogos.jsx";
+import { Founder } from "../components/founder/Founder";
 
 export const HomePage = () => {
   return (
@@ -29,10 +30,13 @@ export const HomePage = () => {
       <Hero />
       <DepartmentsAndClients />
       <About />
+
       <PartnersLogos />
       <Works />
       <Service />
+      {/* <hr className="border-gray-200" /> */}
       {/* <BusinessSetup /> */}
+      <Founder />
       <Teams />
       <Counter />
       <WhyChoose />
