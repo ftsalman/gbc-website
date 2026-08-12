@@ -76,7 +76,7 @@ const OdometerStat = ({ numberStr, suffix }) => {
 const scoringStats = [
   {
     id: "[01]",
-    number: "1,000",
+    number: "1000",
     suffix: "+",
     description: "Trusted Companies Served Across the UAE",
     position: "left",
