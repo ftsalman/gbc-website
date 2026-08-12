@@ -18,7 +18,7 @@ const testimonials = [
     id: "02",
     quote:
       "“We have been working with GBC for more than 10 years, and throughout this journey, they have consistently been fast, efficient and highly professional. Their entire team, from the staff to the management and CEO, is highly knowledgeable and skilled in their respective areas. What we appreciate most is the way they communicate with us—always friendly and approachable, while maintaining complete professionalism and seriousness towards their work. Over the years, they have become more than just a service provider; we genuinely feel that they are part of our business family”",
-    name: "Elena Rostova",
+    name: "Sindhu",
     role: "Kensington Design LLC",
     image: "/images/testimonials/testimonials1.png",
   },
@@ -26,7 +26,7 @@ const testimonials = [
     id: "03",
     quote:
       "“ For the past eight years, GBC Corporate Services Provider LLC has managed our PRO, visa and government liaison requirements, and they have never let us down. From visa processing and immigration formalities to licence renewals and corporate documentation, their team handles everything accurately. They anticipate our requirements, keep us compliant, and are always available when needed. GBC has earned our trust through consistency, transparency and excellent service. We highly recommend them to businesses across the UAE!”",
-    name: "Zara Khan",
+    name: "Rana Nabeel",
     role: "CEO & Founder - MAQS Group",
     image: "/images/testimonials/testimonials2.jpeg",
   },

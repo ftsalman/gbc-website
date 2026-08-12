@@ -19,10 +19,8 @@ const testimonials = [
     name: "Laxman Sana",
     company: "Allied Coontracting LLC",
     logoText: "Allied Contracting LLC",
-    logoSvg:
-      "",
-    image:
-      "/images/testimonials/testimonials3.png",
+    logoSvg: "",
+    image: "/images/testimonials/testimonials3.png",
     quote:
       "It’s been more than 13 years since we started working with Global Business Connect, and they’ve been taking care of our typing and PRO requirements ever since. From MOHRE and immigration work to other PRO services, they’ve always handled everything responsibly and professionally. One thing that really stands out is their knowledge—each team member knows their area very well, which gives us a lot of confidence. We’ve always been 100% satisfied with their service, and we’re happy to have them as our trusted service partner.",
     overallScore: "5.00 / 5.0",
@@ -32,13 +30,11 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Elena Rostova",
+    name: "Sindhu",
     company: "Kensington Design LLC",
     logoText: "KD",
-    logoSvg:
-      "",
-    image:
-      "/images/testimonials/testimonials1.png",
+    logoSvg: "",
+    image: "/images/testimonials/testimonials1.png",
     quote:
       "We have been working with GBC for more than 10 years, and throughout this journey, they have consistently been fast, efficient and highly professional. Their entire team, from the staff to the management and CEO, is highly knowledgeable and skilled in their respective areas. What we appreciate most is the way they communicate with us—always friendly and approachable, while maintaining complete professionalism and seriousness towards their work. Over the years, they have become more than just a service provider; we genuinely feel that they are part of our business family",
     overallScore: "4.99 / 5.0",
@@ -51,12 +47,10 @@ const testimonials = [
     name: "Rana Nabeel",
     company: "MAQS GROUP",
     logoText: "MAQS",
-    logoSvg:
-      "",
-    image:
-      "/images/testimonials/testimonials2.jpeg",
+    logoSvg: "",
+    image: "/images/testimonials/testimonials2.jpeg",
     quote:
-     " For the past eight years, GBC Corporate Services Provider LLC has managed our PRO, visa and government liaison requirements, and they have never let us down. From visa processing and immigration formalities to licence renewals and corporate documentation, their team handles everything accurately. They anticipate our requirements, keep us compliant, and are always available when needed. GBC has earned our trust through consistency, transparency and excellent service. We highly recommend them to businesses across the UAE!",
+      " For the past eight years, GBC Corporate Services Provider LLC has managed our PRO, visa and government liaison requirements, and they have never let us down. From visa processing and immigration formalities to licence renewals and corporate documentation, their team handles everything accurately. They anticipate our requirements, keep us compliant, and are always available when needed. GBC has earned our trust through consistency, transparency and excellent service. We highly recommend them to businesses across the UAE!",
     overallScore: "5.00 / 5.0",
     speedScore: "99.9%",
     verifiedDate: "July 2026",
