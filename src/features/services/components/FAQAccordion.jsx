@@ -11,20 +11,36 @@ export const FAQAccordion = () => {
 
   const faqs = [
     {
-      question: "How long does it take to set up a company in the UAE?",
-      answer: "The timeline varies depending on the jurisdiction and license type. Freezone companies can often be set up within 3-5 working days, while mainland companies may take 1-3 weeks due to additional government approvals."
+      question: "How do I set up a company in Dubai, UAE?",
+      answer: "GBC helps you through the complete company setup process, from choosing the right business structure and activity to company registration, trade licensing, documentation and required government procedures. We support Mainland, Free Zone and Offshore company formation."
     },
     {
-      question: "Do I need a local sponsor to start a business?",
-      answer: "Recent legislative changes allow 100% foreign ownership for most commercial and industrial activities in the mainland. However, some strategic sectors still require a local partner. Freezones always offer 100% foreign ownership."
+      question: "What is the difference between Mainland and Free Zone company setup?",
+      answer: "Mainland and Free Zone companies have different licensing structures, business activities and operating considerations. The right option depends on your business activity, target market and future plans. Our team can help you choose the most suitable setup."
     },
     {
-      question: "What is the cost of setting up a business?",
-      answer: "Costs depend on the jurisdiction, visa allocations, and license type. We offer tailored packages that cover license fees, registration, and initial visa processing without hidden costs."
+      question: "What PRO services does GBC provide in Dubai?",
+      answer: "Our PRO team handles government-related applications, document processing, renewals, labour and immigration procedures, and other corporate formalities, helping businesses save time and manage their requirements efficiently."
     },
     {
-      question: "Can I open a corporate bank account easily?",
-      answer: "Yes, our team has established relationships with major UAE banks and will guide you through the compliance requirements to ensure a smooth account opening process."
+      question: "Can GBC help with UAE visa and immigration services?",
+      answer: "Yes. We assist with UAE visa and immigration requirements, including employment, investor, partner and family visas, along with the necessary documentation and government procedures."
+    },
+    {
+      question: "Does GBC provide accounting and bookkeeping services?",
+      answer: "Yes. GBC provides accounting and bookkeeping support for businesses in the UAE, including bookkeeping, VAT-related services and financial record management to help businesses maintain accurate records and meet their requirements."
+    },
+    {
+      question: "Where are GBC's Business Centres located in Dubai?",
+      answer: "GBC offers Business Centre solutions in key Dubai locations, including Muhaisnah, Sheikh Zayed Road and Ras Al Khor, providing professional workspace options for businesses across Dubai."
+    },
+    {
+      question: "Can GBC help with government and external approvals?",
+      answer: "Yes. We assist businesses with government and external approvals, permits, clearances and related documentation required for specific business activities and regulatory requirements."
+    },
+    {
+      question: "How can I get started with GBC?",
+      answer: "Simply contact our team and tell us what your business needs. We'll understand your requirements, explain the relevant options and guide you through the next steps."
     }
   ];
 

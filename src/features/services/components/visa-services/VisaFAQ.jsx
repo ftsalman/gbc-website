@@ -8,23 +8,23 @@ gsap.registerPlugin(ScrollTrigger);
 const faqs = [
   {
     id: "01",
-    question: "How long does it take to process a UAE residency visa?",
-    answer: "Typically, standard employment and investor visas take about 2 to 3 weeks from the time of entry permit issuance to the final Emirates ID delivery. Golden Visa processing can be slightly faster once the initial nomination is approved.",
+    question: "How long does it take to process a UAE residence visa?",
+    answer: "Visa processing time can vary depending on the visa category, required approvals and the applicant’s circumstances. Our team will guide you through the requirements and keep you updated throughout the process.",
   },
   {
     id: "02",
-    question: "Do I have to exit the UAE to change my visa status?",
-    answer: "No, in most cases you can process an 'In-Country Change of Status'. This avoids the need to fly out and re-enter, saving you time and travel expenses.",
+    question: "What types of UAE visas can GBC help with?",
+    answer: "GBC assists with several UAE residence visa categories, including employment visas, partner visas, family visas and Golden Visas. We help with the required documentation and application procedures for each category.",
   },
   {
     id: "03",
-    question: "Can I sponsor my family members?",
-    answer: "Yes, residents with a valid UAE visa and a minimum salary bracket (typically AED 4,000, or AED 3,000 plus accommodation) can sponsor their spouse and children. Investors and Golden Visa holders have even more flexible family sponsorship options.",
+    question: "Can I apply for a UAE visa while I am already in the country?",
+    answer: "In many cases, the required visa process can be completed while you are in the UAE, depending on your visa type and current status. We can advise you on the appropriate process based on your situation.",
   },
   {
     id: "04",
-    question: "What happens if my visa expires?",
-    answer: "The UAE government generally grants a 30-day grace period after visa cancellation or expiration. It is crucial to either renew your visa or exit the country within this period to avoid overstay fines.",
+    question: "Can GBC help with family visa applications?",
+    answer: "Yes. We assist with UAE family visa processing, including document preparation and the required application procedures for eligible family members.",
   },
 ];
 
@@ -136,7 +136,7 @@ export const VisaFAQ = () => {
               <p className="text-sm font-bold tracking-[0.1em] text-[#1a202c] uppercase">Get Clarity</p>
             </div>
             <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] font-medium text-[#1a202c] leading-[1.15] tracking-tight">
-              Visa & Immigration<br />FAQs
+             UAE Visa  FAQ's.
             </h2>
           </div>
 

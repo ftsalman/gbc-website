@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Map = ({
-  query = "Amer Center Al Tawar Building 8E Al Quds St Dubai",
-  title = "Amer Center DAFZA Al Twar",
-  subtitle1 = "Inside Dubai Immigration Building",
-  subtitle2 = "DAFZA - Al Twar, Dubai",
+  query = "GBC Business Connect Al Asmawi Building 19 Al Manama St Ras Al Khor Industrial Area 2 Dubai",
+  title = "GBC Business Connect",
+  subtitle1 = "Al Asmawi Building – 19 Al Manama St",
+  subtitle2 = "Ras Al Khor Industrial Area 2, Dubai, United Arab Emirates",
   zoom = 17,
   height = "480px"
 }) => {

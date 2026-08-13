@@ -9,11 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 const teamMembers = [
   {
     id: "01",
-    name: "Muhammed Shereef & Rafeeq",
+    name: "Muhammed Shereef",
     role: "CEO",
     bio: "Leading the company's strategic vision and driving growth across the global business landscape.",
-    image: "/images/team/shereef-rafeeq.png",
-    avatar: "/images/team/shereef-rafeeq.jpeg",
+    image: "/images/team/shereef-fouder.jpeg",
+    avatar: "/images/team/shereef-fouder.jpeg",
     handle: "gbc_ceo",
     time: "2m ago",
   },
@@ -132,7 +132,7 @@ export const Teams = () => {
                   className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 {/* Frosted Dark Glass overlay matching Syncox .founder-info-wrap */}
-                <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/95 via-black/70 to-transparent backdrop-blur-[4px] pointer-events-none transition-opacity duration-500" />
+                <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/95 via-black/70 to-transparent backdrop-blur-[3px] pointer-events-none transition-opacity duration-500" />
 
                 {/* Member Details */}
                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex flex-col justify-end z-10">
@@ -161,7 +161,7 @@ export const Teams = () => {
                       className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     {/* Frosted Dark Glass overlay matching Syncox .team-member-info-wrap */}
-                    <div className="absolute inset-x-0 bottom-0 h-[29%] bg-gradient-to-t from-black/95 via-black/60 to-transparent backdrop-blur-[4px] pointer-events-none transition-opacity duration-500" />
+                    <div className="absolute inset-x-0 bottom-0 h-[29%] bg-gradient-to-t from-black/95 via-black/60 to-transparent backdrop-blur-[3px] pointer-events-none transition-opacity duration-500" />
 
                     {/* Member Details */}
                     <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex flex-col justify-end z-10">

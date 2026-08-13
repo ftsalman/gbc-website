@@ -119,9 +119,9 @@ export const JourneySequence = () => {
                       "opacity 700ms cubic-bezier(0.22,1,0.36,1) 80ms, transform 700ms cubic-bezier(0.22,1,0.36,1) 80ms, filter 700ms cubic-bezier(0.22,1,0.36,1) 80ms",
                   }}
                 >
-                  We build foundations that{" "}
+                 From Business Idea  {" "}
                   <span className="block italic text-white">
-                    empower your global business.
+                 to Licensed Company.
                   </span>
                 </h2>
               </div>

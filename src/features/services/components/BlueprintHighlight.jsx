@@ -78,7 +78,7 @@ export const BlueprintHighlight = () => {
       className={`relative w-full bg-black text-white min-h-[90vh] md:min-h-[900px] overflow-hidden flex items-center justify-center py-32 ${!isPlaying ? "paused" : ""}`}
     >
       {/* Center Content */}
-      <div className="center-content relative z-20 flex flex-col items-center text-center max-w-4xl mx-auto px-6">
+      <div className="center-content relative z-20 flex flex-col items-center text-center max-w-4xl mx-auto px-6 space-y-2">
         {/* Animated Dots Icon */}
         <div className="mb-10 relative flex items-center justify-center">
           <div className="flex space-x-1.5 items-center">
@@ -90,9 +90,16 @@ export const BlueprintHighlight = () => {
         </div>
 
         <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] font-normal tracking-tight mb-12">
-          Accelerate your company setup <br className="hidden md:block" /> in
-          minutes with GBC Portal
+          One Partner for Your UAE Business Needs
+          {/* <br className="hidden md:block" /> in
+          minutes with GBC Portal */}
         </h2>
+
+        <p className="flex items-center justify-center mx-auto mt-6 mb-8 max-w-2xl text-center text-[13px] font-light leading-relaxed text-gray-400 sm:text-sm">
+          From business setup and PRO services to visas, accounting, government
+          approvals and business centres, GBC helps you manage the essential
+          processes behind your business from one trusted partner.
+        </p>
 
         <Button
           size="lg"
@@ -100,7 +107,7 @@ export const BlueprintHighlight = () => {
           className="bg-white text-black hover:bg-gray-200 transition-colors px-10 py-5 rounded-[0.25rem] font-bold tracking-widest uppercase text-sm"
           onClick={() => (window.location.href = "/contact")}
         >
-          Get started with GBC
+          Get Free Consultation
         </Button>
       </div>
 

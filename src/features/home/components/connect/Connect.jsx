@@ -24,10 +24,10 @@ export const Connect = () => {
             trigger: containerRef.current,
             start: "top 80%",
           },
-        }
+        },
       );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -54,25 +54,26 @@ export const Connect = () => {
           <div className="cta-content-item mb-6">
             <span className="font-mono text-sm sm:text-base font-semibold tracking-tight uppercase">
               <span className="text-bordeaux mr-1">//</span>
-              <span className="text-gray-400">Connect With Us</span>
+              <span className="text-gray-400">CONNECT WITH GBC</span>
             </span>
           </div>
 
           {/* Headline matching Syncox Let's Discuss Your Next Project */}
           <h2 className="cta-content-item text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1] mb-6">
-            Let&apos;s Discuss Your Next Business
+            Let&apos;s Make Your UAE Business Easier Description
           </h2>
 
           {/* Description */}
           <p className="cta-content-item text-gray-300 text-lg sm:text-xl font-light leading-relaxed mb-10">
-            Answer 6 questions and we&apos;ll tell you exactly what your
-            corporate structure in the UAE needs to succeed.
+            Whether you're starting a company, managing PRO requirements,
+            processing visas, handling accounting or seeking government
+            approvals, our team is ready to help.
           </p>
 
           {/* Corner Bracket CTA Button */}
           <div className="cta-content-item">
             <Button variant="corner" size="lg">
-             Get Started
+              Get Free Consultation →
             </Button>
           </div>
         </div>

@@ -16,10 +16,11 @@ export const megaMenuData = {
   //   { name: "Visa", href: "/services/visa" },
   // ],
   Services: [
-    { name: "Visa", href: "/services/visa" },
     { name: "Business Setup", href: "/business-setup" },
+    { name: " Visa Services", href: "/services/visa" },
     { name: "PRO Services", href: "/services/pro-services" },
-    { name: "Business Center", href: "/services/business-center" },
-    { name: "Mainland", href: "/services/mainland" },
+    { name: "Business Center", href: "#" },
+    { name: "Accounting ", href: "#" },
+    { name: "Compliance and Legal", href: "#" },
   ],
 };

@@ -28,14 +28,10 @@ const arcs = [
 ];
 
 const licenses = [
-  { id: 1, title: "Commercial License", subtitle: "Business Setup", icon: Building2 },
-  { id: 2, title: "Professional License", subtitle: "Business Setup", icon: UserCheck },
-  { id: 3, title: "Industrial License", subtitle: "Business Setup", icon: Factory },
-  { id: 4, title: "Tourism License", subtitle: "Business Setup", icon: Plane },
-  { id: 5, title: "E-Commerce License", subtitle: "Business Setup", icon: ShoppingCart },
-  { id: 6, title: "Freelancer Permit", subtitle: "Business Setup", icon: Laptop },
-  { id: 7, title: "Media License", subtitle: "Business Setup", icon: Video },
-  { id: 8, title: "Consultancy License", subtitle: "Business Setup", icon: MessageSquare },
+  { id: 1, title: "Commercial", subtitle: "Trading & commercial businesses", icon: Building2 },
+  { id: 2, title: "Professional", subtitle: "Consultants & service providers", icon: UserCheck },
+  { id: 3, title: "Industrial", subtitle: "Manufacturing & production", icon: Factory },
+  { id: 4, title: "Tourism", subtitle: "Travel & tourism businesses", icon: Plane },
 ];
 
 export const BusinessLicenses = () => {
@@ -67,8 +63,8 @@ export const BusinessLicenses = () => {
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-medium text-white leading-tight tracking-tight">
-            Choose the Right <br className="hidden md:block" />
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-200 to-red-600">Business License</span>
+            What type of  <br className="hidden md:block" />
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-200 to-red-600">Business are you starting ?</span>
           </h2>
         </motion.div>
 

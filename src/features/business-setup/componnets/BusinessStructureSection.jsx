@@ -10,26 +10,27 @@ const structures = [
     slug: "mainland-company",
     title: "Mainland Company",
     description:
-      "Operate anywhere across the UAE with complete business flexibility.",
+      "Ideal for businesses looking to operate across the UAE with greater flexibility for local market activities and commercial growth.",
     icon: MapPin,
     image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1000&auto=format&fit=crop",
+      "https://i.pinimg.com/736x/f1/84/bc/f184bc0ca4d01586a550fb753135d1ce.jpg",
   },
   {
     id: 2,
     slug: "freezone-company",
     title: "Free Zone Company",
-    description: "100% foreign ownership with tax-efficient benefits.",
+    description:
+      "A practical choice for startups, entrepreneurs and international businesses seeking a streamlined UAE company setup.",
     icon: Briefcase,
     image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
+      "https://i.pinimg.com/736x/5f/c2/01/5fc201812932126c4d885c02446e2cfa.jpg",
   },
   {
     id: 3,
     slug: "offshore-company",
     title: "Offshore Company",
     description:
-      "Ideal for international business, asset protection, and global expansion.",
+      "Suitable for businesses seeking an international corporate structure for specific overseas activities and holding purposes.",
     icon: Globe2,
     image:
       "https://i.pinimg.com/736x/80/1c/33/801c3372b516c3b4d268da24503d8e8b.jpg",
@@ -38,10 +39,11 @@ const structures = [
     id: 4,
     slug: "branch-office",
     title: "Branch Office",
-    description: "Expand your existing international company into Dubai.",
+    description:
+      "Designed for established foreign companies looking to extend their existing business operations into the UAE.",
     icon: Building2,
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
+      "https://i.pinimg.com/1200x/9a/75/b7/9a75b7ad361b56c869451ebac378b883.jpg",
   },
 ];
 
@@ -80,8 +82,8 @@ export const BusinessStructureSection = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-medium text-bordeaux md:w-1/2 leading-tight tracking-tight"
           >
-            Choose Your <br className="hidden lg:block" />
-            <span className="font-bold">Business Structure</span>
+            Which UAE Business Structure <br className="hidden lg:block" />
+            <span className="font-bold"> Is Right for You ?</span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,9 +93,9 @@ export const BusinessStructureSection = () => {
             className="md:w-1/2 flex md:justify-end"
           >
             <p className="text-sm md:text-base text-gray-600 max-w-md font-light leading-relaxed">
-              Select the business setup option that best matches your goals.
-              Power your day-to-day with all the tools and guidance you need to
-              manage your business, seamlessly integrated in one place.
+              Every business has different goals. Compare the available UAE
+              business structures and choose the option that best fits your
+              activities, ownership requirements and growth plans.
             </p>
           </motion.div>
         </div>
@@ -111,7 +113,10 @@ export const BusinessStructureSection = () => {
               variants={cardVariants}
               className="h-full"
             >
-              <Link to={`/business-setup/${item.slug}`} className="block h-full cursor-pointer">
+              <Link
+                to={`/business-setup/${item.slug}`}
+                className="block h-full cursor-pointer"
+              >
                 <Card className="group flex flex-col h-[400px] sm:h-[450px] p-6 sm:p-8 justify-between relative overflow-hidden border border-gray-200/20 rounded-2xl w-full !bg-clip-padding">
                   {/* Full Card Background Image & Overlay */}
                   <div className="absolute inset-0 z-0">

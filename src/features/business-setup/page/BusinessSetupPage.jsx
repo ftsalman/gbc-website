@@ -14,30 +14,35 @@ import { Testimonial } from "../../home/components/testimonial/Testimonial";
 export const BusinessSetupPage = () => {
   return (
     <div className="business-setup-page bg-black text-white font-sans">
-      <SEO title="Business Setup" description="End-to-end company formation services in the UAE, mainland, free zones, and offshore jurisdictions." />
+      <SEO
+        title="Business Setup"
+        description="End-to-end company formation services in the UAE, mainland, free zones, and offshore jurisdictions."
+      />
       <PageToolbar
-        title={"Launch Your Business in Dubai with Confidence"}
+        title={"Start Your Business in Dubai with Confidence"}
         description={
-          "Start your UAE company with complete support for licensing, visas, banking, and government approvals. GBC Business Connect makes business setup fast, transparent, and stress-free."
+          "From Mainland, Free Zone and Offshore company formation to trade licensing, visas, PRO services and government approvals, GBC provides the support you need to establish and manage your business in the UAE."
         }
         bgImage="/images/TOOLSBAR_BG.png"
         imagePosition="right"
+        primaryButtonText="Get Free Consultation → "
+
       />
       <BusinessSetup />
       <BusinessStructureSection />
       <JourneySequence />
-      <WhyChoose 
-        bgColor="bg-white" 
+      {/* <WhyChoose
+        bgColor="bg-white"
         textColor="text-black"
         lineColor="#e5e7eb"
         gradient1="bg-red-50/50"
         gradient2="bg-rose-50/50"
         gradient3="bg-red-100/50"
-      />
+      /> */}
       <BusinessLicenses />
-      <BusinessSetupProcess />
+      {/* <BusinessSetupProcess /> */}
       {/* <PremiumServices /> */}
-      <Testimonial/>
+      <Testimonial />
 
       <Connect />
     </div>

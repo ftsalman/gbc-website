@@ -8,27 +8,27 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     num: "01",
-    title: "Document Collection & Assessment",
+    title: "Document Review & Visa Eligibility",
     img: "https://i.pinimg.com/736x/0a/0c/90/0a0c90728eed43b1422b1ec7a12ad039.jpg",
-    desc: "Our experts review your profile, passport copies, education certificates, and passport photos to ensure all prerequisites for your specific visa type are met before applying.",
+    desc: "We review your passport, photographs and required documents based on your UAE visa type. Our team helps ensure your application is prepared correctly before submission.",
   },
   {
     num: "02",
-    title: "Entry Permit / Change of Status",
+    title: "Visa Application & Entry Permit",
     img: "https://i.pinimg.com/736x/32/a4/60/32a4609b5a5095032bbc1cc73a9e128a.jpg",
-    desc: "We apply for your e-Visa (Entry Permit). If you are already inside the UAE, we simultaneously process your 'Change of Status' without you needing to exit the country.",
+    desc: "Once your documents are ready, we submit the UAE visa application and process the required entry permit or status-change application, depending on your circumstances.",
   },
   {
     num: "03",
-    title: "Medical Fitness & Biometrics",
+    title: "Medical Fitness & Emirates ID",
     img: "https://i.pinimg.com/1200x/89/92/81/8992818586ab95b7de26af9ffc2f9f0c.jpg",
-    desc: "We schedule and guide you through the mandatory UAE medical fitness test and Emirates ID biometrics scanning at approved government centers.",
+    desc: "For applicable UAE residence visas, we guide you through the medical fitness test and Emirates ID application, helping you complete the required procedures smoothly.",
   },
   {
     num: "04",
-    title: "Emirates ID & Visa Stamping",
+    title: "Visa Issuance & Emirates ID",
     img: "https://i.pinimg.com/1200x/c7/13/a8/c713a8d47aa1ef7d0869da38533dc349.jpg",
-    desc: "Once medically cleared, your final residency visa is issued (now primarily digital) and your physical Emirates ID card is printed and delivered directly to you.",
+    desc: "After completing the required approvals and formalities, we follow up on your UAE residence visa issuance and Emirates ID until the process is completed.",
   },
 ];
 
@@ -99,7 +99,7 @@ export const VisaProcess = () => {
             </span>
           </div>
           <h2 className="visa-process-header text-4xl sm:text-5xl md:text-[70px] font-medium tracking-tight text-black leading-tight max-w-3xl">
-            The Visa Application Process
+            UAE Visa Application Process
           </h2>
         </div>
 

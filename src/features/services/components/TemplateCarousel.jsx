@@ -12,8 +12,9 @@ export const TemplateCarousel = () => {
    const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const lenisRef = useRef(null);
-  const [activeTab, setActiveTab] = useState("Invoicing");
-  const [activeCard, setActiveCard] = useState(16);
+  const startIndex = SHOWCASE_DATA.length * 2;
+  const [activeTab, setActiveTab] = useState(SHOWCASE_DATA[0]?.tab || "");
+  const [activeCard, setActiveCard] = useState(startIndex);
   const [isPlaying, setIsPlaying] = useState(true); // Auto-play enabled by default
 
   const extendedTabs = [
@@ -26,7 +27,9 @@ export const TemplateCarousel = () => {
 
   // Sync activeTab with activeCard
   useEffect(() => {
-    setActiveTab(SHOWCASE_DATA[activeCard % 8].tab);
+    if (SHOWCASE_DATA.length > 0) {
+      setActiveTab(SHOWCASE_DATA[activeCard % SHOWCASE_DATA.length]?.tab || "");
+    }
   }, [activeCard]);
 
   useEffect(() => {
@@ -92,7 +95,7 @@ export const TemplateCarousel = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         const nextCard =
-          activeCard < extendedTabs.length - 1 ? activeCard + 1 : 16;
+          activeCard < extendedTabs.length - 1 ? activeCard + 1 : startIndex;
         scrollToCard(nextCard);
       }, 4000); // Auto-scroll every 4 seconds
     }
@@ -101,7 +104,7 @@ export const TemplateCarousel = () => {
 
   useEffect(() => {
     // Jump to the middle block immediately on mount
-    const timer = setTimeout(() => scrollToCard(16, "auto"), 100);
+    const timer = setTimeout(() => scrollToCard(startIndex, "auto"), 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -192,7 +195,7 @@ export const TemplateCarousel = () => {
               key={tab}
               onClick={() => {
                 setActiveTab(tab);
-                scrollToCard(16 + index);
+                scrollToCard(startIndex + index);
                 setIsPlaying(false); // Pause auto-play on manual interaction
               }}
               className={`px-4 py-2 md:px-5 rounded-4xl cursor-pointer md:py-2.5 text-sm md:text-[15px] font-normal transition-all duration-300 ${
