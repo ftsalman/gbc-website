@@ -7,21 +7,21 @@ import { Check } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const benefits = [
-  "Save Time: Let our PRO team handle time-consuming government procedures and documentation.",
-  "Dedicated PRO Support: Get a reliable team to assist with your business-related PRO requirements.",
-  "Complete Service Coverage: From visas and MOHRE to Emirates ID, immigration and trade license services, we handle your essential PRO needs.",
-  "Stay on Track: Keep important applications, renewals and government procedures properly managed.",
-  "Transparent Process: Get clear communication and updates throughout your service requests.",
-  "Focus on Your Business: Spend less time on paperwork and more time growing your business.",
+  "VAT Registration: Get professional assistance with UAE VAT registration and the required documentation.",
+  "VAT Return Filing: Accurate preparation and timely filing of your VAT returns.",
+  "VAT Records & Documentation: Keep your VAT-related records organized and ready for compliance requirements.",
+  "VAT Compliance Support: Get ongoing assistance with VAT-related requirements and business transactions.",
+  "VAT Review & Advisory: Understand your VAT obligations and get practical support for your business.",
+  "Ongoing VAT Assistance: A reliable team to support your business with recurring VAT requirements.",
 ];
 
-export const ProServiceBenefits = () => {
+export const AccountingBenefits = () => {
   const sectionRef = useRef(null);
 
   useGSAP(
     () => {
       gsap.fromTo(
-        ".pro-benefit-anim",
+        ".accounting-benefit-anim",
         { y: 30, opacity: 0 },
         {
           y: 0,
@@ -46,7 +46,7 @@ export const ProServiceBenefits = () => {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="pro-benefit-anim relative">
+          <div className="accounting-benefit-anim relative">
             <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl">
               <img
                 src="https://i.pinimg.com/736x/27/35/75/273575e8c4417252929c40b592e22b8b.jpg"
@@ -56,8 +56,7 @@ export const ProServiceBenefits = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8">
                 <p className="text-white text-2xl font-medium leading-relaxed">
-                  “You focus on your business.<br />
-                  We take care of the paperwork.”
+                  “Stay compliant with VAT, while you stay focused on your business.”
                 </p>
               </div>
             </div>
@@ -67,29 +66,26 @@ export const ProServiceBenefits = () => {
           </div>
 
           <div className="flex flex-col">
-            <div className="pro-benefit-anim mb-4 flex items-center gap-2">
+            <div className="accounting-benefit-anim mb-4 flex items-center gap-2">
               <span className="text-[#6C141E] font-mono font-medium text-lg">
                 //
               </span>
               <span className="font-mono text-sm tracking-widest uppercase font-semibold text-gray-600">
-                Why Choose Us
+                VAT SERVICES
               </span>
             </div>
 
-            <h2 className="pro-benefit-anim text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 mb-8 leading-tight">
-              A Smarter Way to Manage Your PRO Services
+            <h2 className="accounting-benefit-anim text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 mb-8 leading-tight">
+              Simplify Your UAE VAT Compliance
             </h2>
 
-            <p className="pro-benefit-anim text-lg text-gray-600 font-light leading-relaxed mb-10">
-              Managing UAE government procedures, visa applications and business
-              documentation can take valuable time. GBC provides professional
-              PRO support to handle these requirements efficiently, helping your
-              business stay organized and focused on growth.
+            <p className="accounting-benefit-anim text-lg text-gray-600 font-light leading-relaxed mb-10">
+              Managing UAE VAT requirements and maintaining accurate financial records can be complex and time-consuming. GBC provides professional accounting support to handle your VAT compliance efficiently, helping your business stay organized and fully compliant.
             </p>
 
             <ul className="flex flex-col gap-5">
               {benefits.map((b, i) => (
-                <li key={i} className="pro-benefit-anim flex items-start gap-4">
+                <li key={i} className="accounting-benefit-anim flex items-start gap-4">
                   <div className="w-6 h-6 rounded-full bg-[#6C141E]/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check
                       className="w-3.5 h-3.5 text-[#6C141E]"

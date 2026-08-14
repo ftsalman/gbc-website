@@ -26,17 +26,20 @@ export const Navbar = () => {
           }
 
           // Dynamically check background color behind navbar
-          const elements = document.elementsFromPoint(window.innerWidth / 2, 30);
+          const elements = document.elementsFromPoint(
+            window.innerWidth / 2,
+            30,
+          );
           let isDark = true; // Default to dark (like hero)
-          
+
           for (let i = 0; i < elements.length; i++) {
             const el = elements[i];
-            if (el.tagName === 'NAV' || el.closest('nav')) continue;
-            
+            if (el.tagName === "NAV" || el.closest("nav")) continue;
+
             const style = window.getComputedStyle(el);
             const bg = style.backgroundColor;
-            
-            if (bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+
+            if (bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
               const rgbMatch = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
               if (rgbMatch) {
                 const r = parseInt(rgbMatch[1]);
@@ -48,7 +51,7 @@ export const Navbar = () => {
               break;
             }
           }
-          
+
           setIsLightBg(!isDark);
           ticking = false;
         });
@@ -83,7 +86,9 @@ export const Navbar = () => {
       <nav
         ref={navRef}
         className={`fixed top-0 z-50 w-full  transition-all duration-300 border-b p-4 ${
-          isScrolled ? " backdrop-blur-sm border-none" : "bg-transparent border-transparent"
+          isScrolled
+            ? " backdrop-blur-sm border-none"
+            : "bg-transparent border-transparent"
         }`}
         onMouseLeave={() => setActiveMenu(null)}
       >
@@ -123,7 +128,7 @@ export const Navbar = () => {
                   >
                     <Link
                       to={`/${item.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-")}`}
-                      className={`transition-all duration-300 text-sm tracking-wide whitespace-nowrap py-2 ${isLightBg ? "text-black" : "text-white"} ${
+                      className={`transition-all duration-300 text-[14px] tracking-wide whitespace-nowrap py-2 ${isLightBg ? "text-black" : "text-white"} ${
                         activeMenu === item
                           ? "opacity-100"
                           : "opacity-80 hover:opacity-100"
@@ -144,13 +149,28 @@ export const Navbar = () => {
                         <ul className="flex flex-col">
                           {megaMenuData[item].map((link, idx) => (
                             <li key={idx}>
-                              <Link
-                                to={link.href || "#"}
-                                onClick={() => setActiveMenu(null)}
-                                className="block px-4 py-2.5 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm font-medium tracking-wide text-start"
-                              >
-                                {link.name}
-                              </Link>
+                              {link.href?.startsWith('http') ? (
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    window.open(link.href, "_blank");
+                                    setActiveMenu(null);
+                                  }}
+                                  className="block w-full px-4 py-2.5 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm font-medium tracking-wide text-left cursor-pointer"
+                                >
+                                  {link.name}
+                                </button>
+                              ) : (
+                                <Link
+                                  to={link.href || "#"}
+                                  onClick={() => setActiveMenu(null)}
+                                  className="block px-4 py-2.5 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm font-medium tracking-wide text-start"
+                                >
+                                  {link.name}
+                                </Link>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -234,14 +254,30 @@ export const Navbar = () => {
                 {megaMenuData[item] && (
                   <div className="pl-4 mt-3 flex flex-col space-y-3 border-l-2 border-bordeaux/20">
                     {megaMenuData[item].map((subItem, subIdx) => (
-                      <Link
-                        key={subIdx}
-                        to={subItem.href || "#"}
-                        className="text-bordeaux/80 text-sm font-medium py-1 hover:text-bordeaux"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {subItem.name}
-                      </Link>
+                      subItem.href?.startsWith('http') ? (
+                        <button
+                          key={subIdx}
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.open(subItem.href, "_blank");
+                            setIsMobileMenuOpen(false);
+                          }}
+                          className="w-full text-left text-bordeaux/80 text-sm font-medium py-1 hover:text-bordeaux cursor-pointer"
+                        >
+                          {subItem.name}
+                        </button>
+                      ) : (
+                        <Link
+                          key={subIdx}
+                          to={subItem.href || "#"}
+                          className="text-bordeaux/80 text-sm font-medium py-1 hover:text-bordeaux"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      )
                     ))}
                   </div>
                 )}
@@ -261,7 +297,6 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-
       {/* Backdrop overlay for outside clicks / losing focus */}
       {activeMenu && (
         <div

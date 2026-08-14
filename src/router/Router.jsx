@@ -16,6 +16,8 @@ import { ProservicePage } from '../features/services/page/ProservicePage.jsx';
 import { ProserviceDetailsPage } from '../features/services/page/ProserviceDetailsPage.jsx';
 import { BusinessCenterPage } from '../features/services/page/BusinessCenterPage.jsx';
 import { BusinessCenterDetailsPage } from '../features/services/page/BusinessCenterDetailsPage.jsx';
+import { AccountAndBookigPage } from '../features/services/page/AccountAndBookigPage.jsx';
+import { ComplianceandLegalPage } from '../features/services/page/ComplianceandLegalPage.jsx';
 import { ErrorPage } from '../pages/ErrorPage.jsx';
 import { PackagesPage } from '../features/packages/page/PackagesPage.jsx';
 import { AuthLayout } from '../admin/auth/layout/AuthLayout.jsx';
@@ -97,6 +99,14 @@ export const router = createBrowserRouter([
       {
         path: 'services/business-center/:id',
         element: <BusinessCenterDetailsPage />,
+      },
+      {
+        path: 'services/accounting',
+        element: <AccountAndBookigPage />,
+      },
+      {
+        path: 'services/compliance-legal',
+        element: <ComplianceandLegalPage />,
       },
     ],
   },

@@ -8,38 +8,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const processSteps = [
   {
-    title: "Submit Your Request",
-    subtitle: "Tell us what you need",
-    desc: "Share your PRO requirement with our team. We’ll understand your needs and guide you through the required process and documents.",
+    title: "VAT Assessment",
+    subtitle: "Understand Your Requirements",
+    desc: "We review your business activities and VAT requirements to determine the appropriate registration and compliance needs.",
     icon: ClipboardList,
   },
   {
     title: "Document Preparation",
-    subtitle: "We check & prepare",
-    desc: "Our team reviews the required documents, helps prepare the application and ensures everything is ready for submission.",
+    subtitle: "Prepare Your VAT Records",
+    desc: "Our team collects and reviews the required business information and documents for accurate VAT processing.",
     icon: FileCheck,
   },
   {
-    title: "PRO Processing",
-    subtitle: "We handle the procedures",
-    desc: "Our PRO team manages the relevant UAE government procedures and follows up on your application.",
+    title: "VAT Processing",
+    subtitle: "Handle the VAT Procedures",
+    desc: "We manage the relevant VAT registration, return filing and related compliance procedures on your behalf.",
     icon: Building,
   },
   {
-    title: "Completion & Update",
-    subtitle: "We keep you informed",
-    desc: "Once the process is completed, we provide the necessary documents or updates and keep you informed throughout.",
+    title: "Filing & Compliance",
+    subtitle: "Stay Up to Date",
+    desc: "We help you maintain proper VAT records and keep up with recurring VAT filing and compliance requirements.",
     icon: Rocket,
   }
 ];
 
-export const ProServiceProcess = () => {
+export const AccountingProcess = () => {
   const sectionRef = useRef(null);
 
   useGSAP(
     () => {
       gsap.fromTo(
-        ".pro-process-step",
+        ".accounting-process-step",
         { y: 50, opacity: 0 },
         {
           y: 0,
@@ -56,7 +56,7 @@ export const ProServiceProcess = () => {
       
       // Animate the connecting line
       gsap.fromTo(
-        ".pro-process-line",
+        ".accounting-process-line",
         { scaleX: 0 },
         {
           scaleX: 1,
@@ -77,24 +77,24 @@ export const ProServiceProcess = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-12">
         <div className="text-center max-w-3xl mx-auto mb-24">
           <h2 className="text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 mb-6">
-            Simple & Reliable PRO Service Process
+            Simple & Reliable VAT Service Process
           </h2>
           <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-            From your first request to final completion, our PRO team manages the process with clear communication and professional support.
+            From VAT registration to return filing and ongoing compliance, we make managing your UAE VAT requirements simple and organized.
           </p>
         </div>
 
         <div className="relative">
           {/* Connecting Line for Desktop */}
           <div className="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-[2px] bg-gray-200 origin-left">
-            <div className="pro-process-line w-full h-full bg-[#6C141E] origin-left" />
+            <div className="accounting-process-line w-full h-full bg-[#6C141E] origin-left" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
             {processSteps.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={i} className="pro-process-step flex flex-col items-center text-center">
+                <div key={i} className="accounting-process-step flex flex-col items-center text-center">
                   <div className="w-[88px] h-[88px] rounded-full bg-white border-4 border-gray-50 shadow-xl flex items-center justify-center text-[#6C141E] mb-8 relative z-10">
                     <Icon className="w-10 h-10" />
                     {/* Number badge */}

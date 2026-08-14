@@ -19,8 +19,8 @@ export const megaMenuData = {
     { name: "Business Setup", href: "/business-setup" },
     { name: " Visa Services", href: "/services/visa" },
     { name: "PRO Services", href: "/services/pro-services" },
-    { name: "Business Center", href: "#" },
-    { name: "Accounting ", href: "#" },
-    { name: "Compliance and Legal", href: "#" },
+    { name: "Business Center", href: "https://www.gbhgroup.ae/" },
+    { name: "Accounting ", href: "/services/accounting" },
+    { name: "Compliance and Legal", href: "/services/compliance-legal" },
   ],
 };

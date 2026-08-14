@@ -21,12 +21,11 @@ export const BusinessSetupPage = () => {
       <PageToolbar
         title={"Start Your Business in Dubai with Confidence"}
         description={
-          "From Mainland, Free Zone and Offshore company formation to trade licensing, visas, PRO services and government approvals, GBC provides the support you need to establish and manage your business in the UAE."
+          "From choosing the right business structure to obtaining your trade license, visas and required approvals, GBC provides end-to-end business setup support to help you establish your company in the UAE."
         }
         bgImage="/images/TOOLSBAR_BG.png"
         imagePosition="right"
         primaryButtonText="Get Free Consultation → "
-
       />
       <BusinessSetup />
       <BusinessStructureSection />
