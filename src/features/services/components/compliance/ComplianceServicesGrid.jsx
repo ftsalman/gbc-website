@@ -209,7 +209,7 @@ export const ComplianceServicesGrid = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-semibold text-gray-700 mb-6 uppercase tracking-widest shadow-sm">
-            Service Cards
+            Service 
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
             Complete Government & Compliance Support
