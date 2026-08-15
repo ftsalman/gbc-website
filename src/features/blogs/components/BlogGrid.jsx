@@ -104,10 +104,11 @@ export const BlogGrid = () => {
           <div className="mt-16 flex justify-center">
             <Button 
               size="lg" 
-              variant="primary" 
-              onClick={() => {}}
+              variant="outline" 
+              className="px-8 border-gray-300 text-gray-600 hover:bg-gray-50"
+              onClick={() => (window.location.href = '/blogs')}
             >
-              Loading more...
+              Load More Blogs
             </Button>
           </div>
         )}

@@ -43,6 +43,7 @@ const bentoData = [
       "Ideal for businesses looking to operate across the UAE and access the local market. GBC assists with company formation, trade licensing, documentation and required government procedures.",
     Graphic: MainlandImage,
     buttonLabel: "Explore Mainland Setup →",
+    href: "/services/mainland",
   },
   {
     id: "freezone",
@@ -51,6 +52,7 @@ const bentoData = [
       "A popular choice for startups, SMEs and international businesses seeking a streamlined UAE company setup. GBC helps with registration, licensing, documentation and the required setup procedures.",
     Graphic: FreeZoneImage,
     buttonLabel: "Explore Free Zone Setup →",
+    href: "/business-setup",
   },
   {
     id: "offshore",
@@ -59,6 +61,7 @@ const bentoData = [
       "Suitable for certain international business, holding and investment structures. GBC provides guidance on the formation process, documentation and requirements based on your intended business structure.",
     Graphic: OffshoreImage,
     buttonLabel: "Explore Offshore Setup →",
+    href: "/business-setup",
   },
 ];
 
@@ -194,7 +197,10 @@ export const BusinessSetup = () => {
 
                     {item.buttonLabel && (
                       <div className="pt-6 mt-auto">
-                        <button className="text-[#111] font-semibold text-[15px] flex items-center hover:text-gray-500 transition-colors">
+                        <button 
+                          className="text-[#111] font-semibold text-[15px] flex items-center hover:text-gray-500 transition-colors cursor-pointer"
+                          onClick={() => window.location.href = item.href || '/business-setup'}
+                        >
                           {item.buttonLabel}
                         </button>
                       </div>

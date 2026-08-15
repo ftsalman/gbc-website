@@ -65,9 +65,13 @@ export const ContactForm = () => {
               </span>
             </div>
 
-            <h2 className="contact-left-item text-4xl sm:text-5xl md:text-[56px] font-normal tracking-tight text-gray-900 leading-[1.05] mb-16 max-w-md">
-              Let's shape your digital future together!
+            <h2 className="contact-left-item text-4xl sm:text-5xl md:text-[56px] font-normal tracking-tight text-gray-900 leading-[1.05] mb-6 max-w-md">
+              Let’s Talk About Your Business
             </h2>
+
+            <p className="contact-left-item text-sm text-gray-500 leading-relaxed mb-10 max-w-md">
+              Whether you need business setup, PRO services, accounting, VAT support or government assistance, our team is ready to help.
+            </p>
 
             <div className="flex flex-col">
               {/* Email */}

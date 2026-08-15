@@ -50,7 +50,7 @@ export const PackagesAdvantage = () => {
             </div>
             
             <div className="pt-8 border-t border-white/20">
-              <button className="px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-200 transition-colors inline-flex items-center gap-3">
+              <button className="px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-200 transition-colors inline-flex items-center gap-3" onClick={() => (window.location.href = '/contact')}>
                 Book a Free Consultation
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

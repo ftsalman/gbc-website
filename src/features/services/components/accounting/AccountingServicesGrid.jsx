@@ -150,7 +150,7 @@ const BentoCard = ({ className, title, description, cta, children, layout = "ver
         <h3 className={`text-xl ${isHorizontal || isReverse ? 'md:text-2xl' : ''} font-bold text-gray-900 mb-2`}>{title}</h3>
         <p className="text-sm text-gray-500 leading-relaxed mb-5 flex-grow">{description}</p>
         {cta && (
-          <button className={`px-5 py-2.5 bg-gray-200/50 text-gray-800 text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors ${ctaAlign}`}>
+          <button className={`px-5 py-2.5 bg-gray-200/50 text-gray-800 text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors ${ctaAlign}`} onClick={() => (window.location.href = '/contact')}>
             {cta}
           </button>
         )}

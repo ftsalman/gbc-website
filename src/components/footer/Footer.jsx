@@ -16,26 +16,26 @@ export const Footer = () => {
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about-us" },
+    { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Projects", href: "/projects" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Blog", href: "/blog" },
+    { name: "Packages", href: "/packages" },
+    { name: "Business Setup", href: "/business-setup" },
+    { name: "Blog", href: "/blogs" },
   ];
 
   const utilityLinks = [
-    { name: "Mainland Setup", href: "#" },
-    { name: "Freezone Company", href: "#" },
-    { name: "PRO Services", href: "#" },
-    { name: "Golden Visa", href: "#" },
-    { name: "Corporate Banking", href: "#" },
-    { name: "Legal Advisory", href: "#" },
+    { name: "Mainland Setup", href: "/services/mainland" },
+    { name: "Freezone Company", href: "/business-setup" },
+    { name: "PRO Services", href: "/services/pro-services" },
+    { name: "Golden Visa", href: "/services/visa" },
+    { name: "Corporate Banking", href: "/services/accounting" },
+    { name: "Legal Advisory", href: "/services/compliance-legal" },
   ];
 
   const contactLinks = [
     { name: "+971 58 527 7775", href: "tel:+971585277775" },
     { name: "typing@connectgbc.com", href: "mailto:typing@connectgbc.com" },
-    { name: "Business Bay, Dubai", href: "#" },
+    { name: "Business Bay, Dubai", href: "/contact" },
   ];
 
   const socialLinks = [

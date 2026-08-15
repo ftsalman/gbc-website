@@ -1,136 +1,361 @@
 export const BUSINESS_STRUCTURES = [
   {
     id: "mainland-company",
-    title: "Mainland Company Formation",
-    tagline: "Unrestricted trade and maximum flexibility across the UAE and globally",
-    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1000&auto=format&fit=crop",
-    overview: "A UAE Mainland Company is an onshore entity registered under the Department of Economy and Tourism (DET) of the respective emirate. It allows you to trade freely both within the local UAE market and internationally without any geographic restrictions. Following recent regulatory changes, 100% foreign ownership is now permitted for most commercial and industrial activities on the mainland, eliminating the mandatory requirement for a local Emirati partner.",
+    title: "Mainland Company Formation in Dubai",
+    tagline:
+      "Set up your UAE Mainland company with professional support from business activity selection and trade licensing to government approvals and related documentation. GBC helps make your company formation process simple and organized.",
+    img: "https://i.pinimg.com/1200x/b7/ce/57/b7ce57a90e450c54afcf62e74a9388d4.jpg",
+    overviewTitle: "Overview",
+    overview:
+      "A UAE Mainland company allows you to operate and conduct business within the UAE market and internationally, subject to the applicable licensing and regulatory requirements. GBC provides end-to-end support for company formation, including business activity selection, trade name registration, initial approvals, licensing and related government procedures.",
     idealFor: [
-      "Retailers and consumer goods businesses looking to open physical stores in mainland UAE",
-      "Service providers targeting local government and private entities",
-      "Trading companies requiring unrestricted distribution channels across the emirates",
-      "Large-scale enterprises requiring extensive office spaces and warehouse setups"
+      "Retail & Trading Businesses looking to operate and serve customers across the UAE.",
+      "Professional & Service Businesses providing services to local companies, government entities and private clients.",
+      "Businesses Planning to Expand their operations, workforce and presence within the UAE.",
+      "Companies Requiring a Physical Office for their business operations and licensing requirements.",
+      "Entrepreneurs & Investors looking to establish and grow a business in Dubai and the wider UAE.",
     ],
     benefits: [
-      "100% Foreign Ownership for over 1,000+ commercial and industrial activities",
-      "No geographic restrictions on trade within the UAE or internationally",
-      "Direct bidding on UAE government tenders and public sector contracts",
-      "Easy recruitment and sponsorship of unlimited employee visas (based on office size)",
-      "Zero corporate tax (subject to standard UAE corporate tax laws on taxable income)"
+      {
+        title: "Access to the UAE Market",
+        desc: "Operate your business within the UAE market across your approved business activities.",
+      },
+      {
+        title: "Flexible Business Activities",
+        desc: "Choose from a wide range of commercial, professional and other permitted activities.",
+      },
+      {
+        title: "Business Growth Opportunities",
+        desc: "Build your presence in Dubai and expand your operations as your business grows.",
+      },
+      {
+        title: "Government & Corporate Support",
+        desc: "Access the government procedures and services required to establish and operate your business.",
+      },
+      {
+        title: "Visa & Employee Support",
+        desc: "Apply for applicable investor, partner and employee visas based on your business and office requirements.",
+      },
     ],
     requirements: [
-      "Trade Name reservation certificate",
-      "Initial Approval from the Department of Economy and Tourism (DET)",
-      "Memorandum of Association (MOA) attested by a notary public",
-      "Valid physical office lease agreement (Ejari registered)",
-      "Passport copies and visa copies of all shareholders and managers"
+      "Proposed trade name",
+      "Passport copies of shareholders and managers",
+      "Visa / Emirates ID copies, where applicable",
+      "Initial approval documents",
+      "Memorandum of Association (MOA), where applicable",
+      "Office tenancy / lease documents, where required",
+      "Additional approvals or documents for regulated activities",
     ],
+    requirementsNote:
+      "Note: Document requirements can vary depending on the business activity and legal structure. Our team will provide you with the specific document checklist for your company setup.",
+    ctaText: "Start Your Company Setup →",
     process: [
-      { step: "1", title: "Select Business Activities", desc: "Identify the specific operations you will conduct (commercial, professional, or industrial)." },
-      { step: "2", title: "Reserve Trade Name", desc: "Choose and register a unique trade name conforming to UAE guidelines." },
-      { step: "3", title: "Apply for Initial Approval", desc: "Get green light from the DET to proceed with the legal setup." },
-      { step: "4", title: "Draft & Attest MOA", desc: "Prepare and sign the Memorandum of Association among shareholders." },
-      { step: "5", title: "Lease a Physical Office", desc: "Establish a physical presence and secure an Ejari certificate." },
-      { step: "6", title: "Obtain Trade License", desc: "Pay final fees and receive your mainland commercial license." }
-    ]
+      {
+        step: "1",
+        title: "Choose Your Business Activity",
+        desc: "Identify the business activity that best matches your planned operations and licensing requirements.",
+      },
+      {
+        step: "2",
+        title: "Reserve Your Trade Name",
+        desc: "Choose a suitable business name and complete the trade name reservation process according to UAE requirements.",
+      },
+      {
+        step: "3",
+        title: "Obtain Initial Approval",
+        desc: "Submit the required documents and obtain the initial approval needed to proceed with your company formation.",
+      },
+      {
+        step: "4",
+        title: "Complete Company Documentation",
+        desc: "Prepare the required company formation documents, including the Memorandum of Association (MOA), where applicable.",
+      },
+      {
+        step: "5",
+        title: "Arrange Office & Tenancy",
+        desc: "Complete the applicable office and tenancy requirements for your Mainland business and obtain the necessary documentation.",
+      },
+      {
+        step: "6",
+        title: "Obtain Your Trade License",
+        desc: "Complete the final licensing procedures, pay the applicable government fees and receive your Mainland trade license.",
+      },
+    ],
   },
   {
     id: "freezone-company",
-    title: "Free Zone Company Formation",
-    tagline: "Tax-efficient setups with simplified setup and 100% ownership",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
-    overview: "UAE Free Zones are special economic jurisdictions designed to encourage foreign investment. Each free zone is governed by its own independent regulatory authority and offers unique advantages such as 100% foreign ownership, full profit repatriation, and zero import/export duties. Setting up in a free zone is ideal for startups, tech companies, import-export traders, and service providers who do not require physical trade within the local mainland market.",
+    title: "Free Zone Company Formation in Dubai & UAE",
+    tagline:
+      "Set up your UAE Free Zone company with professional support for business activity selection, company registration, licensing, visas and related government procedures. GBC helps make your Free Zone business setup simple and straightforward.",
+    img: "https://i.pinimg.com/736x/f3/c0/10/f3c01045becf319a1033527f28c725ed.jpg",
+    overviewTitle: "Overview",
+    overview:
+      "UAE Free Zones offer businesses a structured environment for company formation, with different authorities, licensing options and business activities available across the UAE. GBC helps entrepreneurs and companies choose a suitable Free Zone and supports the registration, licensing, documentation and related setup procedures.",
+    idealForTitle: "Who Is Free Zone Company Setup Suitable For?",
     idealFor: [
-      "Startups, freelancers, and digital nomads seeking low setup costs",
-      "Import/export companies operating within logistics hubs (JAFZA, DAFZA)",
-      "Consultancies, tech agencies, and digital service providers working globally",
-      "E-commerce businesses wishing to scale without heavy retail footprints"
+      "Startups & Entrepreneurs looking for a structured and flexible environment to establish their business in the UAE.",
+      "Consultants & Professional Service Providers operating in areas such as consulting, technology, marketing and other permitted professional activities.",
+      "Trading & E-Commerce Businesses looking to establish a UAE base for permitted regional and international operations.",
+      "Technology & Digital Businesses seeking a suitable UAE setup for software, IT, digital and online business activities.",
+      "International Businesses looking to establish a UAE presence and access regional and global markets.",
+      "Freelancers & Small Businesses seeking suitable licensing options for permitted individual and small-business activities.",
     ],
+    benefitsTitle: "Key Advantages of Free Zone Business Setup",
     benefits: [
-      "100% foreign ownership guaranteed without a local sponsor",
-      "100% import and export tax exemptions within the zone",
-      "100% repatriation of capital and business profits",
-      "Simplified and fast setup procedures, often completed fully online",
-      "Flexible office solutions from hot desks to dedicated executive offices"
+      {
+        title: "Eligible Foreign Ownership",
+        desc: "Set up your company with ownership structures available under the selected Free Zone and business activity.",
+      },
+      {
+        title: "Wide Range of Business Activities",
+        desc: "Choose from commercial, professional, trading, technology and other permitted activities.",
+      },
+      {
+        title: "Flexible Office Solutions",
+        desc: "Select suitable workspace options based on the requirements of your Free Zone and business activity.",
+      },
+      {
+        title: "Business-Friendly Setup Process",
+        desc: "Benefit from streamlined company formation procedures offered by many UAE Free Zones.",
+      },
+      {
+        title: "Access to Regional & International Markets",
+        desc: "Build your UAE presence and conduct permitted business activities locally and internationally.",
+      },
+      {
+        title: "Multiple Visa Options",
+        desc: "Apply for applicable investor, partner and employee visas based on your company structure and office package.",
+      },
     ],
+    requirementsIntro:
+      "The exact documents depend on the selected Free Zone, business activity, legal structure and shareholder profile. Common requirements may include:",
     requirements: [
-      "Completed application form for the selected Free Zone Authority",
-      "Passport copies and passport-sized photos of shareholders/directors",
-      "Brief business plan (required by some premium free zones)",
-      "Board Resolution or Power of Attorney (if corporate shareholder)",
-      "Proof of address / utility bill of the primary applicant"
+      "Completed Free Zone company application",
+      "Passport copies of shareholders and managers",
+      "Passport-size photographs, where required",
+      "UAE visa / Emirates ID copies, where applicable",
+      "Proof of residential address",
+      "Business plan, where required",
+      "Corporate documents for corporate shareholders",
+      "Board Resolution or Power of Attorney, where applicable",
+      "Additional approvals or documents for regulated activities",
     ],
+    requirementsNote:
+      "Note: Requirements vary between Free Zone authorities and business activities. GBC will provide you with the specific document checklist for your chosen setup.",
+    ctaText: "Start Your Free Zone Setup →",
+    processTitle: "Step-by-Step Free Zone Company Formation Process",
     process: [
-      { step: "1", title: "Choose Free Zone", desc: "Select the jurisdiction that aligns with your industry (e.g., IFZA, DMCC, Meydan)." },
-      { step: "2", title: "Register Business Name", desc: "Submit name choices to the respective Free Zone Authority." },
-      { step: "3", title: "Submit Documents", desc: "Provide personal details and complete KYC checks." },
-      { step: "4", title: "Select Workspace Option", desc: "Choose a flexi-desk, smart office, or physical warehouse." },
-      { step: "5", title: "Receive License & Visas", desc: "The authority issues the trade license and starts residency visa processing." }
-    ]
+      {
+        step: "1",
+        title: "Choose the Right Free Zone",
+        desc: "Select a Free Zone that matches your business activity, ownership requirements, office needs and setup objectives.",
+      },
+      {
+        step: "2",
+        title: "Select Your Business Activity",
+        desc: "Choose the appropriate commercial, professional, trading or other permitted activity for your company.",
+      },
+      {
+        step: "3",
+        title: "Reserve Your Trade Name & Submit Documents",
+        desc: "Submit your proposed company name and provide the required shareholder and business documents for registration and verification.",
+      },
+      {
+        step: "4",
+        title: "Complete Registration & Licensing",
+        desc: "Complete the Free Zone registration process, fulfill the applicable requirements and obtain your business license.",
+      },
+      {
+        step: "5",
+        title: "Visa & Business Setup",
+        desc: "Proceed with applicable establishment, immigration and visa procedures and complete the requirements needed to start operating your business.",
+      },
+    ],
   },
   {
     id: "offshore-company",
-    title: "Offshore Company Formation",
-    tagline: "Secure asset protection and global corporate flexibility",
+    title: "Offshore Company Formation in Dubai, UAE",
+    tagline:
+      "Establish an offshore company in Dubai with professional support for registration, documentation and corporate structuring. GBC helps entrepreneurs and international businesses navigate the offshore company formation process and related requirements.",
     img: "https://i.pinimg.com/736x/80/1c/33/801c3372b516c3b4d268da24503d8e8b.jpg",
-    overview: "An Offshore Company (Non-Resident Company) is a legal entity established in a UAE offshore jurisdiction (such as JAFZA or RAK ICC) to operate internationally. Offshore companies are not permitted to trade directly within the UAE market or lease a physical office locally; instead, they are used for asset holding, international trade, estate planning, and tax optimization. It provides maximum privacy, asset protection, and ease of global wealth management.",
+    overviewTitle: "What Is an Offshore Company in the UAE ?",
+    overview:
+      "A UAE offshore company is a corporate structure designed for permitted business activities conducted outside the UAE offshore entity's jurisdiction or for certain corporate and asset-holding purposes. The exact permitted activities, requirements and restrictions depend on the relevant offshore jurisdiction and its regulations.\n\nGBC provides assistance with offshore company formation, documentation and registration requirements, helping you understand the setup process before proceeding.",
     idealFor: [
       "Holders of international real estate, shares, or intellectual property",
       "Entrepreneurs looking to minimize international tax liabilities legally",
       "Businesses seeking advanced asset protection and high privacy levels",
-      "International trade organizations operating entirely outside the UAE"
+      "International trade organizations operating entirely outside the UAE",
     ],
+    benefitsTitle: "Why Consider UAE Offshore Company Formation?",
     benefits: [
-      "Complete confidentiality with non-public registry of shareholders",
-      "Zero corporate, personal, capital gains, or withholding taxes",
-      "Multi-currency bank account capabilities globally and locally",
-      "Robust protection of assets against international litigation",
-      "No physical office space or minimum capital audit required"
+      {
+        title: "International Business Structure",
+        desc: "Suitable for certain international trading, consulting and cross-border business structures.",
+      },
+      {
+        title: "Holding Company Structure",
+        desc: "Can be used for permitted corporate holding and ownership arrangements.",
+      },
+      {
+        title: "Real Estate Ownership",
+        desc: "May be suitable for certain property ownership structures, subject to applicable UAE regulations and authority requirements.",
+      },
+      {
+        title: "Corporate Flexibility",
+        desc: "Suitable for entrepreneurs and businesses seeking an offshore corporate structure for permitted activities.",
+      },
+      {
+        title: "Professional Registration Support",
+        desc: "Get assistance with documentation, registration and the applicable offshore setup procedures.",
+      },
+      {
+        title: "Global Business Planning",
+        desc: "Create a UAE-based corporate structure that can support your wider international business strategy.",
+      },
     ],
+    requirementsIntro:
+      "The exact requirements depend on the selected offshore jurisdiction, shareholder structure and applicant profile. Common documents may include:",
     requirements: [
-      "Passport copy and utility bill (proof of address) of all shareholders",
-      "Bank reference letter (issued within the last 3 months)",
-      "Curriculum Vitae (CV) of the shareholders/directors",
-      "Brief description of the source of wealth and business activities"
+      "Offshore company application form",
+      "Passport copies of shareholders and directors",
+      "Founder / shareholder details",
+      "Memorandum & Articles of Association",
+      "Registered agent appointment documents",
+      "Proof of address, where required",
+      "Corporate documents for company shareholders",
+      "Board resolutions, where applicable",
+      "Power of Attorney, where applicable",
+      "Additional notarised or attested documents, where required",
     ],
+    ctaText: "Start Your Offshore Setup →",
+    processTitle: "Offshore Company Formation Process",
     process: [
-      { step: "1", title: "Select Registered Agent", desc: "Offshore setups must be done through an authorized agent like GBC." },
-      { step: "2", title: "Choose Company Name", desc: "Submit three unique name choices ending in 'Ltd' or 'Limited'." },
-      { step: "3", title: "Define Share Structure", desc: "Appoint directors, shareholders, and specify the share capital." },
-      { step: "4", title: "Submit KYC Documents", desc: "Provide certified passport copies and proof of address." },
-      { step: "5", title: "Receive Incorporation", desc: "Receive the Certificate of Incorporation and Memorandum of Association." }
-    ]
+      {
+        step: "1",
+        title: "Understand Your Requirements",
+        desc: "Discuss your business objectives, intended activities, ownership structure and offshore setup requirements.",
+      },
+      {
+        step: "2",
+        title: "Choose the Appropriate Jurisdiction",
+        desc: "Identify a suitable offshore jurisdiction and structure based on your business requirements.",
+      },
+      {
+        step: "3",
+        title: "Appoint a Registered Agent",
+        desc: "Complete the applicable registered-agent requirements for the selected offshore jurisdiction.",
+      },
+      {
+        step: "4",
+        title: "Prepare & Submit Documents",
+        desc: "Prepare the required corporate, shareholder and identification documents and submit the application.",
+      },
+      {
+        step: "5",
+        title: "Registration & Incorporation",
+        desc: "Complete the applicable authority procedures and receive the company's incorporation and registration documents.",
+      },
+      {
+        step: "6",
+        title: "Ongoing Corporate Requirements",
+        desc: "Maintain the required corporate records, filings and compliance obligations applicable to the offshore company.",
+      },
+    ],
   },
   {
     id: "branch-office",
-    title: "Branch Office Setup",
-    tagline: "Establish a direct corporate presence for your international parent company",
-    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
-    overview: "Setting up a Branch Office allows an existing international parent company to establish a legal, 100% foreign-owned presence in Dubai and the wider UAE. The branch office functions as an extension of the parent company, inheriting its legal status, track record, and financial history. It is authorized to conduct the same business activities as the parent company but operates under local UAE guidelines.",
+    title: "Branch Office Setup in Dubai, UAE",
+    tagline:
+      "Expand your existing business into the UAE with professional branch office setup support. GBC assists with branch registration, licensing, documentation, government approvals and related setup requirements in Dubai and across the UAE.",
+    img: "https://i.pinimg.com/736x/68/9f/f0/689ff03cb3b3f526885c9f69f122c07b.jpg",
+    overviewTitle: "Establish Your Business Presence in the UAE",
+    overview:
+      "A UAE branch office allows an existing company to establish a local presence and carry out permitted activities in accordance with the applicable UAE licensing and regulatory requirements.\n\nGBC supports businesses through the branch office setup process, from understanding the requirements and preparing documents to completing registration, licensing and related government procedures.",
+    idealForTitle: "Who Is Branch Office Setup Suitable For?",
     idealFor: [
-      "Established foreign corporations expanding their reach into the Middle East",
-      "Multinational organizations bidding on major regional commercial contracts",
-      "Global service firms (law, consulting, engineering) needing local presence"
+      "Existing International Companies looking to establish a business presence in the UAE.",
+      "Companies Expanding Into Dubai that want to enter the UAE market through an established corporate structure.",
+      "Professional & Service Businesses seeking to provide permitted services through a UAE branch.",
+      "Trading & Commercial Businesses looking to expand their permitted operations into the UAE.",
+      "Companies Serving UAE Clients that require a local business presence for their eligible activities.",
+      "Established Businesses Planning Regional Expansion and considering the UAE as a base for wider market opportunities.",
     ],
+    benefitsTitle: "Why Set Up a Branch Office in the UAE?",
     benefits: [
-      "100% ownership maintained by the foreign parent corporation",
-      "Inherits parent company reputation, credit history, and track record",
-      "Authorized to execute contracts and invoice clients locally in the UAE",
-      "Enables smooth transfer of international talent to the UAE offices"
+      {
+        title: "Expand Your Existing Business",
+        desc: "Establish a UAE presence for your existing company and explore new business opportunities.",
+      },
+      {
+        title: "Operate Under Your Existing Brand",
+        desc: "Maintain your company's identity while establishing a presence in the UAE, subject to the applicable structure and regulations.",
+      },
+      {
+        title: "Access the UAE Market",
+        desc: "Build a local presence and serve eligible clients and business opportunities in the UAE.",
+      },
+      {
+        title: "Professional Setup Support",
+        desc: "Get assistance with documentation, licensing, approvals and government procedures.",
+      },
+      {
+        title: "Business Expansion",
+        desc: "Create a structured pathway for expanding your existing operations into the UAE.",
+      },
+      {
+        title: "Ongoing Government Support",
+        desc: "Get assistance with applicable renewals, visas, PRO requirements and other government procedures after setup.",
+      },
     ],
+    requirementsIntro:
+      "The exact requirements vary depending on the parent company, business activity, licensing authority and branch structure. Common documents may include:",
     requirements: [
-      "Certificate of Incorporation of the parent company (attested and legalized)",
-      "Board Resolution authorizing the establishment of the UAE branch",
-      "Memorandum and Articles of Association of the parent company",
-      "Power of Attorney in favor of the designated UAE General Manager",
-      "Parent company's financial statements for the past 2 years (audited)"
+      "Parent company's certificate of incorporation",
+      "Parent company's Memorandum & Articles of Association",
+      "Parent company's trade / commercial license",
+      "Board resolution approving the UAE branch",
+      "Power of Attorney for the UAE representative, where applicable",
+      "Passport and identification documents of relevant representatives",
+      "Parent company's financial or corporate documents, where required",
+      "UAE office / tenancy documents, where applicable",
+      "Additional authority approvals based on the business activity",
     ],
+    requirementsNote:
+      "Note:\nDocument and approval requirements can vary depending on the jurisdiction, business activity and parent company's structure. GBC will provide the applicable checklist for your branch setup.",
+    ctaText: "Start Branch Setup →",
+    processTitle: "Branch Office Setup Process in the UAE",
     process: [
-      { step: "1", title: "Parent Attestation", desc: "Get all corporate documents attested at the UAE Embassy in the home country." },
-      { step: "2", title: "Local Translation", desc: "Translate all parent company documents into Arabic legally in Dubai." },
-      { step: "3", title: "Apply for Reservation", desc: "Reserve the branch name (must match the parent company name)." },
-      { step: "4", title: "Ministry of Economy Approval", desc: "Submit details to the UAE Ministry of Economy for initial approval." },
-      { step: "5", title: "Secure DET License", desc: "Complete DET registration, lease physical premises, and receive license." }
-    ]
-  }
+      {
+        step: "1",
+        title: "Understand Your Business Requirements",
+        desc: "Review the parent company's activities, proposed UAE branch activities and applicable setup requirements.",
+      },
+      {
+        step: "2",
+        title: "Select the Appropriate Jurisdiction",
+        desc: "Determine the suitable licensing authority and jurisdiction for establishing your UAE branch.",
+      },
+      {
+        step: "3",
+        title: "Prepare Parent Company Documents",
+        desc: "Collect and prepare the required corporate documents, resolutions and representative information.",
+      },
+      {
+        step: "4",
+        title: "Obtain Required Approvals",
+        desc: "Submit the application and complete the applicable authority and activity-specific approval procedures.",
+      },
+      {
+        step: "5",
+        title: "Complete Branch Registration & Licensing",
+        desc: "Finalize the registration process and obtain the applicable UAE branch license.",
+      },
+      {
+        step: "6",
+        title: "Complete Post-Setup Requirements",
+        desc: "Proceed with applicable establishment, immigration, visa, office and other government requirements needed to operate the branch.",
+      },
+    ],
+  },
 ];

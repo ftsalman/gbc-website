@@ -115,7 +115,7 @@ export const PackageShowcase = () => {
                   </ul>
                 </div>
                 
-                <button className="self-start px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors">
+                <button className="self-start px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors" onClick={() => (window.location.href = '/contact')}>
                   Customize Package
                 </button>
               </div>

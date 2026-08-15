@@ -10,7 +10,7 @@ const staticBlogPosts = [
       "Explore the latest corporate tax regulations and 9% threshold rules for UAE mainland entities in 2026.",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-    href: "#",
+    href: "/blogs/01",
   },
   {
     id: "02",
@@ -19,7 +19,7 @@ const staticBlogPosts = [
       "Discover the strategic advantages of setting up a Dual-License structure across DIFC and Dubai Mainland.",
     image:
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop",
-    href: "#",
+    href: "/blogs/02",
   },
   {
     id: "03",
@@ -28,7 +28,7 @@ const staticBlogPosts = [
       "Navigating UAE Golden Visa expansion: New eligibility criteria for real estate investors and executive talent.",
     image:
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
-    href: "#",
+    href: "/blogs/03",
   },
   {
     id: "04",
@@ -37,7 +37,7 @@ const staticBlogPosts = [
       "How family offices and international holding companies optimize wealth protection under ADGM foundations.",
     image:
       "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop",
-    href: "#",
+    href: "/blogs/04",
   },
 ];
 

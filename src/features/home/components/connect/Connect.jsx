@@ -60,20 +60,20 @@ export const Connect = () => {
 
           {/* Headline matching Syncox Let's Discuss Your Next Project */}
           <h2 className="cta-content-item text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1] mb-6">
-            Let&apos;s Make Your UAE Business Easier Description
+            Let&apos;s Make Your UAE Business Easier
           </h2>
 
           {/* Description */}
           <p className="cta-content-item text-gray-300 text-lg sm:text-xl font-light leading-relaxed mb-10">
-            Whether you're starting a company, managing PRO requirements,
-            processing visas, handling accounting or seeking government
-            approvals, our team is ready to help.
+            Whether you’re setting up a company, managing PRO services, handling
+            visas, keeping your accounts in order or meeting government
+            requirements, GBC is here to support you.
           </p>
 
           {/* Corner Bracket CTA Button */}
           <div className="cta-content-item">
-            <Button variant="corner" size="lg">
-              Get Free Consultation →
+            <Button variant="corner" size="lg" onClick={() => (window.location.href = '/contact')}>
+              Get Free Consultation  →
             </Button>
           </div>
         </div>

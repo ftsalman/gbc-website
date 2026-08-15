@@ -177,7 +177,9 @@ export const TestimonialSlider = () => {
                 <div className="absolute bottom-8 left-8 text-white">
                   <p className="font-bold text-lg mb-1">{testimonial.name}</p>
                   <a
-                    href="#"
+                    href={`https://${testimonial.link.split(' ')[0]}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm font-medium hover:underline opacity-90 flex items-center gap-1"
                   >
                     {testimonial.link}

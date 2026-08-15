@@ -341,6 +341,7 @@ export const Package = () => {
                   <div className="pt-4 mt-auto">
                     <Button
                       variant="corner"
+                      onClick={() => (window.location.href = '/contact')}
                       className={`!w-full !py-4 sm:!py-5 !rounded-2xl font-bold text-base tracking-wide transition-all duration-300 shadow-sm ${
                         pkg.popular
                           ? "!bg-bordeaux !text-white !border-bordeaux hover:!bg-bordeaux/90"

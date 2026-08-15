@@ -9,8 +9,8 @@ export const ContactPage = () => {
     <div className="contact-page bg-white font-sans overflow-hidden min-h-screen">
       <SEO title="Contact Us" description="Get in touch with our dedicated team of business advisors, legal experts, and corporate strategists to establish and scale your company in the UAE." />
       <PageToolbar
-        title="Contact Us"
-        description="Get in touch with our dedicated team of business advisors, legal experts, and corporate strategists to establish and scale your company in the UAE."
+        title="Let’s Talk About Your Business"
+        description="Whether you need PRO services, business setup, accounting, VAT support or government assistance, our team is ready to help. Get in touch with GBC and find the right solution for your business in the UAE."
         bgImage="/images/bordeaux_ribbon.png"
         imagePosition="left"
         textAlign="center"

@@ -61,8 +61,8 @@ export const VisaHero = () => {
           </p>
 
           <div className="hero-anim flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <Button variant="corner" size="lg">
-              Talk to a Visa Expert →
+            <Button variant="corner" size="lg" onClick={() => (window.location.href = '/contact')}>
+              Talk to a Visa Expert  →
             </Button>
             {/* <Button
               variant="outline"

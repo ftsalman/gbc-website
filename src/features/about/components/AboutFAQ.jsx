@@ -16,6 +16,7 @@ const faqs = [
     question: "Should I choose a Mainland or Free Zone company in the UAE?",
     answer: "It depends on your business activity, target market and long-term plans. Mainland and Free Zone companies have different requirements, benefits and operating structures. Our consultants can understand your business requirements and help you choose the option that best fits your goals.",
     cta: "Compare Business Setup Options →",
+    ctaLink: "/business-setup",
   },
   {
     id: "03",
@@ -62,6 +63,7 @@ const faqs = [
     question: "How much does it cost to set up a business in the UAE?",
     answer: "The cost depends on several factors, including the business activity, jurisdiction, licence type, visa requirements, office requirements and government fees. Rather than giving every business the same price, our team can assess your requirements and provide a solution based on your specific needs.",
     cta: "Get a Free Consultation →",
+    ctaLink: "/contact",
   },
   {
     id: "12",
@@ -128,7 +130,7 @@ const FaqItem = ({ item }) => {
           </p>
           {item.cta && (
             <div className="mt-4">
-              <a href="#" className="inline-flex items-center text-sm sm:text-base font-medium text-[#6C141E] hover:text-gray-900 transition-colors duration-300">
+              <a href={item.ctaLink || "#"} className="inline-flex items-center text-sm sm:text-base font-medium text-[#6C141E] hover:text-gray-900 transition-colors duration-300">
                 {item.cta}
               </a>
             </div>
