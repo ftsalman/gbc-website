@@ -352,18 +352,18 @@ export const VisaDetailsPage = () => {
                   <div className="pt-6 border-t border-gray-100 flex flex-col gap-4">
                     <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Contact info</h4>
                     
-                    <a href="tel:+971125879786" className="flex items-center gap-3 text-sm text-gray-700 hover:text-[#6C141E] transition-colors group">
+                    <a href="tel:+971585277775" className="flex items-center gap-3 text-sm text-gray-700 hover:text-[#6C141E] transition-colors group">
                       <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 group-hover:bg-[#6C141E]/10 transition-all">
                         <Phone className="w-4 h-4 text-gray-500 group-hover:text-[#6C141E] transition-colors" />
                       </div>
-                      <span className="font-medium">+971 125 879 786</span>
+                      <span className="font-medium">+971 58 527 7775</span>
                     </a>
 
-                    <a href="mailto:info@gbccorporate.com" className="flex items-center gap-3 text-sm text-gray-700 hover:text-[#6C141E] transition-colors group">
+                    <a href="mailto:typing@connectgbc.com" className="flex items-center gap-3 text-sm text-gray-700 hover:text-[#6C141E] transition-colors group">
                       <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 border border-gray-100 group-hover:bg-[#6C141E]/10 transition-all">
                         <Mail className="w-4 h-4 text-gray-500 group-hover:text-[#6C141E] transition-colors" />
                       </div>
-                      <span className="font-medium">info@gbccorporate.com</span>
+                      <span className="font-medium">typing@connectgbc.com</span>
                     </a>
                   </div>
                 </div>
