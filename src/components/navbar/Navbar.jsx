@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DataList } from "../../../lib/turtle-ui/components/list/DataList";
@@ -183,14 +184,12 @@ export const Navbar = () => {
 
             {/* Connect Agent Button - Right Aligned */}
             <div className="flex items-center space-x-4 flex-shrink-0 justify-end nav-item-animate opacity-0">
-              <ParticleButton
-                className="hidden md:flex rounded-xl"
-                onClick={() => (window.location.href = "/contact")}
-                successDuration={1000}
-                variant="default"
+              <a
+                href="/contact"
+                className="hidden md:flex items-center justify-center px-6 py-2.5 bg-[#6C141E] text-white rounded-full font-medium text-sm hover:bg-[#8A1A27] transition-colors shadow-md shadow-[#6C141E]/20"
               >
                 Get Free Consultation
-              </ParticleButton>
+              </a>
               {/* Mobile Menu Toggle */}
               <Button
                 className={`!p-0 !bg-transparent md:hidden hover:opacity-80 ml-2 transition-opacity ${isLightBg ? "text-black" : "text-white"}`}
@@ -283,17 +282,13 @@ export const Navbar = () => {
                 )}
               </div>
             ))}
-            <Button
-              size="lg"
-              variant="primary"
-              className="mt-8 w-full flex justify-center text-lg shadow-md"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                window.location.href = "/contact";
-              }}
+            <a
+              href="/contact"
+              className="mt-8 w-full flex justify-center items-center py-3 bg-[#6C141E] text-white rounded-full text-lg shadow-md font-medium hover:bg-[#8A1A27] transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Connect Agent
-            </Button>
+            </a>
           </div>
         </div>
       </nav>
