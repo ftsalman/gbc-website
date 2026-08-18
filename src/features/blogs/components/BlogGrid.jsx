@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { blogs as staticBlogs } from "../constants/blogsData.jsx";
 import { DataList } from "../../../../lib/turtle-ui/components/list/DataList.jsx";
 import { Button } from "../../../../lib/turtle-ui/components/button/Button.jsx";
 import { getFirebaseBlogs } from "../../../admin/blog/create-blogs/utils/firebaseBlogStorage";
 
 export const BlogGrid = () => {
-  const [blogs, setBlogs] = useState(staticBlogs);
+  const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,12 +23,9 @@ export const BlogGrid = () => {
             author: b.author,
             avatar: b.authorImage || "/images/blogs/avatar_lana.png"
           }));
-          
-          // Combine dynamic and static blogs, ensuring no duplicates by ID
-          const combined = [...mappedBlogs, ...staticBlogs].filter(
-            (blog, index, self) => index === self.findIndex(t => t.id === blog.id)
-          );
-          setBlogs(combined);
+          setBlogs(mappedBlogs);
+        } else {
+          setBlogs([]);
         }
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -48,10 +44,21 @@ export const BlogGrid = () => {
         </h2>
 
         {loading ? (
-          <div className="flex justify-center py-20">
-            <span className="w-8 h-8 border-4 border-gray-200 border-t-[#6C141E] rounded-full animate-spin"></span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 px-2">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="flex flex-col animate-pulse">
+                <div className="w-full aspect-[4/3] bg-gray-100/80 rounded-2xl mb-5"></div>
+                <div className="h-6 bg-gray-100/80 rounded-md w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-100/80 rounded-md w-full mb-2"></div>
+                <div className="h-4 bg-gray-100/80 rounded-md w-5/6 mb-6"></div>
+                <div className="flex items-center gap-3 mt-auto pt-2">
+                  <div className="w-7 h-7 bg-gray-100/80 rounded-full"></div>
+                  <div className="h-3.5 bg-gray-100/80 rounded-md w-24"></div>
+                </div>
+              </div>
+            ))}
           </div>
-        ) : (
+        ) : blogs.length > 0 ? (
           <DataList 
             data={blogs}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
@@ -97,10 +104,22 @@ export const BlogGrid = () => {
               </Link>
             )}
           />
+        ) : (
+          <div className="flex flex-col items-center justify-center py-28 text-center px-4">
+            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6 shadow-sm border border-gray-100">
+              <svg className="w-10 h-10 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+              </svg>
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 tracking-tight">No Articles Published Yet</h3>
+            <p className="text-gray-500 max-w-sm leading-relaxed text-sm md:text-base font-light">
+              We're currently brewing some fresh insights. Check back soon for our latest updates and industry news!
+            </p>
+          </div>
         )}
         
         {/* Loading More Button */}
-        {!loading && (
+        {!loading && blogs.length > 0 && (
           <div className="mt-16 flex justify-center">
             <Button 
               size="lg" 

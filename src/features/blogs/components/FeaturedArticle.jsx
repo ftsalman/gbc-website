@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { getFirebaseBlogs } from "../../../admin/blog/create-blogs/utils/firebaseBlogStorage";
-import { blogs as staticBlogs } from "../constants/blogsData.jsx";
 
 export const FeaturedArticle = () => {
   const containerRef = useRef(null);
@@ -14,7 +13,6 @@ export const FeaturedArticle = () => {
     const fetchLatest = async () => {
       try {
         const firebaseBlogs = await getFirebaseBlogs();
-        let combined = staticBlogs;
         if (firebaseBlogs && firebaseBlogs.length > 0) {
           const mappedBlogs = firebaseBlogs.map(b => ({
             id: b.id,
@@ -25,15 +23,13 @@ export const FeaturedArticle = () => {
             author: b.author,
             avatar: b.authorImage || "/images/blogs/avatar_lana.png"
           }));
-          
-          combined = [...mappedBlogs, ...staticBlogs].filter(
-            (blog, index, self) => index === self.findIndex(t => t.id === blog.id)
-          );
+          setLatestBlog(mappedBlogs[0]);
+        } else {
+          setLatestBlog(null);
         }
-        setLatestBlog(combined[0]);
       } catch (error) {
         console.error("Error fetching blogs:", error);
-        setLatestBlog(staticBlogs[0]);
+        setLatestBlog(null);
       } finally {
         setLoading(false);
       }
