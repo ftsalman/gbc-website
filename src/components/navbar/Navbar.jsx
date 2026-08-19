@@ -12,7 +12,7 @@ export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLightBg, setIsLightBg] = useState(false);
+  const [isLightBg, setIsLightBg] = useState(true);
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +35,13 @@ export const Navbar = () => {
 
           for (let i = 0; i < elements.length; i++) {
             const el = elements[i];
-            if (el.tagName === "NAV" || el.closest("nav")) continue;
+            if (
+              el.tagName === "NAV" ||
+              el.closest("nav") ||
+              el.closest(".preloader-container")
+            ) {
+              continue;
+            }
 
             const style = window.getComputedStyle(el);
             const bg = style.backgroundColor;
