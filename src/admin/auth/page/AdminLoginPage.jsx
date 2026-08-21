@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const AdminLoginPage = () => {
-  const [email, setEmail] = useState('admin@connectgbc.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = (e) => {
@@ -50,7 +50,7 @@ export const AdminLoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full bg-white border border-gray-200 text-gray-900 rounded-xl focus:ring-2 focus:ring-[#6C141E]/20 focus:border-[#6C141E] block pl-11 pr-4 py-3.5 transition-all outline-none shadow-sm hover:border-gray-300"
-              placeholder="admin@connectgbc.com"
+              placeholder=" Enter Email Address"
             />
           </div>
         </div>
