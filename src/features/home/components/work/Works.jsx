@@ -86,7 +86,7 @@ export const Works = () => {
   return (
     <section
       ref={containerRef}
-      className="bg-black text-white py-24 sm:py-36 relative overflow-x-clip font-sans"
+      className="bg-black text-white py-24 sm:py-36 relative font-sans"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12">
         {/* Top Header exactly matching website horizontal grid type setting */}

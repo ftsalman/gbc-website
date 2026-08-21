@@ -12,12 +12,17 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color:#ffff;
   color: var(--color-bordeaux);
+  overflow-x: hidden;
+  width: 100%;
 }
+
+
 
 
 @keyframes marquee {

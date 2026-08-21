@@ -114,7 +114,7 @@ export const BusinessSetup = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full bg-[#f8f9fa] py-24 sm:py-32 overflow-clip border-t border-gray-100"
+      className="w-full bg-[#f8f9fa] py-24 sm:py-32 border-t border-gray-100"
     >
       <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">

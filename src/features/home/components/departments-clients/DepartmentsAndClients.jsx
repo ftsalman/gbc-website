@@ -39,7 +39,7 @@ export const DepartmentsAndClients = () => {
 
         {/* Logos Grid using DataList component */}
         {/* Logos Marquee */}
-        <div className="relative w-full overflow-y-visible overflow-x-clip flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] pt-48 pb-20 -mt-44 -mb-16">
+        <div className="relative w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] pt-48 pb-20 -mt-44 -mb-16">
           <div className="animate-marquee flex gap-16 md:gap-20 items-center w-max">
             {[...clients, ...clients, ...clients].map((client, idx) => (
             <div
