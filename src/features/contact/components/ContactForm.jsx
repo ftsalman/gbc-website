@@ -26,7 +26,7 @@ export const ContactForm = () => {
             trigger: sectionRef.current,
             start: "top 75%",
           },
-        }
+        },
       );
 
       // Right side form animation
@@ -42,10 +42,10 @@ export const ContactForm = () => {
             trigger: sectionRef.current,
             start: "top 75%",
           },
-        }
+        },
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -55,7 +55,6 @@ export const ContactForm = () => {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
-          
           {/* Left Column: Contact Info */}
           <div className="lg:col-span-5 flex flex-col justify-start pt-4">
             <div className="contact-left-item mb-6">
@@ -70,7 +69,8 @@ export const ContactForm = () => {
             </h2>
 
             <p className="contact-left-item text-sm text-gray-500 leading-relaxed mb-10 max-w-md">
-              Whether you need business setup, PRO services, accounting, VAT support or government assistance, our team is ready to help.
+              Whether you need business setup, PRO services, accounting, VAT
+              support or government assistance, our team is ready to help.
             </p>
 
             <div className="flex flex-col">
@@ -80,8 +80,13 @@ export const ContactForm = () => {
                   <Mail className="w-6 h-6" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-normal text-gray-900 mb-2">Email</h4>
-                  <a href="mailto:typing@connectgbc.com" className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light">
+                  <h4 className="text-xl font-normal text-gray-900 mb-2">
+                    Email
+                  </h4>
+                  <a
+                    href="mailto:typing@connectgbc.com"
+                    className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light"
+                  >
                     typing@connectgbc.com
                   </a>
                 </div>
@@ -93,9 +98,12 @@ export const ContactForm = () => {
                   <MapPin className="w-6 h-6" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-normal text-gray-900 mb-2">Address</h4>
+                  <h4 className="text-xl font-normal text-gray-900 mb-2">
+                    Address
+                  </h4>
                   <p className="text-sm text-gray-500 font-light leading-relaxed max-w-[260px]">
-                    Dubai Silicon Oasis, DDP, Building A1, Dubai, United Arab Emirates
+                    GBC Business Connect Al Asmawi Building – 19 Al Manama St
+                    Ras Al Khor Industrial Area 2 Dubai, United Arab Emirates
                   </p>
                 </div>
               </div>
@@ -106,8 +114,13 @@ export const ContactForm = () => {
                   <Phone className="w-6 h-6" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-normal text-gray-900 mb-2">Phone</h4>
-                  <a href="tel:+971585277775" className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light">
+                  <h4 className="text-xl font-normal text-gray-900 mb-2">
+                    Phone
+                  </h4>
+                  <a
+                    href="tel:+971585277775"
+                    className="text-sm text-gray-500 hover:text-bordeaux transition-colors font-light"
+                  >
                     +971 58 527 7775
                   </a>
                 </div>
@@ -118,16 +131,17 @@ export const ContactForm = () => {
           {/* Right Column: Form Card */}
           <div className="lg:col-span-7 contact-form-card relative">
             <div className="bg-[#050505] rounded-sm p-8 sm:p-12 relative overflow-hidden">
-              
               {/* Decorative Bordeaux Ribbon Image in the corner matching Syncox blue bloom */}
               <div className="absolute bottom-0 right-0 w-[85%] h-[75%] sm:w-[65%] sm:h-[65%] pointer-events-none z-0">
-                <img 
-                  src="/images/bordeaux_ribbon.png" 
-                  alt="" 
-                  className="w-full h-full object-cover object-center brightness-125 contrast-110" 
+                <img
+                  src="/images/bordeaux_ribbon.png"
+                  alt=""
+                  className="w-full h-full object-cover object-center brightness-125 contrast-110"
                   style={{
-                    maskImage: "radial-gradient(circle at 100% 100%, black 40%, transparent 95%)",
-                    WebkitMaskImage: "radial-gradient(circle at 100% 100%, black 40%, transparent 95%)"
+                    maskImage:
+                      "radial-gradient(circle at 100% 100%, black 40%, transparent 95%)",
+                    WebkitMaskImage:
+                      "radial-gradient(circle at 100% 100%, black 40%, transparent 95%)",
                   }}
                 />
               </div>
@@ -137,46 +151,65 @@ export const ContactForm = () => {
                   Stay Connected
                 </h3>
                 <p className="text-sm sm:text-base text-gray-400 font-light mb-10">
-                  Reach out for business setup, visa inquiries, or corporate tax consulting—we're here to help.
+                  Reach out for business setup, visa inquiries, or corporate tax
+                  consulting—we're here to help.
                 </p>
 
-                <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+                <form
+                  className="flex flex-col gap-6"
+                  onSubmit={(e) => e.preventDefault()}
+                >
                   {/* Name */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-sm text-white font-medium">Name</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      placeholder="First Name" 
+                    <label
+                      htmlFor="name"
+                      className="text-sm text-white font-medium"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="First Name"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
                   </div>
 
                   {/* Email */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-sm text-white font-medium">Email</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      placeholder="Enter Email Address" 
+                    <label
+                      htmlFor="email"
+                      className="text-sm text-white font-medium"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Enter Email Address"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
                   </div>
 
                   {/* Message */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="message" className="text-sm text-white font-medium">Message</label>
-                    <textarea 
-                      id="message" 
+                    <label
+                      htmlFor="message"
+                      className="text-sm text-white font-medium"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
                       rows="4"
-                      placeholder="Enter Your Message" 
+                      placeholder="Enter Your Message"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm resize-none placeholder-gray-600"
                     ></textarea>
                   </div>
 
                   <div className="mt-4">
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="bg-bordeaux text-white font-semibold text-sm px-10 py-4 hover:bg-bordeaux/90 transition-colors shadow-lg"
                     >
                       Submit
@@ -184,10 +217,8 @@ export const ContactForm = () => {
                   </div>
                 </form>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
