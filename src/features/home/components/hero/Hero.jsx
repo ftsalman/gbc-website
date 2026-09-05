@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { testimonials } from "../testimonial/Testimonial";
+import { DataList } from "../../../../../lib/turtle-ui/components";
 
 const ArrowUpRightIcon = ({ className = "w-5 h-5" }) => (
   <svg
@@ -120,21 +122,14 @@ export const Hero = () => {
 
           <div className="hero-anim mt-12 flex items-center gap-5">
             <div className="flex -space-x-3">
-              <img
-                className="w-12 h-12 rounded-full border-2 border-[#F4F7FB] object-cover shadow-sm"
-                src="/images/testimonials/testimonials1.png"
-                alt="user"
-              />
-              <img
-                className="w-12 h-12 rounded-full border-2 border-[#F4F7FB] object-cover shadow-sm"
-                src="/images/testimonials/testimonials2.jpeg"
-                alt="user"
-              />
-              <img
-                className="w-12 h-12 rounded-full border-2 border-[#F4F7FB] object-cover shadow-sm"
-                src="/images/testimonials/testimonials3.png"
-                alt="user"
-              />
+              {testimonials.slice(0, 4).map((t) => (
+                <img
+                  key={t.id}
+                  className="w-12 h-12 rounded-full border-2 border-[#F4F7FB] object-cover shadow-sm"
+                  src={t.image}
+                  alt={t.name}
+                />
+              ))}
             </div>
             <div className="text-sm font-bold text-[#111827]">
               Trusted by 1,000+

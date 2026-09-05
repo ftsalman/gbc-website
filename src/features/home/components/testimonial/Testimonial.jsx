@@ -13,7 +13,7 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 // Verified corporate client testimonials featuring exact Aeline design structure combined with website brand colors and turtle-ui components
-const testimonials = [
+export const testimonials = [
   {
     id: 1,
     name: "Laxman Sana",
@@ -58,47 +58,56 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Zara Khan",
-    company: "TechFlow Middle East",
-    logoText: "IPSUM",
-    logoSvg:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692a148227a37705feded0ce_ipsum-logo.svg",
-    image:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/692dca1ef44243d100a616ae_testimonials-img-4.avif",
+    name: "Naveed Khan Sher Aftab",
+    company: "MOIN KHAN AND SHAH ZEB VEHICLES RECOVERY",
+    logoText: "MOIN KHAN AND SHAH ZEB VEHICLES RECOVERY",
+    logoSvg: "/client-logo/MS_LOGO_SECONDARY.png",
+    image: "/images/testimonials/testimonials-7.png",
     quote:
-      "They gave simple paths to hard puzzles, removing all delays while building fresh, brilliant corporate structures.",
-    overallScore: "4.98 / 5.0",
-    speedScore: "100%",
-    verifiedDate: "May 2026",
-    jurisdiction: "Abu Dhabi Global Market (ADGM)",
-  },
-  {
-    id: 5,
-    name: "Sarah Khan",
-    company: "RetailHub Global",
-    logoText: "LOGOIPSUM",
-    logoSvg:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd08c9f507094bc22221_logo-testimonials-2.svg",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-    quote:
-      "Excellent service from start to finish. They handled all our commercial trade licenses and mainland clearances without friction.",
+      "Setting up our vehicle recovery business was completely hassle-free thanks to GBC. Their deep understanding of the transport sector licensing and DET requirements meant we were fully operational much faster than expected.",
     overallScore: "5.00 / 5.0",
     speedScore: "100%",
     verifiedDate: "June 2026",
     jurisdiction: "Dubai Economy & Tourism (DET)",
   },
   {
-    id: 6,
-    name: "Ahmed Raza",
-    company: "Sovereign Capital",
-    logoText: "LOQO",
-    logoSvg:
-      "https://cdn.prod.website-files.com/6929c116366a14507fc8424d/699cbd0853b0828f2ba09cf4_logo-testimonials-3.svg",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+    id: 5,
+    name: "Gurjeet Singh Harbhajan Singh",
+    company: "Best Deal",
+    logoText: "BESTDEAL",
+    logoSvg: "/client-logo/best_deal_logo.png",
+    image: "/images/testimonials/testimonials4.png",
     quote:
-      "Highly knowledgeable about mainland vs financial freezone holding structures. Saved our family office substantial time and capital.",
+      "GBC provided exceptional guidance throughout our company formation process. Their team's proactive approach and seamless execution in handling our legal structuring at ADGM has been instrumental to our success.",
+    overallScore: "4.98 / 5.0",
+    speedScore: "100%",
+    verifiedDate: "May 2026",
+    jurisdiction: "Abu Dhabi Global Market (ADGM)",
+  },
+
+  {
+    id: 6,
+    name: "Qasim Mushtaq Chaudhry Mushtaq Ahmed",
+    company: "PAK FRIENDS CARGO TRANSPORTBY TRUCK LLC",
+    logoText: "PAK FRIENDS CARGO TRANSPORTBY TRUCK LLC",
+    logoSvg: "/client-logo/PF_SEC_LOGO.png",
+    image: "/images/testimonials/testimonials-5.png",
+    quote:
+      "Operating a cargo transport company requires strict compliance and complex logistics licenses. GBC managed our entire setup with remarkable efficiency, saving us significant time and allowing us to focus on our fleet operations.",
+    overallScore: "4.99 / 5.0",
+    speedScore: "100%",
+    verifiedDate: "May 2026",
+    jurisdiction: "ADGM & JAFZA Holdings",
+  },
+  {
+    id: 7,
+    name: "Ahmed Raza",
+    company: "MUKTSAR TRANSPORT L.L.C",
+    logoText: "MUKTSAR TRANSPORT L.L.C",
+    logoSvg: "/client-logo/TRASNPORT_SEC_LOGO.png",
+    image: "/images/testimonials/testimonials-6.png",
+    quote:
+      "We rely heavily on timely renewals and strict regulatory compliance for our transportation fleet. GBC has consistently delivered outstanding corporate PRO services, making them an indispensable partner for our growing business.",
     overallScore: "4.99 / 5.0",
     speedScore: "100%",
     verifiedDate: "May 2026",
@@ -174,6 +183,16 @@ export const Testimonial = () => {
     }, 3500);
     return () => clearInterval(interval);
   }, []);
+
+  // Auto-scroll testimonials
+  useEffect(() => {
+    const autoScroll = setInterval(() => {
+      setStartIndex((prev) =>
+        prev + 1 > testimonials.length - visibleCount ? 0 : prev + 1,
+      );
+    }, 5000);
+    return () => clearInterval(autoScroll);
+  }, [visibleCount]);
 
   useGSAP(
     () => {
