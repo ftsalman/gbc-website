@@ -4,7 +4,7 @@ import {
   Button,
   InputBox,
 } from "../../../../../lib/turtle-ui/components";
-import { sendMail } from "../../../../lib/sendMail.js";
+import { submitLead } from "../../../../lib/submitLead";
 import { useToast } from "../../../../components/toast/Toast.jsx";
 
 export const PromoPopup = () => {
@@ -24,7 +24,7 @@ export const PromoPopup = () => {
     );
     setSending(true);
     try {
-      await sendMail("callback", { ...fields, source: "Home page popup" });
+      await submitLead("promo_popup", fields);
       form.reset();
       setIsOpen(false);
       toast({

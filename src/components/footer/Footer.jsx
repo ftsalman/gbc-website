@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "../../../lib/turtle-ui/components";
-import { sendMail } from "../../lib/sendMail.js";
+import { submitLead } from "../../lib/submitLead";
 import { useToast } from "../toast/Toast.jsx";
 
 export const Footer = () => {
@@ -14,7 +14,7 @@ export const Footer = () => {
     if (!email.trim() || sending) return;
     setSending(true);
     try {
-      await sendMail("newsletter", { email: email.trim(), source: "Footer newsletter" });
+      await submitLead("footer_newsletter", { email: email.trim() });
       setEmail("");
       toast({ type: "success", title: "Subscribed", message: "Thank you! You're on our newsletter list." });
     } catch (error) {

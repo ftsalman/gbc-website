@@ -5,7 +5,7 @@ import { Footer } from "../components/footer/Footer";
 import { ScrollToTop } from "../components/scroll-to-top/ScrollToTop";
 import { WhatsAppButton } from "../components/whatsapp-button/WhatsAppButton";
 import Lanyard from "../components/ui/Lanyard";
-import { MetaPageViewTracker } from "../components/meta/MetaPageViewTracker";
+import { MetaPageViewTracker } from "../components/meta-pixel/MetaPageViewTracker";
 
 export const Layout = () => {
   return (

@@ -30,6 +30,38 @@ const testimonials = [
     role: "CEO & Founder - MAQS Group",
     image: "/images/testimonials/testimonials2.jpeg",
   },
+  {
+    id: "04",
+    quote:
+      "“Setting up our vehicle recovery business was completely hassle-free thanks to GBC. Their deep understanding of the transport sector licensing and DET requirements meant we were fully operational much faster than expected.”",
+    name: "Naveed Khan Sher Aftab",
+    role: "MOIN KHAN AND SHAH ZEB VEHICLES RECOVERY",
+    image: "/images/testimonials/testimonials-7.png",
+  },
+  {
+    id: "05",
+    quote:
+      "“GBC provided exceptional guidance throughout our company formation process. Their team's proactive approach and seamless execution in handling our legal structuring at ADGM has been instrumental to our success.”",
+    name: "Gurjeet Singh Harbhajan Singh",
+    role: "Best Deal",
+    image: "/images/testimonials/testimonials4.png",
+  },
+  {
+    id: "06",
+    quote:
+      "“Operating a cargo transport company requires strict compliance and complex logistics licenses. GBC managed our entire setup with remarkable efficiency, saving us significant time and allowing us to focus on our fleet operations.”",
+    name: "Qasim Mushtaq Chaudhry Mushtaq Ahmed",
+    role: "PAK FRIENDS CARGO TRANSPORTBY TRUCK LLC",
+    image: "/images/testimonials/testimonials-5.png",
+  },
+  {
+    id: "07",
+    quote:
+      "“We rely heavily on timely renewals and strict regulatory compliance for our transportation fleet. GBC has consistently delivered outstanding corporate PRO services, making them an indispensable partner for our growing business.”",
+    name: "Ahmed Raza",
+    role: "MUKTSAR TRANSPORT L.L.C",
+    image: "/images/testimonials/testimonials-6.png",
+  }
 ];
 
 export const AboutTestimonials = () => {

@@ -5,15 +5,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const serverDir = fileURLToPath(new URL('./server/', import.meta.url))
 
-// Runs the contact-form mail API (server/) inside the Vite dev server,
-// so `npm run dev` alone handles POST /api/send-mail.
+// DEV ONLY: answers /api/meta/lead.php (production runs the real PHP file on the
+// hosting) with the Express stand-in in server/, so forms work under `npm run dev`.
 const contactApi = (env) => ({
   name: 'contact-api',
   async configureServer(server) {
     // Non-literal paths so Vite doesn't bundle server code into the config.
     const { createApp } = await import(pathToFileURL(serverDir + 'app.js').href)
     const { createMailer } = await import(pathToFileURL(serverDir + 'mail.js').href)
-    const { createMetaTracker } = await import(pathToFileURL(serverDir + 'meta.js').href)
 
     let app
     try {
@@ -22,7 +21,6 @@ const contactApi = (env) => ({
         sendEmail: mailer.sendEmail,
         mailFrom: env.MAIL_FROM,
         contactTo: env.CONTACT_TO,
-        metaTracker: createMetaTracker(env),
       })
     } catch (error) {
       server.config.logger.error(`[contact-api] ${error.message}`)

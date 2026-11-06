@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { sendMail } from "../../../lib/sendMail.js";
+import { submitLead } from "../../../lib/submitLead";
 import { useToast } from "../../../components/toast/Toast.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +21,7 @@ export const ContactForm = () => {
     const form = event.currentTarget;
     const fields = new FormData(form);
     const payload = Object.fromEntries(
-      ["name", "email", "message", "website"].map((key) => [
+      ["name", "email", "phone", "message", "website"].map((key) => [
         key,
         String(fields.get(key) ?? "").trim(),
       ]),
@@ -36,7 +36,7 @@ export const ContactForm = () => {
     setIsSending(true);
 
     try {
-      await sendMail("contact", payload);
+      await submitLead("contact_page", payload);
       form.reset();
       toast({
         type: "success",
@@ -239,6 +239,26 @@ export const ContactForm = () => {
                       maxLength={254}
                       disabled={isSending}
                       placeholder="Enter Email Address"
+                      className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="phone"
+                      className="text-sm text-white font-medium"
+                    >
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      autoComplete="tel"
+                      maxLength={40}
+                      disabled={isSending}
+                      placeholder="+971 50 123 4567"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
                   </div>

@@ -27,11 +27,9 @@ const IconWhatsApp = () => (
 
 /* ── Config ─────────────────────────────────────────────────────────── */
 
-const PHONE_NUMBER = "971501234567";
-// NOTE: Update this to the exact WhatsApp number listed on your Instagram profile
+const PHONE_NUMBER = "971585277775";
 const MESSAGE_TEXT =
-  "Hello Global Business Connect team! I found your profile on Instagram " +
-  "(https://www.instagram.com/globalbusinessconnect) and would like to inquire " +
+  "Hello Global Business Connect team! I found your website and would like to inquire " +
   "about business setup in the UAE.";
 const WHATSAPP_URL = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(MESSAGE_TEXT)}`;
 

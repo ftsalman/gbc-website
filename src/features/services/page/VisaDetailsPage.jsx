@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { CheckCircle2, ArrowLeft, ArrowUpRight, Phone, Mail, FileText, Send, User, ChevronDown } from 'lucide-react';
 import { PageToolbar } from '../../../components/PageToolbar/PageToolbar';
 import { VISA_TYPES } from '../constants/constants.js';
-import { sendMail } from '../../../lib/sendMail.js';
+import { submitLead } from '../../../lib/submitLead';
 import { useToast } from '../../../components/toast/Toast.jsx';
 
 // Default approach if visa ID doesn't match above keys
@@ -85,7 +85,7 @@ export const VisaDetailsPage = () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     try {
-      await sendMail('visa', { ...formState, source: visa.title });
+      await submitLead('visa_details', formState);
       setIsSubmitted(true);
       setFormState({ name: '', email: '', phone: '', message: '' });
       toast({

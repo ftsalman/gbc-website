@@ -20,22 +20,7 @@
     <meta property="twitter:title" content="GBC Corporate | Global Business Setup & Consulting" />
     <meta property="twitter:description" content="GBC Corporate offers premier business setup, legal advisory, and corporate tax services in the UAE. Launch and scale your business effortlessly." />
     <meta property="twitter:image" content="/images/LOGO_GBC.png" />
-
-    <!-- Meta Pixel (GBC Ads dataset). ID comes from VITE_META_PIXEL_ID in .env.
-         Route-change PageViews are sent by src/components/meta/MetaPageViewTracker.jsx -->
-    <script>
-      (function () {
-        var pixelId = "%VITE_META_PIXEL_ID%";
-        if (!/^\d+$/.test(pixelId)) return; // not configured yet
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', pixelId);
-        fbq('track', 'PageView');
-      })();
-    </script>
+    <!-- Meta Pixel is loaded by src/lib/metaPixel.js (initMetaPixel in main.jsx) -->
   </head>
   <body>
     <noscript>

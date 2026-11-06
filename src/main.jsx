@@ -5,6 +5,9 @@ import './App.css'
 import '../lib/turtle-ui/style.css'
 import { App } from './App.jsx'
 import { ToastProvider } from './components/toast/Toast.jsx'
+import { initMetaPixel } from './lib/metaPixel.js'
+
+initMetaPixel()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
