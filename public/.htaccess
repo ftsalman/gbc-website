@@ -2,6 +2,8 @@
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
+  # Lead API (PHP) — must come before the SPA fallback, or /api/lead returns index.html
+  RewriteRule ^api/lead/?$ api/lead.php [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
