@@ -23,6 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── Load secrets ──
+if (!file_exists(__DIR__ . '/config.php')) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'Server config missing: upload api/meta/config.php']);
+    exit;
+}
 require_once __DIR__ . '/config.php';
 
 // ── Parse body (supports both JSON and text/plain from the React helper) ──

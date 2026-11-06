@@ -31,10 +31,12 @@ export async function submitLead(formName, fields) {
     body: JSON.stringify(payload),
   });
 
+  const text = await response.text();
   let result;
   try {
-    result = await response.json();
+    result = JSON.parse(text);
   } catch {
+    console.error(`[lead] HTTP ${response.status} non-JSON response:`, text.slice(0, 500));
     throw new Error("Unexpected response from lead server.");
   }
 
