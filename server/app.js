@@ -4,11 +4,11 @@ import express from "express";
 import crypto from "node:crypto";
 
 // Lead API used by every website form (src/lib/submitLead.js):
-//   1. validate  2. email the lead  3. send the Meta CAPI Lead event
+//   1. validate  2. email the lead via SMTP (server/mail.js)  3. send the Meta CAPI Lead event
 //   4. reply { success: true, eventId } so the browser Pixel sends the same eventId (dedup).
 // Errors reply { success: false, error }.
 
-const FALLBACK_EMAIL = "typing@connectgbc.com";
+const FALLBACK_EMAIL = "sales@connectgbc.com";
 
 const FORM_LABELS = {
   contact_page: "Contact page",
@@ -54,7 +54,7 @@ export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin, metaTrac
       name: clean(body.name, 120),
       email: clean(body.email, 160).toLowerCase(),
       phone: clean(body.phone, 40),
-      message: clean(body.message, 3000),
+      message: clean(body.message, 5000),
       formName: clean(body.formName, 50) || "unknown",
       pageUrl: clean(body.pageUrl, 500),
     };
@@ -79,7 +79,7 @@ export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin, metaTrac
         from: mailFrom,
         to: contactTo.split(",").map((email) => email.trim()).filter(Boolean),
         replyTo: form.email || undefined,
-        subject: `New lead (${label}): ${form.name || form.email || form.phone}`,
+        subject: `GBC website enquiry (${label}): ${form.name || form.email || form.phone}`,
         text: rows.map(([key, value]) => `${key}: ${value}`).join("\n"),
         html: `<table cellpadding="6">${rows
           .map(
