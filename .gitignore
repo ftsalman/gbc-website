@@ -23,8 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-# Secrets — never commit
-public/api/config.php
-public/api/meta/config.php
-public/api/leads.csv
-public/api/meta/leads.csv

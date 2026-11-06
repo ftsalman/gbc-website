@@ -1,7 +1,7 @@
 // Meta Pixel (browser side).
 // The Pixel ID is public, so it is safe in a VITE_ variable.
 // The Conversions API access token must NEVER be added here — it lives only in
-// the Google Apps Script backend (see google-apps-script/Code.gs).
+// the Express lead API (server/meta.js, META_ACCESS_TOKEN in the server .env).
 
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
 

@@ -1,10 +1,12 @@
 import cors from "cors";
 import express from "express";
 
-// LOCAL DEVELOPMENT stand-in for public/api/meta/lead.php (Vite can't run PHP).
-// Same request/response contract as lead.php: { success, eventId? } or { success: false, error }.
-// It only emails the lead — no Meta CAPI and no eventId, so testing locally never
-// sends Lead events to Meta. Production uses lead.php on the PHP hosting.
+import crypto from "node:crypto";
+
+// Lead API used by every website form (src/lib/submitLead.js):
+//   1. validate  2. email the lead  3. send the Meta CAPI Lead event
+//   4. reply { success: true, eventId } so the browser Pixel sends the same eventId (dedup).
+// Errors reply { success: false, error }.
 
 const FALLBACK_EMAIL = "typing@connectgbc.com";
 
@@ -16,8 +18,10 @@ const FORM_LABELS = {
   blog_newsletter: "Blog newsletter",
 };
 
-export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin }) {
+export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin, metaTracker, trustProxy }) {
   const app = express();
+  // Behind a reverse proxy, lets req.ip be the visitor's IP (for Meta matching).
+  if (trustProxy) app.set("trust proxy", trustProxy);
 
   app.use(express.json({ limit: "20kb" }));
   if (corsOrigin) {
@@ -40,7 +44,7 @@ export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin }) {
 
   const fail = (res, status, error) => res.status(status).json({ success: false, error });
 
-  app.post(["/api/meta/lead.php", "/api/send-mail"], async (req, res) => {
+  app.post("/api/lead", async (req, res) => {
     const body = req.body ?? {};
 
     // Honeypot: real users never fill the hidden "website" field.
@@ -55,7 +59,6 @@ export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin }) {
       pageUrl: clean(body.pageUrl, 500),
     };
 
-    // Same rules as lead.php
     if (!form.email && !form.phone) return fail(res, 400, "Email or phone is required.");
     if (form.email && !emailPattern.test(form.email)) {
       return fail(res, 400, "Please enter a valid email address.");
@@ -89,7 +92,29 @@ export function createApp({ sendEmail, mailFrom, contactTo, corsOrigin }) {
       if (error) throw error;
       if (!data?.id) throw new Error("Email provider did not accept the enquiry.");
 
-      res.json({ success: true });
+      // Lead delivered — now (and only now) report it to Meta Conversions API.
+      const eventId = crypto.randomUUID();
+      if (metaTracker?.enabled) {
+        try {
+          await metaTracker.sendLead({
+            eventId,
+            email: form.email,
+            phone: form.phone,
+            name: form.name,
+            ip: req.ip,
+            userAgent: req.get("user-agent") || clean(body.userAgent, 500),
+            fbp: clean(body.fbp, 200) || undefined,
+            fbc: clean(body.fbc, 300) || undefined,
+            pageUrl: form.pageUrl || req.get("referer"),
+            formName: form.formName,
+          });
+        } catch (metaError) {
+          // Never fail the lead because Meta is down.
+          console.error("Meta CAPI send failed:", metaError.message);
+        }
+      }
+
+      res.json({ success: true, eventId });
     } catch (error) {
       console.error("Lead email delivery failed:", error.message);
       fail(res, 502, `We couldn't send your message. Please try again later or email ${FALLBACK_EMAIL}.`);

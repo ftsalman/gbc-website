@@ -3,8 +3,8 @@ import { getMetaCookies, trackLead } from "./metaPixel";
 const LEAD_ENDPOINT = import.meta.env.VITE_LEAD_ENDPOINT;
 
 /**
- * Sends a form enquiry to the Google Apps Script backend, which:
- *   1. validates it, 2. saves it to the Google Sheet, 3. sends the CAPI Lead.
+ * Sends a form enquiry to the lead API (server/app.js, POST /api/lead), which:
+ *   1. validates it, 2. emails it to the team, 3. sends the CAPI Lead.
  * Only if the backend replies success do we fire the browser Pixel Lead,
  * using the same eventId so Meta deduplicates the two events.
  *
