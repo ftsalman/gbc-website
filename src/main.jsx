@@ -4,11 +4,14 @@ import { HelmetProvider } from 'react-helmet-async'
 import './App.css'
 import '../lib/turtle-ui/style.css'
 import { App } from './App.jsx'
+import { ToastProvider } from './components/toast/Toast.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HelmetProvider>
-      <App />
+      <ToastProvider>
+        <App />
+      </ToastProvider>
     </HelmetProvider>
   </StrictMode>,
 )

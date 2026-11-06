@@ -1,14 +1,55 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Button } from "../../../../lib/turtle-ui/components";
+import { sendMail } from "../../../lib/sendMail.js";
+import { useToast } from "../../../components/toast/Toast.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const ContactForm = () => {
   const sectionRef = useRef(null);
+  const submissionRef = useRef(false);
+  const [isSending, setIsSending] = useState(false);
+  const toast = useToast();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (submissionRef.current) return;
+
+    const form = event.currentTarget;
+    const fields = new FormData(form);
+    const payload = Object.fromEntries(
+      ["name", "email", "message", "website"].map((key) => [
+        key,
+        String(fields.get(key) ?? "").trim(),
+      ]),
+    );
+
+    if (!payload.name || !payload.email || !payload.message) {
+      toast({ type: "error", title: "Missing details", message: "Please complete all required fields." });
+      return;
+    }
+
+    submissionRef.current = true;
+    setIsSending(true);
+
+    try {
+      await sendMail("contact", payload);
+      form.reset();
+      toast({
+        type: "success",
+        title: "Message sent",
+        message: "Thank you! Your message has been sent. We'll be in touch soon.",
+      });
+    } catch (error) {
+      toast({ type: "error", title: "Message not sent", message: error.message });
+    } finally {
+      submissionRef.current = false;
+      setIsSending(false);
+    }
+  };
 
   useGSAP(
     () => {
@@ -157,7 +198,8 @@ export const ContactForm = () => {
 
                 <form
                   className="flex flex-col gap-6"
-                  onSubmit={(e) => e.preventDefault()}
+                  onSubmit={handleSubmit}
+                  aria-busy={isSending}
                 >
                   {/* Name */}
                   <div className="flex flex-col gap-2">
@@ -170,6 +212,11 @@ export const ContactForm = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name"
+                      autoComplete="name"
+                      required
+                      maxLength={100}
+                      disabled={isSending}
                       placeholder="First Name"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
@@ -186,6 +233,11 @@ export const ContactForm = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
+                      autoComplete="email"
+                      required
+                      maxLength={254}
+                      disabled={isSending}
                       placeholder="Enter Email Address"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
@@ -201,18 +253,28 @@ export const ContactForm = () => {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
+                      required
+                      maxLength={5000}
+                      disabled={isSending}
                       rows="4"
                       placeholder="Enter Your Message"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm resize-none placeholder-gray-600"
                     ></textarea>
                   </div>
 
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="contact-website">Website</label>
+                    <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                  </div>
+
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="bg-bordeaux text-white font-semibold text-sm px-10 py-4 hover:bg-bordeaux/90 transition-colors shadow-lg"
+                      disabled={isSending}
+                      className="bg-bordeaux text-white font-semibold text-sm px-10 py-4 hover:bg-bordeaux/90 transition-colors shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Submit
+                      {isSending ? "Sending…" : "Submit"}
                     </button>
                   </div>
                 </form>

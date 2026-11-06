@@ -5,10 +5,12 @@ import { Footer } from "../components/footer/Footer";
 import { ScrollToTop } from "../components/scroll-to-top/ScrollToTop";
 import { WhatsAppButton } from "../components/whatsapp-button/WhatsAppButton";
 import Lanyard from "../components/ui/Lanyard";
+import { MetaPageViewTracker } from "../components/meta/MetaPageViewTracker";
 
 export const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen relative h-full w-full overflow-x-clip">
+      <MetaPageViewTracker />
       <Navbar />
       <div className="flex-grow flex flex-col z-10 relative">
         <Outlet />

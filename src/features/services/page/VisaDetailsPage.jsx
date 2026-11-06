@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { CheckCircle2, ArrowLeft, ArrowUpRight, Phone, Mail, FileText, Send, User, ChevronDown } from 'lucide-react';
 import { PageToolbar } from '../../../components/PageToolbar/PageToolbar';
 import { VISA_TYPES } from '../constants/constants.js';
+import { sendMail } from '../../../lib/sendMail.js';
+import { useToast } from '../../../components/toast/Toast.jsx';
 
 // Default approach if visa ID doesn't match above keys
 const DEFAULT_APPROACH = [
@@ -39,6 +41,7 @@ export const VisaDetailsPage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const toast = useToast();
 
   // Accordion state
   const [activeFaq, setActiveFaq] = useState(null);
@@ -67,7 +70,7 @@ export const VisaDetailsPage = () => {
   };
 
   // Submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
     if (!formState.name) newErrors.name = 'Full name is required';
@@ -79,13 +82,22 @@ export const VisaDetailsPage = () => {
       return;
     }
 
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    // Mock API submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await sendMail('visa', { ...formState, source: visa.title });
       setIsSubmitted(true);
       setFormState({ name: '', email: '', phone: '', message: '' });
-    }, 1200);
+      toast({
+        type: 'success',
+        title: 'Enquiry sent',
+        message: 'Thank you! One of our Senior PRO advisors will reach out to you shortly.',
+      });
+    } catch (error) {
+      toast({ type: 'error', title: 'Enquiry not sent', message: error.message });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

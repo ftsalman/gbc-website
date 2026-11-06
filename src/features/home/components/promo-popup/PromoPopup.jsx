@@ -4,9 +4,40 @@ import {
   Button,
   InputBox,
 } from "../../../../../lib/turtle-ui/components";
+import { sendMail } from "../../../../lib/sendMail.js";
+import { useToast } from "../../../../components/toast/Toast.jsx";
 
 export const PromoPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [sending, setSending] = useState(false);
+  const toast = useToast();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    const form = e.currentTarget;
+    const fields = Object.fromEntries(
+      ["name", "email", "phone", "website"].map((key) => [
+        key,
+        String(new FormData(form).get(key) ?? "").trim(),
+      ]),
+    );
+    setSending(true);
+    try {
+      await sendMail("callback", { ...fields, source: "Home page popup" });
+      form.reset();
+      setIsOpen(false);
+      toast({
+        type: "success",
+        title: "Request received",
+        message: "Thank you! One of our consultants will call you back shortly.",
+      });
+    } catch (error) {
+      toast({ type: "error", title: "Request not sent", message: error.message });
+    } finally {
+      setSending(false);
+    }
+  };
 
   useEffect(() => {
     // Show the popup after a short delay (e.g. 2.5 seconds)
@@ -72,37 +103,50 @@ export const PromoPopup = () => {
 
             <form
               className="w-full flex flex-col gap-4 mb-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setIsOpen(false);
-              }}
+              onSubmit={handleSubmit}
+              aria-busy={sending}
             >
               <InputBox
                 type="text"
+                name="name"
+                autoComplete="name"
                 placeholder="Full Name"
                 className="w-full bg-gray-50 border-gray-200"
+                maxLength={100}
+                disabled={sending}
                 required
               />
               <InputBox
                 type="email"
+                name="email"
+                autoComplete="email"
                 placeholder="Email Address"
                 className="w-full bg-gray-50 border-gray-200"
+                maxLength={254}
+                disabled={sending}
                 required
               />
               <InputBox
                 type="tel"
+                name="phone"
+                autoComplete="tel"
                 placeholder="Phone Number"
                 className="w-full bg-gray-50 border-gray-200"
+                maxLength={40}
+                disabled={sending}
                 required
               />
+              {/* Honeypot: hidden from real users */}
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
               <Button
                 variant="primary"
                 corners={true}
                 className="w-full mt-2"
                 type="submit"
+                disabled={sending}
               >
-                Request Callback
+                {sending ? "Sending…" : "Request Callback"}
               </Button>
             </form>
             <p className="text-[11px] text-gray-400 font-sans mt-2">

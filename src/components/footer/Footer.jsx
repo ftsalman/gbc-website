@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "../../../lib/turtle-ui/components";
+import { sendMail } from "../../lib/sendMail.js";
+import { useToast } from "../toast/Toast.jsx";
 
 export const Footer = () => {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const toast = useToast();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
+    if (!email.trim() || sending) return;
+    setSending(true);
+    try {
+      await sendMail("newsletter", { email: email.trim(), source: "Footer newsletter" });
       setEmail("");
+      toast({ type: "success", title: "Subscribed", message: "Thank you! You're on our newsletter list." });
+    } catch (error) {
+      toast({ type: "error", title: "Subscription failed", message: error.message });
+    } finally {
+      setSending(false);
     }
   };
 
@@ -78,17 +88,14 @@ export const Footer = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email Address"
                 required
+                maxLength={254}
+                disabled={sending}
                 className="px-5 py-3.5 rounded-xl bg-white/[0.06] border border-white/15 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-bordeaux flex-1 transition-colors"
               />
-              <Button type="submit" variant="corner" size="md">
-                Submit
+              <Button type="submit" variant="corner" size="md" disabled={sending}>
+                {sending ? "Sending…" : "Submit"}
               </Button>
             </form>
-            {submitted && (
-              <div className="text-sm text-green-400 font-medium">
-                Thank you! Your submission has been received.
-              </div>
-            )}
           </div>
 
           {/* Right: Links Grid (.footer-links-block -> grid-cols-2 sm:grid-cols-3 gap-8) */}
