@@ -4,9 +4,31 @@ import {
   Button,
   InputBox,
 } from "../../../../../lib/turtle-ui/components";
+import { submitLead } from "../../../../lib/submitLead";
+
+const EMPTY_FORM = { name: "", email: "", phone: "" };
 
 export const PromoPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+
+  const handleChange = (e) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      await submitLead("promo_popup", form);
+      setStatus("success");
+      setForm(EMPTY_FORM);
+      setTimeout(() => setIsOpen(false), 2500);
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+  };
 
   useEffect(() => {
     // Show the popup after a short delay (e.g. 2.5 seconds)
@@ -72,25 +94,31 @@ export const PromoPopup = () => {
 
             <form
               className="w-full flex flex-col gap-4 mb-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setIsOpen(false);
-              }}
+              onSubmit={handleSubmit}
             >
               <InputBox
                 type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
                 placeholder="Full Name"
                 className="w-full bg-gray-50 border-gray-200"
                 required
               />
               <InputBox
                 type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
                 placeholder="Email Address"
                 className="w-full bg-gray-50 border-gray-200"
                 required
               />
               <InputBox
                 type="tel"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
                 placeholder="Phone Number"
                 className="w-full bg-gray-50 border-gray-200"
                 required
@@ -101,9 +129,20 @@ export const PromoPopup = () => {
                 corners={true}
                 className="w-full mt-2"
                 type="submit"
+                disabled={status === "submitting"}
               >
-                Request Callback
+                {status === "submitting" ? "Sending..." : "Request Callback"}
               </Button>
+              {status === "success" && (
+                <p className="text-sm text-green-600 font-medium">
+                  Thank you! Our consultant will call you back shortly.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm text-red-600 font-medium">
+                  Sorry, something went wrong. Please try again.
+                </p>
+              )}
             </form>
             <p className="text-[11px] text-gray-400 font-sans mt-2">
               Your information is secure and will never be shared with third

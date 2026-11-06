@@ -4,6 +4,9 @@ import { HelmetProvider } from 'react-helmet-async'
 import './App.css'
 import '../lib/turtle-ui/style.css'
 import { App } from './App.jsx'
+import { initMetaPixel } from './lib/metaPixel.js'
+
+initMetaPixel()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

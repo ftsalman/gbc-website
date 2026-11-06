@@ -1,16 +1,28 @@
 import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "../../../lib/turtle-ui/components";
+import { submitLead } from "../../lib/submitLead";
 
 export const Footer = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+    setSubmitting(true);
+    setError(false);
+    try {
+      await submitLead("footer_newsletter", { email });
       setSubmitted(true);
       setEmail("");
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -80,13 +92,18 @@ export const Footer = () => {
                 required
                 className="px-5 py-3.5 rounded-xl bg-white/[0.06] border border-white/15 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-bordeaux flex-1 transition-colors"
               />
-              <Button type="submit" variant="corner" size="md">
-                Submit
+              <Button type="submit" variant="corner" size="md" disabled={submitting}>
+                {submitting ? "Sending..." : "Submit"}
               </Button>
             </form>
             {submitted && (
               <div className="text-sm text-green-400 font-medium">
                 Thank you! Your submission has been received.
+              </div>
+            )}
+            {error && (
+              <div className="text-sm text-red-400 font-medium">
+                Sorry, something went wrong. Please try again.
               </div>
             )}
           </div>

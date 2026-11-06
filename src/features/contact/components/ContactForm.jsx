@@ -1,14 +1,37 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Button } from "../../../../lib/turtle-ui/components";
+import { submitLead } from "../../../lib/submitLead";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const EMPTY_FORM = { name: "", email: "", phone: "", message: "" };
+
 export const ContactForm = () => {
   const sectionRef = useRef(null);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleChange = (e) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMsg("");
+    try {
+      await submitLead("contact_page", form);
+      setStatus("success");
+      setForm(EMPTY_FORM);
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("Sorry, we couldn't send your message. Please try again or call us.");
+      setStatus("error");
+    }
+  };
 
   useGSAP(
     () => {
@@ -155,10 +178,7 @@ export const ContactForm = () => {
                   consulting—we're here to help.
                 </p>
 
-                <form
-                  className="flex flex-col gap-6"
-                  onSubmit={(e) => e.preventDefault()}
-                >
+                <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                   {/* Name */}
                   <div className="flex flex-col gap-2">
                     <label
@@ -170,6 +190,10 @@ export const ContactForm = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
                       placeholder="First Name"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
@@ -186,7 +210,30 @@ export const ContactForm = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
                       placeholder="Enter Email Address"
+                      className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="phone"
+                      className="text-sm text-white font-medium"
+                    >
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      placeholder="+971 50 123 4567"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
                   </div>
@@ -201,6 +248,9 @@ export const ContactForm = () => {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
                       rows="4"
                       placeholder="Enter Your Message"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm resize-none placeholder-gray-600"
@@ -210,11 +260,20 @@ export const ContactForm = () => {
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="bg-bordeaux text-white font-semibold text-sm px-10 py-4 hover:bg-bordeaux/90 transition-colors shadow-lg"
+                      disabled={status === "submitting"}
+                      className="bg-bordeaux text-white font-semibold text-sm px-10 py-4 hover:bg-bordeaux/90 transition-colors shadow-lg disabled:opacity-60"
                     >
-                      Submit
+                      {status === "submitting" ? "Sending..." : "Submit"}
                     </button>
                   </div>
+                  {status === "success" && (
+                    <p className="text-sm text-green-400 font-medium">
+                      Thank you! Your message has been received. Our team will contact you shortly.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-sm text-red-400 font-medium">{errorMsg}</p>
+                  )}
                 </form>
               </div>
             </div>

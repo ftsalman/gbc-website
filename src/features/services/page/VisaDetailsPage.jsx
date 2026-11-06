@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { CheckCircle2, ArrowLeft, ArrowUpRight, Phone, Mail, FileText, Send, User, ChevronDown } from 'lucide-react';
 import { PageToolbar } from '../../../components/PageToolbar/PageToolbar';
 import { VISA_TYPES } from '../constants/constants.js';
+import { submitLead } from '../../../lib/submitLead';
 
 // Default approach if visa ID doesn't match above keys
 const DEFAULT_APPROACH = [
@@ -79,13 +80,21 @@ export const VisaDetailsPage = () => {
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
-    // Mock API submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: '', email: '', phone: '', message: '' });
-    }, 1200);
+    submitLead('visa_details', {
+      ...formState,
+      message: `[${visa.title}] ${formState.message}`.trim(),
+    })
+      .then(() => {
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', phone: '', message: '' });
+      })
+      .catch((err) => {
+        console.error(err);
+        setErrors({ submit: "Sorry, we couldn't send your request. Please try again or call us." });
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   return (
@@ -345,6 +354,7 @@ export const VisaDetailsPage = () => {
                         {isSubmitting ? 'Sending Request...' : 'Send Message'}
                         <Send className="w-4 h-4" />
                       </button>
+                      {errors.submit && <p className="text-xs text-rose-500 text-center">{errors.submit}</p>}
                     </form>
                   )}
 
