@@ -8,6 +8,27 @@ import { useToast } from "../../../components/toast/Toast.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Optional leading "+" country code, then digits with common separators.
+// 7–15 digits total (15 is the E.164 maximum, country code included).
+const PHONE_CHARS = /^\+?[\d\s\-().]+$/;
+const PHONE_MIN_DIGITS = 7;
+const PHONE_MAX_DIGITS = 15;
+
+const getPhoneError = (value) => {
+  const phone = String(value ?? "").trim();
+  if (!phone) return "Mobile number is required.";
+  const digits = phone.replace(/\D/g, "").length;
+  if (!PHONE_CHARS.test(phone) || digits < PHONE_MIN_DIGITS || digits > PHONE_MAX_DIGITS) {
+    return "Please enter a valid mobile number with country code (e.g. +971 50 123 4567).";
+  }
+  return "";
+};
+
+// Show our message in the browser's native validation bubble.
+const syncPhoneValidity = (event) => {
+  event.currentTarget.setCustomValidity(getPhoneError(event.currentTarget.value));
+};
+
 export const ContactForm = () => {
   const sectionRef = useRef(null);
   const submissionRef = useRef(false);
@@ -29,6 +50,13 @@ export const ContactForm = () => {
 
     if (!payload.name || !payload.email || !payload.message) {
       toast({ type: "error", title: "Missing details", message: "Please complete all required fields." });
+      return;
+    }
+
+    const phoneError = getPhoneError(payload.phone);
+    if (phoneError) {
+      toast({ type: "error", title: "Invalid mobile number", message: phoneError });
+      form.elements.phone?.focus();
       return;
     }
 
@@ -249,16 +277,22 @@ export const ContactForm = () => {
                       htmlFor="phone"
                       className="text-sm text-white font-medium"
                     >
-                      Phone
+                      Mobile Number{" "}
+                      <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       autoComplete="tel"
+                      inputMode="tel"
+                      required
+                      aria-required="true"
                       maxLength={40}
+                      onInput={syncPhoneValidity}
+                      onInvalid={syncPhoneValidity}
                       disabled={isSending}
-                      placeholder="+971 50 123 4567"
+                      placeholder="Enter Mobile Number"
                       className="bg-[#151515] border border-white/10 text-white text-sm px-5 py-4 w-full focus:outline-none focus:border-bordeaux/50 focus:ring-1 focus:ring-bordeaux/50 transition-all rounded-sm placeholder-gray-600"
                     />
                   </div>

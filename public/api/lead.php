@@ -65,6 +65,17 @@ $pageUrl  = oneLine(clean($body['pageUrl'] ?? '', 500));
 if ($email === '' && $phone === '') {
     respond(400, ['success' => false, 'error' => 'Email or phone is required.']);
 }
+// Contact page: mobile number is mandatory and must look like a real number.
+// Optional leading "+" country code, digits with common separators, 7–15 digits (E.164 max).
+if ($formName === 'contact_page') {
+    if ($phone === '') {
+        respond(400, ['success' => false, 'error' => 'Mobile number is required.']);
+    }
+    $phoneDigits = strlen(preg_replace('/\D/', '', $phone));
+    if (!preg_match('/^\+?[\d\s\-().]+$/', $phone) || $phoneDigits < 7 || $phoneDigits > 15) {
+        respond(400, ['success' => false, 'error' => 'Please enter a valid mobile number with country code (e.g. +971 50 123 4567).']);
+    }
+}
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(400, ['success' => false, 'error' => 'Please enter a valid email address.']);
 }
